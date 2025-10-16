@@ -1,4 +1,4 @@
-# İstanbul Üniversitesi - Bilgisayar Programlama 2.Sınıf Ders Notları -
+# İstanbul Üniversitesi - Bilgisayar Programlama 2.Sınıf Ders Notları
 
 **İstanbul Üniversitesi** **Bilgisayar Programlama** bölümü dersleri için hazırlanmış **ders notları, özetler** içerir.  
 
