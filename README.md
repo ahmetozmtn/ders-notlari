@@ -4,7 +4,7 @@
 
 ---
 
-# İçerikler
+## İçerikler
 
 - Her ders, **ünite bazlı markdown özetleri** içerir.  
 - Notlar, ders kitaplarına ve resmi kaynaklara dayalıdır.  
