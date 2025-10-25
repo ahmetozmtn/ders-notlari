@@ -11,7 +11,12 @@
 
 
 ## Dersler
-
+- [Bilişim Hukuku](https://github.com/ahmetozmtn/ders-notlari/tree/main/guz-donemi/bilisim-hukuku)
+- [Nesneye Yönelimli Programlama](https://github.com/ahmetozmtn/ders-notlari/tree/main/guz-donemi/nesneye-yonelik-programlama)
+- [PL/SQL Veritabanı Programlama](https://github.com/ahmetozmtn/ders-notlari/tree/main/guz-donemi/pl-sql-veritabani-programlama)
+- [Python Programlama](https://github.com/ahmetozmtn/ders-notlari/tree/main/guz-donemi/python-programlama)
+- [Web Programlama](https://github.com/ahmetozmtn/ders-notlari/tree/main/guz-donemi/web-programlama)
+- [Yazılım Kalite ve Test](https://github.com/ahmetozmtn/ders-notlari/tree/main/guz-donemi/yazilim-kalite-test)
 
 
 ## Klasör Yapısı
