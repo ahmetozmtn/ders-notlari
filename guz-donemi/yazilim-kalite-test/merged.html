@@ -1,0 +1,1686 @@
+<meta charset='utf-8'>
+<h1>1.Ünite - Yazılım Kalite ve Testi</h1>
+<hr />
+<h2>Yazılım Testi ve Amacı</h2>
+<p>Yazılım testi, bir yazılımın <strong>beklenen gereksinimleri karşılayıp karşılamadığını</strong> inceleme sürecidir.</p>
+<p><strong>Amaçlar:</strong></p>
+<ul>
+<li>
+<p>Maliyet ve zaman tasarrufu sağlamak</p>
+</li>
+<li>
+<p>Hataları önceden bulmak ve tekrarını önlemek</p>
+</li>
+<li>
+<p>Ürünün kalitesini ve güvenilirliğini artırmak</p>
+</li>
+</ul>
+<p><strong>Temel Noktalar:</strong></p>
+<ul>
+<li>
+<p>Test, <strong>kodlamadan önce başlar</strong> ve tüm süreç boyunca sürer.</p>
+</li>
+<li>
+<p><strong>Normal ve anormal koşullar</strong> altında yapılmalıdır.</p>
+</li>
+<li>
+<p>Tüm senaryolar test edilemez → <strong>kritik alanlara odaklanılır.</strong></p>
+</li>
+</ul>
+<hr />
+<h2>Doğru Bilinen Yanlışlar</h2>
+<table>
+<thead>
+<tr>
+<th>Yanlış</th>
+<th>Gerçek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test pahalıdır.</td>
+<td>Hata düzeltmek daha pahalıdır.</td>
+</tr>
+<tr>
+<td>Test zaman kaybıdır.</td>
+<td>Erken test zaman kazandırır.</td>
+</tr>
+<tr>
+<td>Sadece bitmiş yazılım test edilir.</td>
+<td>Test süreci fikirden başlar.</td>
+</tr>
+<tr>
+<td>Yazılım tamamen test edilebilir.</td>
+<td>Sonsuz olasılık nedeniyle imkansızdır.</td>
+</tr>
+<tr>
+<td>Test edilmiş yazılım hatasızdır.</td>
+<td>%100 hatasız yazılım yoktur.</td>
+</tr>
+<tr>
+<td>Hatalar testçiden kaynaklanır.</td>
+<td>Ekipte herkes sorumludur.</td>
+</tr>
+<tr>
+<td>Testçiler kaliteyi sağlar.</td>
+<td>Kalite ekip işidir.</td>
+</tr>
+<tr>
+<td>Otomasyon sadece hız içindir.</td>
+<td>Gereksinim değişikliklerine uyum sağlar.</td>
+</tr>
+<tr>
+<td>Herkes test yapabilir.</td>
+<td>Herkes aynı kalitede test yapamaz.</td>
+</tr>
+<tr>
+<td>Testçinin görevi hata bulmaktır.</td>
+<td>Analiz, raporlama ve öneri de yapar.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Yazılım Testinin 7 İlkesi</h2>
+<ol>
+<li>
+<p>Test hataların <strong>varlığını</strong>, yokluğunu değil gösterir.</p>
+</li>
+<li>
+<p>Hatasız yazılım <strong>ihtiyacı karşılamıyorsa değersizdir.</strong></p>
+</li>
+<li>
+<p>Test <strong>erken yapılmalıdır.</strong></p>
+</li>
+<li>
+<p><strong>Kapsamlı, kusursuz test mümkün değildir.</strong></p>
+</li>
+<li>
+<p>Hatalar <strong>belirli alanlarda yoğunlaşır.</strong></p>
+</li>
+<li>
+<p><strong>Tarım ilacı paradoksu:</strong> Aynı testler yeni hataları bulamaz.</p>
+</li>
+<li>
+<p>Test <strong>yazılım türüne göre değişir.</strong></p>
+</li>
+</ol>
+<hr />
+<h2>Test Uzmanının Görevleri</h2>
+<ul>
+<li>
+<p>Yazılımı ve kullanıcı ihtiyaçlarını tanımak</p>
+</li>
+<li>
+<p>Risk analizi ve test planı hazırlamak</p>
+</li>
+<li>
+<p>Testleri yürütmek, hataları raporlamak</p>
+</li>
+<li>
+<p>Düzeltmeleri doğrulayıp rapor sunmak</p>
+</li>
+</ul>
+<hr />
+<h2>Özet</h2>
+<ul>
+<li>
+<p>Testin amacı <strong>hatasızlık değil, kaliteyi sağlamaktır.</strong></p>
+</li>
+<li>
+<p><strong>Erken, sürekli, risk temelli test</strong> esastır.</p>
+</li>
+<li>
+<p><strong>Kalite, tüm ekibin sorumluluğudur.</strong></p>
+</li>
+<li>
+<p>Başarılı yazılım, <strong>kullanıcı ihtiyacını</strong> karşılayandır.</p>
+</li>
+</ul>
+<h1>2.Ünite - Yazılım Hataları</h1>
+<hr />
+<h2>Yazılım Hatası Kavramı</h2>
+<p>Yazılım hataları kaçınılmazdır, ancak <strong>doğru tespit ve yönetim</strong> yazılım kalitesini belirler.</p>
+<ul>
+<li>
+<p><strong>Hata (Bug):</strong> Yazılımın beklenen işlevi yapmasını engelleyen durum.</p>
+</li>
+<li>
+<p><strong>Kusur (Defect):</strong> Gereken kriterleri karşılamayan sistem veya bileşen.</p>
+</li>
+<li>
+<p><strong>İnsan Hatası (Error):</strong> Geliştirici, analist veya tester'ın yanlış eylemi.</p>
+</li>
+<li>
+<p><strong>Arıza (Failure):</strong> Sistemin beklenenden sapması.</p>
+</li>
+<li>
+<p><strong>Anomali (Anomaly):</strong> Beklentiden sapma; bazen olumlu sonuçlar doğurabilir (örneğin beklenenden fazla kullanıcı).</p>
+</li>
+</ul>
+<hr />
+<h2>Hata Türleri</h2>
+<ul>
+<li>
+<p><strong>Sözdizimi Hataları:</strong> Programlama dilinin kurallarına aykırı ifadeler (örnek: yazım yanlışı).</p>
+</li>
+<li>
+<p><strong>Çalışma Zamanı Hataları:</strong> Program çalışırken ortaya çıkar (örnek: olmayan dosyaya erişim).</p>
+</li>
+<li>
+<p><strong>Mantıksal Hatalar:</strong> Algoritma doğru sonuç vermez (örnek: <code>*</code> yerine <code>+</code> yazmak).</p>
+</li>
+<li>
+<p><strong>Mimari/Tasarım Hataları:</strong> Yanlış iş sırası, zayıf tasarım veya eksik analiz.</p>
+</li>
+<li>
+<p><strong>Belgelendirme Hataları:</strong> Dokümantasyon eksiklikleri veya yanlış bilgiler.</p>
+</li>
+</ul>
+<hr />
+<h2>Hata Yönetimi ve Ölçütler</h2>
+<ul>
+<li>
+<p><strong>Hata Yoğunluğu:</strong> Toplam hata sayısının kod büyüklüğüne oranı.</p>
+</li>
+<li>
+<p><strong>Tespit Yüzdesi (DDP):</strong> Bulunan hataların toplam hata sayısına oranı.</p>
+</li>
+<li>
+<p><strong>Hata Toleransı:</strong> Sistem yanlış girdilerle de çalışabiliyorsa yüksek toleransa sahiptir.</p>
+</li>
+<li>
+<p><strong>Arıza Oranı / Ortalama Arıza Süresi:</strong> Güvenilirliği ölçmede kullanılır.</p>
+</li>
+</ul>
+<p>Hataların izlenmesi, kaydedilmesi ve çözülmesi <strong>hata yönetimi araçları</strong> ile yapılır.<br />
+Hata tahminleme ve <strong>kusur ağacı analizi (FTA)</strong> gibi yöntemler test sürecini yönlendirir.</p>
+<hr />
+<h2>Tarihteki Önemli Yazılım Hataları</h2>
+<ul>
+<li>
+<p><strong>Mariner-1 (1962):</strong> Kodda yazım hatası → roket yörüngeden çıktı, 80 milyon $ zarar.</p>
+</li>
+<li>
+<p><strong>Therac-25 (1985):</strong> Radyasyon cihazı hatası → 3 hasta öldü.</p>
+</li>
+<li>
+<p><strong>Patriot Füzesi (1991):</strong> Zamanlama hatası → 29 asker hayatını kaybetti.</p>
+</li>
+<li>
+<p><strong>Pentium İşlemci (1993):</strong> Bölme hatası → 475 milyon $ zarar.</p>
+</li>
+<li>
+<p><strong>Mars Climate Orbiter (1999):</strong> Birim uyuşmazlığı → 125 milyon $ kayıp.</p>
+</li>
+<li>
+<p><strong>Y2K (2000):</strong> Yıl formatı hatası → küresel sistem güncellemeleri gerekmiştir.</p>
+</li>
+<li>
+<p><strong>Google Malware (2009):</strong> Yanlış karakter girişi → tüm siteler zararlı olarak işaretlendi.</p>
+</li>
+<li>
+<p><strong>Toyota Prius (2014):</strong> Yazılım hatası → milyonlarca araç geri çağrıldı.</p>
+</li>
+</ul>
+<hr />
+<h2>Özet</h2>
+<ul>
+<li>
+<p>Hatasız yazılım <strong>mümkün değildir</strong>, önemli olan hataları <strong>doğru yönetmektir.</strong></p>
+</li>
+<li>
+<p>Hata türleri farklı aşamalarda ve farklı etkilerle ortaya çıkar.</p>
+</li>
+<li>
+<p>Tarihte küçük hatalar milyar dolarlık kayıplara ve can kayıplarına yol açmıştır.</p>
+</li>
+<li>
+<p>Etkili hata yönetimi, yazılım kalitesinin ve güvenilirliğinin temelidir.</p>
+</li>
+</ul>
+<h1>3.Ünite - Yazılım Risk Analizi ve Yazılımda Ölçme</h1>
+<hr />
+<h2>Yazılım Risk Analizi</h2>
+<p>Yazılım projelerinde <strong>zaman, maliyet ve kalite tahminleri</strong> genellikle riskler nedeniyle sapar.<br />
+Risk, projenin hedeflerini etkileyebilecek <strong>belirsiz bir durumdur</strong>.</p>
+<p><strong>Risk türleri:</strong></p>
+<ul>
+<li>
+<p><strong>Proje riskleri:</strong> Zaman, maliyet, personel uyumsuzluğu, planlama hataları.</p>
+</li>
+<li>
+<p><strong>Teknik riskler:</strong> Yeni teknolojiler, yetersiz test, belirsiz dokümantasyon.</p>
+</li>
+<li>
+<p><strong>İşletme riskleri:</strong> Pazar değişimleri, doğal afetler, döviz dalgalanmaları.</p>
+</li>
+</ul>
+<p><strong>Risk yönetimi süreci:</strong></p>
+<ol>
+<li>
+<p><strong>Risk değerlendirmesi:</strong> Risklerin tanımlanması, analizi ve önceliklendirilmesi.</p>
+</li>
+<li>
+<p><strong>Risk planlaması:</strong> Risk oluşmadan önlem alma stratejileri geliştirme.</p>
+</li>
+</ol>
+<p><strong>Risk stratejileri:</strong></p>
+<ul>
+<li>
+<p><strong>Önleme:</strong> Riskin oluşma olasılığını azaltır.</p>
+</li>
+<li>
+<p><strong>Minimize etme:</strong> Etkisini ve zararını azaltır.</p>
+</li>
+<li>
+<p><strong>Acil eylem planı:</strong> Gerçekleştiğinde düzeltici adımlar uygular.</p>
+</li>
+</ul>
+<p><strong>Risk analizi araçları:</strong></p>
+<ul>
+<li>
+<p>Risk tablosu (riskin açıklaması, olasılığı, etkisi, alınacak önlem vb.)</p>
+</li>
+<li>
+<p>FMEA yöntemi (Risk Öncelik Numarası – RPN = Severity × Priority × Likelihood).</p>
+</li>
+</ul>
+<p>Küçük RPN → yüksek öncelikli risk.</p>
+<hr />
+<h2>Yazılımda Ölçme</h2>
+<p><strong>Ölçme:</strong> Gerçek dünyadaki varlıkların özelliklerine sayısal değer atama işlemidir.<br />
+Amaç, <strong>durumu analiz etmek, geçmişle karşılaştırmak ve öngörüde bulunmaktır.</strong></p>
+<p><strong>Ölçme türleri:</strong></p>
+<ul>
+<li>
+<p><strong>Doğrudan ölçme:</strong> Boy, kilo, satır sayısı gibi fiziksel değerler.</p>
+</li>
+<li>
+<p><strong>Dolaylı ölçme:</strong> Test puanı, zeka, performans gibi dolaylı göstergelerle ölçüm.</p>
+</li>
+<li>
+<p><strong>Türetilmiş ölçme:</strong> İki ya da daha fazla ölçümden türetilir (örnek: hız = yol/zaman).</p>
+</li>
+</ul>
+<p><strong>Yazılımda ölçme alanları:</strong></p>
+<ul>
+<li>
+<p><strong>Temel ölçüler:</strong> Kod satır sayısı, test süresi, hata sayısı.</p>
+</li>
+<li>
+<p><strong>Türetilmiş ölçüler:</strong></p>
+<ul>
+<li>
+<p>Hata yoğunluğu = hata sayısı / kod uzunluğu</p>
+</li>
+<li>
+<p>Gereksinim değişim oranı = değişen gereksinim / ilk gereksinim</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Yazılım büyüklüğü ölçütleri:</strong></p>
+<ul>
+<li>
+<p><strong>Uzunluk:</strong> Kod veya doküman satır sayısı.</p>
+</li>
+<li>
+<p><strong>İşlevsellik:</strong> Kullanıcıya sunulan fonksiyon sayısı.</p>
+</li>
+<li>
+<p><strong>Karmaşıklık:</strong> Algoritma veya problem yapısının zorluğu.</p>
+</li>
+<li>
+<p><strong>Tekrar kullanım:</strong> Kodun yeniden kullanılabilirliği.</p>
+</li>
+</ul>
+<hr />
+<h2>Özet</h2>
+<ul>
+<li>
+<p>Risk, yazılım projelerinin kaçınılmaz bir parçasıdır.</p>
+</li>
+<li>
+<p>Başarılı projeler, riskleri <strong>tanımlayıp yönetebilen</strong> projelerdir.</p>
+</li>
+<li>
+<p>Yazılımda ölçme, <strong>kaliteyi ve verimliliği</strong> kontrol etmenin temel aracıdır.</p>
+</li>
+<li>
+<p>Hem risk yönetimi hem de ölçme, yazılım kalitesinin sürdürülebilirliği için gereklidir.</p>
+</li>
+</ul>
+<h1>4.Ünite - Yazılım Testine Ait Kavramlar</h1>
+<hr />
+<h2>Test Verileri ve Test Senaryoları</h2>
+<p><strong>Test senaryosu:</strong> Belirli bir işlevi veya gereksinimi test etmek için oluşturulan girdiler, ön koşullar, beklenen ve gerçekleşen sonuçlardan oluşan yapıdır.</p>
+<ul>
+<li>
+<p><strong>Bloke test senaryosu:</strong> Gerekli önkoşullar sağlanmadığı için çalıştırılamaz.</p>
+</li>
+<li>
+<p><strong>Üst seviye test senaryosu:</strong> Gerçek veriler içermez, soyut olarak yazılır.</p>
+</li>
+<li>
+<p><strong>Alt seviye test senaryosu:</strong> Somut verilerle hazırlanır.</p>
+</li>
+<li>
+<p><strong>Test spesifikasyonu:</strong> Test tasarımını, senaryolarını ve prosedürlerini içeren belgedir.</p>
+</li>
+<li>
+<p><strong>Test verisi:</strong> Testlerde kullanılacak gerçek veya üretilmiş veridir.</p>
+</li>
+<li>
+<p><strong>Test verisi yönetimi:</strong> Test verilerinin oluşturulması, güncellenmesi ve korunması sürecidir.</p>
+</li>
+</ul>
+<hr />
+<h2>Test Başlatma, Bitiş ve Kabul</h2>
+<p><strong>Kabul kriteri:</strong> Yazılımın kullanıcı veya müşteri beklentilerini karşılama şartıdır.<br />
+<strong>Test kapanışı:</strong> Test sonuçlarının ve tecrübelerinin arşivlendiği son aşamadır.<br />
+<strong>Beklenen sonuç:</strong> Gereksinimlere göre sistemin göstermesi gereken davranış.<br />
+<strong>Gerçekleşen sonuç:</strong> Test sırasında gözlemlenen davranış.<br />
+<strong>Test karşılaştırması:</strong> Beklenen ve gerçekleşen sonuçların farkını ölçme işlemi.</p>
+<hr />
+<h2>Test Yönetimi ve Süreci</h2>
+<p><strong>Test yönetimi:</strong> Testin planlanması, gözetimi ve kontrol sürecidir.<br />
+<strong>Test yöneticisi:</strong> Test faaliyetlerinin yürütülmesinden sorumlu kişidir.<br />
+<strong>Test yürütme:</strong> Testlerin manuel veya otomatik olarak uygulanması.<br />
+<strong>Test yürütme otomasyonu:</strong> Testlerin otomatik araçlarla yapılması.<br />
+<strong>Test süreci:</strong> Planlama, analiz, tasarım, yürütme, değerlendirme ve kapanış adımlarını içerir.<br />
+<strong>Test süreç iyileştirme bildirgesi:</strong> Çevik yaklaşıma uygun şekilde test süreçlerini geliştirme değerlerini tanımlar.</p>
+<hr />
+<h2>Test Planı</h2>
+<p><strong>Test planı:</strong> Testin kapsamını, yaklaşımını, zamanlamasını, kaynaklarını ve görev dağılımını belirleyen dokümandır.<br />
+<strong>Master test planı:</strong> Birden fazla test seviyesini kapsar.<br />
+<strong>Faz test planı:</strong> Belirli bir aşama için hazırlanır.<br />
+<strong>Seviye test planı:</strong> Bir test seviyesini (ör. sistem testi) kapsar.<br />
+<strong>Test iyileştirme planı:</strong> Test sürecinin güçlü ve zayıf yönlerini analiz ederek geliştirme planı oluşturur.</p>
+<hr />
+<h2>Test Araçları</h2>
+<p><strong>Test otomasyonu:</strong> Test yürütme, analiz ve raporlama işlemlerini kolaylaştıran yazılımlar.<br />
+<strong>Test ortamı:</strong> Testin yürütüldüğü donanım, yazılım ve simülatörlerin bulunduğu yapı.<br />
+<strong>Test altyapısı:</strong> Test araçları, ortam, prosedürler ve dokümantasyonun tümü.<br />
+<strong>Test aracı:</strong> Test sürecinin bir veya birkaç aşamasını destekleyen yazılım ürünüdür.</p>
+<hr />
+<h2>Test Dokümantasyonu</h2>
+<p><strong>Test değerlendirme raporu:</strong> Tüm testlerin sonuçlarını ve gözlemleri içeren rapor.<br />
+<strong>Test kaydı:</strong> Testlerin yürütülme detaylarının kronolojik kaydı.<br />
+<strong>Test özet raporu:</strong> Test aktiviteleri ve sonuçlarının genel özeti.</p>
+<hr />
+<h2>Diğer Kavramlar</h2>
+<ul>
+<li>
+<p><strong>Esas test kümesi:</strong> Yazılımın tamamını test etmek için gereken test grubudur.</p>
+</li>
+<li>
+<p><strong>Test bağımsızlığı:</strong> Testlerin tarafsız yapılmasını sağlar.</p>
+</li>
+<li>
+<p><strong>Test güdümlü geliştirme (TDD):</strong> Önce testlerin yazıldığı yazılım geliştirme yaklaşımı.</p>
+</li>
+<li>
+<p><strong>Test seviyesi:</strong> Birim, entegrasyon, sistem ve kabul testi gibi aşamaları kapsar.</p>
+</li>
+<li>
+<p><strong>Test olgunluk modeli (TMMi):</strong> Test süreçlerini iyileştirme çerçevesi.</p>
+</li>
+<li>
+<p><strong>Test stratejisi:</strong> Organizasyon genelinde test yaklaşımını tanımlar.</p>
+</li>
+<li>
+<p><strong>Test tekrarlanabilirliği:</strong> Aynı testlerin aynı sonuçları verebilme yeteneği.</p>
+</li>
+</ul>
+<hr />
+<h2>Özet</h2>
+<ul>
+<li>
+<p>Yazılım testi birçok kavramdan oluşur: senaryo, plan, araç, ortam, süreç ve dokümantasyon.</p>
+</li>
+<li>
+<p>Test süreci yalnızca hata bulmak değil, <strong>kaliteyi garanti altına almak</strong> içindir.</p>
+</li>
+<li>
+<p>Başarılı test yönetimi; <strong>iyi planlama, doğru araç kullanımı ve sürekli iyileştirme</strong> ile sağlanır.</p>
+</li>
+</ul>
+<h1>5.Ünite - Yazılım Test Çeşitleri</h1>
+<hr />
+<h2>Test Seviyeleri</h2>
+<p><strong>1. Birim Testi:</strong><br />
+Yazılımın en küçük parçalarının (fonksiyon, modül vb.) doğru çalıştığını kontrol eder.</p>
+<ul>
+<li>
+<p>Genellikle geliştiriciler tarafından yapılır.</p>
+</li>
+<li>
+<p>Araçlar: JUnit, NUnit, PyTest.</p>
+</li>
+</ul>
+<p><strong>2. Entegrasyon Testi:</strong><br />
+Modüller arasındaki veri alışverişi ve etkileşimi kontrol eder.</p>
+<ul>
+<li>
+<p>“Modüller birlikte çalışıyor mu?” sorusuna yanıt verir.</p>
+</li>
+<li>
+<p>Yaklaşımlar: Yukarıdan aşağı, aşağıdan yukarı, karma.</p>
+</li>
+</ul>
+<p><strong>3. Sistem Testi:</strong><br />
+Yazılımın tamamı test edilir.</p>
+<ul>
+<li>İşlevsel, performans, güvenlik ve uyumluluk testlerini içerir.</li>
+</ul>
+<p><strong>4. Kabul Testi:</strong><br />
+Müşteri veya kullanıcı tarafından yapılır.</p>
+<ul>
+<li>
+<p>Yazılımın gereksinimleri karşıladığı doğrulanır.</p>
+</li>
+<li>
+<p>Türleri: Alfa (laboratuvar ortamında) ve Beta (gerçek kullanıcı ortamında).</p>
+</li>
+</ul>
+<hr />
+<h2>Test Türleri</h2>
+<h3>İşlevsel Testler</h3>
+<p>Yazılımın <strong>“ne yaptığı”</strong> kontrol edilir.</p>
+<ul>
+<li>Kara Kutu Testi, Sınır Değer Analizi, Karar Tablosu Testi gibi teknikler kullanılır.</li>
+</ul>
+<h3>İşlevsel Olmayan Testler</h3>
+<p>Yazılımın <strong>“nasıl davrandığı”</strong> incelenir.</p>
+<ul>
+<li>Performans, güvenlik, kullanılabilirlik, yük, stres testleri bu gruptadır.</li>
+</ul>
+<h3>Geriye Dönük Test (Regression Test)</h3>
+<p>Değişikliklerden sonra sistemin eski işlevlerinin bozulmadığını doğrular.</p>
+<h3>Tekrar Testi (Re-test)</h3>
+<p>Düzeltilen hatanın yeniden test edilmesidir.</p>
+<hr />
+<h2>Test Teknikleri</h2>
+<p><strong>Beyaz Kutu Testi:</strong><br />
+Kodu bilerek yapılan testtir. Kontrol yapıları, döngüler ve karar noktaları incelenir.</p>
+<p><strong>Kara Kutu Testi:</strong><br />
+Kullanıcı bakış açısıyla yapılır; iç kod bilinmez, sadece girdiler ve çıktılar test edilir.</p>
+<p><strong>Gri Kutu Testi:</strong><br />
+Hem iç hem dış bilgilerin kullanıldığı karma yaklaşımdır.</p>
+<hr />
+<h2>Diğer Test Çeşitleri</h2>
+<ul>
+<li>
+<p><strong>Duman (Smoke) Testi:</strong> Ana işlevlerin temel çalışmasını hızlıca kontrol eder.</p>
+</li>
+<li>
+<p><strong>Sanity Testi:</strong> Yeni değişikliklerin genel işleyişi bozmadığını doğrular.</p>
+</li>
+<li>
+<p><strong>Performans Testi:</strong> Yazılımın hız, tepki süresi ve kararlılığını ölçer.</p>
+</li>
+<li>
+<p><strong>Stres Testi:</strong> Aşırı yük altında sistem davranışını test eder.</p>
+</li>
+<li>
+<p><strong>Yük Testi:</strong> Belirli bir kullanıcı yükü altında performans ölçümü.</p>
+</li>
+<li>
+<p><strong>Kullanılabilirlik Testi:</strong> Arayüzün kullanıcı dostu olup olmadığını inceler.</p>
+</li>
+<li>
+<p><strong>Güvenlik Testi:</strong> Yetkisiz erişim ve veri sızıntılarına karşı korumayı test eder.</p>
+</li>
+<li>
+<p><strong>Uyumluluk Testi:</strong> Yazılımın farklı cihaz, tarayıcı veya işletim sistemlerinde çalışabilirliğini kontrol eder.</p>
+</li>
+</ul>
+<hr />
+<h2>Özet</h2>
+<ul>
+<li>
+<p>Testler <strong>seviyelere</strong> (birimden kabule) ve <strong>türlere</strong> (işlevsel/olmayan) ayrılır.</p>
+</li>
+<li>
+<p>Testin amacı, yalnızca hata bulmak değil, <strong>kaliteyi korumaktır.</strong></p>
+</li>
+<li>
+<p>Her test türü farklı riskleri azaltır ve yazılımın güvenilirliğini artırır.</p>
+</li>
+<li>
+<p><strong>Doğru test stratejisi</strong>, hem kullanıcı memnuniyetini hem de ürün başarısını belirler.</p>
+</li>
+</ul>
+<h1>6.Ünite - Yazılım Test Sınıflandırmaları</h1>
+<hr />
+<h3>Testlerin Amaçlarına Göre</h3>
+<ul>
+<li>
+<p><strong>Doğrulama (Verification):</strong> Yazılımın gereksinimlere uygun geliştirilip geliştirilmediğini kontrol eder.</p>
+</li>
+<li>
+<p><strong>Geçerleme (Validation):</strong> Yazılımın kullanıcı ihtiyaçlarını karşılayıp karşılamadığını ölçer.</p>
+</li>
+</ul>
+<h3>Test Seviyelerine Göre</h3>
+<ul>
+<li>
+<p><strong>Birim Testi:</strong> Kodun en küçük parçaları (fonksiyon, sınıf) test edilir.</p>
+</li>
+<li>
+<p><strong>Entegrasyon Testi:</strong> Modüller arasındaki veri ve kontrol akışı test edilir.</p>
+</li>
+<li>
+<p><strong>Sistem Testi:</strong> Yazılım bir bütün olarak ele alınır.</p>
+</li>
+<li>
+<p><strong>Kabul Testi:</strong> Kullanıcı veya müşteri onayı için yapılır.</p>
+</li>
+</ul>
+<h3>Test Yaklaşımlarına Göre</h3>
+<ul>
+<li>
+<p><strong>Beyaz Kutu Testi:</strong> Kodun iç yapısı ve akışı incelenir.</p>
+</li>
+<li>
+<p><strong>Siyah Kutu Testi:</strong> Kodun içi bilinmeden, sadece giriş-çıkışa bakılır.</p>
+</li>
+<li>
+<p><strong>Gri Kutu Testi:</strong> Hem kullanıcı hem geliştirici bakışı birleştirilir.</p>
+</li>
+</ul>
+<h3>Testin Zamanına Göre</h3>
+<ul>
+<li>
+<p><strong>Statik Test:</strong> Kod çalıştırılmadan yapılır (gözden geçirme, analiz).</p>
+</li>
+<li>
+<p><strong>Dinamik Test:</strong> Kod çalıştırılarak hatalar bulunur.</p>
+</li>
+</ul>
+<h3>Testin Otomasyon Durumuna Göre</h3>
+<ul>
+<li>
+<p><strong>Manuel Test:</strong> Test senaryoları insan tarafından uygulanır.</p>
+</li>
+<li>
+<p><strong>Otomatik Test:</strong> Araçlar ve scriptlerle otomatik yapılır.</p>
+</li>
+</ul>
+<h3>Diğer Test Türleri</h3>
+<ul>
+<li>
+<p><strong>Regresyon Testi:</strong> Yeni değişikliklerin mevcut özellikleri bozup bozmadığını kontrol eder.</p>
+</li>
+<li>
+<p><strong>Yük Testi:</strong> Sistem yüksek kullanıcı sayısında nasıl davranıyor test edilir.</p>
+</li>
+<li>
+<p><strong>Performans Testi:</strong> Yazılımın hız, tepki süresi, kaynak kullanımı ölçülür.</p>
+</li>
+<li>
+<p><strong>Güvenlik Testi:</strong> Sistem zafiyetleri tespit edilir.</p>
+</li>
+<li>
+<p><strong>Kurtarma (Recovery) Testi:</strong> Sistem çökmeden sonra toparlanabiliyor mu kontrol edilir.</p>
+</li>
+<li>
+<p><strong>Uyumluluk Testi:</strong> Yazılım farklı ortam ve cihazlarda doğru çalışıyor mu test edilir.</p>
+</li>
+</ul>
+<hr />
+<h3>Özet</h3>
+<ul>
+<li>Yazılım testleri; <em>ne zaman, nasıl, kim tarafından ve neyi amaçlayarak</em> yapıldığına göre sınıflandırılır.  </li>
+<li>Amaç; her düzeyde hatayı erken bulmak, kaliteyi garanti altına almak ve kullanıcıya güvenilir bir ürün sunmaktır.</li>
+</ul>
+<h1>7.Ünite - Yazılım Testlerinde Kutu Yaklaşımı</h1>
+<hr />
+<h3>Kara Kutu Yaklaşımı</h3>
+<ul>
+<li>
+<p>Kodun iç yapısı bilinmeden test yapılır; yalnızca <strong>girdi ve çıktı</strong> incelenir.</p>
+</li>
+<li>
+<p>Uygulamanın <strong>fonksiyonelliğini</strong> test eder.</p>
+</li>
+<li>
+<p>Kod incelemesi gerekmez, kullanıcı gözünden test yapılır.</p>
+</li>
+<li>
+<p><strong>Bulabileceği hatalar:</strong></p>
+<ul>
+<li>
+<p>Eksik veya hatalı fonksiyonlar</p>
+</li>
+<li>
+<p>Arayüz ve veri bağlantısı hataları</p>
+</li>
+<li>
+<p>Davranış, performans, başlatma/sonlandırma sorunları</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Kara kutu test türleri:</strong><br />
+Ad-Hoc, Araştırma, Fonksiyonellik, Stres, Yük, Kullanılabilirlik, Duman, Yenilenme, Seviye, Kullanıcı Kabul, Alfa, Beta testleri.</p>
+<p><strong>Kara kutu teknikleri:</strong></p>
+<ul>
+<li>
+<p><strong>Denklik Sınıfı:</strong> Benzer davranış gösteren veri grupları oluşturulur.</p>
+</li>
+<li>
+<p><strong>Sınır Değer:</strong> Değişkenlerin alt ve üst sınırları test edilir.</p>
+</li>
+<li>
+<p><strong>Karar Tablosu:</strong> Girdi-çıktı ilişkileri tabloya yazılır.</p>
+</li>
+<li>
+<p><strong>Sınıflandırma Ağacı:</strong> Girdiler hiyerarşik şekilde modellenir.</p>
+</li>
+<li>
+<p><strong>İkili Test:</strong> İki değişkenin kombinasyonları test edilir.</p>
+</li>
+<li>
+<p><strong>Durum Geçişi:</strong> Sistem durumlarının geçişleri incelenir.</p>
+</li>
+<li>
+<p><strong>Kullanıcı Senaryosu:</strong> Kullanıcı davranışlarına göre test yapılır.</p>
+</li>
+</ul>
+<hr />
+<h3>Beyaz Kutu Yaklaşımı</h3>
+<ul>
+<li>
+<p>Kodun <strong>iç yapısı</strong> ve <strong>mantığı</strong> test edilir.</p>
+</li>
+<li>
+<p>Geliştiriciler tarafından yapılır.</p>
+</li>
+<li>
+<p><strong>Avantajı:</strong> Kod optimizasyonu ve hata nedeninin kolay tespiti.</p>
+</li>
+<li>
+<p><strong>Dezavantajı:</strong> Zaman alır ve yüksek teknik bilgi gerektirir.</p>
+</li>
+</ul>
+<p><strong>Beyaz kutu test türleri:</strong><br />
+Birim Testi, Statik/Dinamik Analiz, Açıklama Kapsamı, Güvenlik Testi, Değişim Testi.</p>
+<p><strong>Beyaz kutu teknikleri:</strong></p>
+<ul>
+<li>
+<p>Ortam Kontrolü</p>
+</li>
+<li>
+<p>Kod Yürütme</p>
+</li>
+<li>
+<p>Resmî İnceleme</p>
+</li>
+<li>
+<p>Akış Kontrolü Testi</p>
+</li>
+<li>
+<p>Temel Yol Testi</p>
+</li>
+<li>
+<p>Veri Akış Testi</p>
+</li>
+<li>
+<p>Döngü Testi</p>
+</li>
+</ul>
+<hr />
+<h3>Gri Kutu Yaklaşımı</h3>
+<ul>
+<li>
+<p><strong>Kara</strong> ve <strong>Beyaz Kutu</strong> yöntemlerinin birleşimidir.</p>
+</li>
+<li>
+<p>Testçi kodun tamamını göremez ama bazı iç verilere ve tasarıma erişebilir.</p>
+</li>
+<li>
+<p><strong>Avantajı:</strong> Tarafsız test sağlar, veri tabanı ve dokümanlardan yararlanır.</p>
+</li>
+<li>
+<p><strong>Dezavantajı:</strong> Kod erişimi sınırlı, test kapsamı dar olabilir.</p>
+</li>
+</ul>
+<p><strong>Gri kutu teknikleri:</strong><br />
+Ortogonal Dizi Testi, Matris Testi, Regresyon Testi, Model Testi.</p>
+<hr />
+<h3>Genel Karşılaştırma</h3>
+<table>
+<thead>
+<tr>
+<th>Özellik</th>
+<th>Kara Kutu</th>
+<th>Beyaz Kutu</th>
+<th>Gri Kutu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>İç yapı bilgisi</td>
+<td>Yok</td>
+<td>Tam</td>
+<td>Kısmi</td>
+</tr>
+<tr>
+<td>Test eden kişi</td>
+<td>Kullanıcı/Testçi</td>
+<td>Geliştirici</td>
+<td>Testçi</td>
+</tr>
+<tr>
+<td>Kapsam</td>
+<td>Az</td>
+<td>Geniş</td>
+<td>Orta</td>
+</tr>
+<tr>
+<td>Dış etkiler</td>
+<td>Önemli</td>
+<td>Önemsiz</td>
+<td>Kısmi</td>
+</tr>
+<tr>
+<td>Uygulama türü</td>
+<td>Fonksiyonel</td>
+<td>Yapısal</td>
+<td>Karma</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Özet</h3>
+<ul>
+<li>Kara kutu, yazılımın <strong>ne yaptığına</strong>,  </li>
+<li>Beyaz kutu, <strong>nasıl yaptığına</strong>,  </li>
+<li>Gri kutu ise <strong>her ikisine birden</strong> odaklanır.</li>
+</ul>
+<h1>8.Ünite - Yazılım Test Otomasyonları</h1>
+<hr />
+<p>Yazılım test otomasyonu kavramını, amaçlarını, özelliklerini ve piyasada bulunan çeşitli araçların karşılaştırmasını ele almaktadır.</p>
+<h2>Yazılım Test Otomasyonu Kavramı</h2>
+<p>Yazılım testinin temel motivasyonu, yazılımın beklenen şekilde çalıştığını ve her zaman doğru sonuçlar ürettiğini kanıtlamaktır. Test süreçleri manuel (insanlar tarafından) veya otomatik (makineler/yazılımlar tarafından) olarak gerçekleştirilebilir.</p>
+<ul>
+<li>
+<p><strong>Otomasyon Testi:</strong> Test planı kapsamını en üst düzeye çıkarmak ve yazılım güvenilirliğini artırmak için bir çözümdür. Manuel testlere göre daha hızlıdır, maliyeti düşürebilir ve insan hatalarını ortadan kaldırmaya yardımcı olur. Özellikle aynı testin çok fazla sayıda ve farklı girdilerle yapılması gereken durumlarda gereklidir.</p>
+</li>
+<li>
+<p><strong>Manuel Test:</strong> Kullanıcı arayüzü testlerinde daha verimli olabilir ancak otomasyon testleri kadar güvenilir sonuçlar üretmez, daha yavaştır ve karmaşık projeler için uygun değildir.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Özellik</strong></th>
+<th><strong>Otomasyon Testi</strong></th>
+<th><strong>Manuel Test</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hız</td>
+<td>Daha hızlıdır.</td>
+<td>Daha yavaştır.</td>
+</tr>
+<tr>
+<td>Tekrarlama</td>
+<td>Birçok testi defalarca çalıştırabilir.</td>
+<td>Bir veya iki defa çalıştırılacak testlerde uygundur.</td>
+</tr>
+<tr>
+<td>Maliyet</td>
+<td>Maliyetli olabilir.</td>
+<td>Genellikle daha az maliyetlidir.</td>
+</tr>
+<tr>
+<td>Sonuçlar</td>
+<td>Daha doğru ve stabil sonuçlar üretebilir.</td>
+<td>Otomasyon testleri kadar güvenilir değildir.</td>
+</tr>
+<tr>
+<td>Verimlilik</td>
+<td>Regresyon testlerinde verimli çalışır.</td>
+<td>Kullanıcı arayüzü testlerinde daha verimlidir.</td>
+</tr>
+</tbody>
+</table>
+<h2>Web Uygulama Testinin Adımları</h2>
+<p>Web uygulama testleri, doğruluğu sağlamak, güveni artırmak ve riskleri azaltmak gibi avantajlar sunar16. İzlenmesi gereken beş ana adım şunlardır:</p>
+<ol>
+<li>
+<p><strong>Fonksiyonellik Testi:</strong> Uygulamanın doğru çalışıp çalışmadığını kontrol eder.</p>
+</li>
+<li>
+<p><strong>Arayüz Testi:</strong> Web sunucusu ile uygulama sunucusu arasındaki etkileşimi kontrol eder.</p>
+</li>
+<li>
+<p><strong>Uyumluluk Testi:</strong> Uygulamanın çeşitli cihazlar ve tarayıcılarla (tarayıcı ve işletim sistemi uyumluluğu) uyumlu olmasını sağlar.</p>
+</li>
+<li>
+<p><strong>Performans Testi:</strong> Uygulamanın ağır yük altında çalışıp çalışmadığını ve yanıt verip vermediğini kontrol eder.</p>
+</li>
+<li>
+<p><strong>Güvenlik Testi:</strong> Uygulamanın yetkisiz erişim veya kötü amaçlı yazılımlara karşı korunmasını sağlar.</p>
+</li>
+</ol>
+<h2>Web Tabanlı Test Otomasyon Araçları ve Karşılaştırması</h2>
+<p>Piyasada Acunetix, FitNesse, JMeter, Katalon Studio, LoadRunner, QTP (HP UFT), Ranorex Studio, Sahi Pro, Selenium, Telerik Test Studio, TestComplete, TestIO, Testing Whiz ve Webload gibi birçok web tabanlı test otomasyon aracı bulunmaktadır.</p>
+<p>Bu araçlar, doğru seçim yapabilmek için çeşitli kriterlere göre karşılaştırılır:</p>
+<h3>1. Genel Özellikler</h3>
+<ul>
+<li>
+<p><strong>Test Stili:</strong> Araçların birçoğu farklı test stillerini (API, Masaüstü, Mobil, Web) desteklerken, bazıları yalnızca tek bir stili (Acunetix, FitNesse, Webload) destekler.</p>
+</li>
+<li>
+<p><strong>Açık Kaynaklı/Lisanslı &amp; Maliyet:</strong> İncelenen 14 araçtan sadece <strong>FitNesse, JMeter ve Selenium</strong> tamamen açık kaynaklı ve ücretsizdir. Kalan araçlar lisanslıdır ve genellikle yüksek maliyetlidir.</p>
+</li>
+<li>
+<p><strong>Kararlı Sürüm:</strong> Tüm araçlar sık sık güncellenmektedir, bu da değişen yazılım ihtiyaçlarını karşılayabildiklerini gösterir.</p>
+</li>
+</ul>
+<h3>2. Gereksinimler</h3>
+<ul>
+<li>
+<p><strong>Donanım Gereksinimi (CPU/RAM):</strong> Araçlar genellikle yüksek CPU ve RAM gereksinimlerine sahiptir. Örneğin, JMeter çapraz platform desteği nedeniyle diğer araçlardan daha yüksek bellek gerektirir.</p>
+</li>
+<li>
+<p><strong>Kullanıcı Deneyimi Gereksinimi:</strong> Bazı araçlar (Acunetix, FitNesse, Katalon Studio, QTP, Ranorex, Telerik Test Studio, TestComplete, TestIO, Webload) kullanımı kolay olarak belirtilirken, <strong>JMeter, LoadRunner, Sahi Pro, Selenium, Testing Whiz</strong> gibi popüler araçlar programlama deneyimi gerektirir.</p>
+</li>
+</ul>
+<h3>3. Teknik Uyumluluklar</h3>
+<ul>
+<li>
+<p><strong>Dil Uyumluluğu:</strong> Bazı araçlar tek bir dili (QTP: VBScript) desteklerken, TestComplete gibi bazıları birden çok dili (C++, C#, DelphiScript, JavaScript, Python, VBScript vb.) destekler.</p>
+</li>
+<li>
+<p><strong>Platform Uyumluluğu:</strong> Çoğu araç Windows'ta çalışır, bazıları (FitNesse, JMeter, Katalon Studio, Selenium) çapraz platform desteği sunar, ancak genellikle MAC OS desteği sınırlıdır.</p>
+</li>
+<li>
+<p><strong>Tarayıcı Uyumluluğu:</strong> Web tabanlı araçların çoğu tüm tarayıcılarda çalışır, ancak bazıları (QTP) belirli bir sürümün üzerindeki tarayıcıları bekler.</p>
+</li>
+<li>
+<p><strong>IDE Uyumluluğu:</strong> Bazı araçlar kendi özgün IDE'lerini (QTP, Ranorex, TestComplete, Testing Whiz, Webload) kullanırken, bazıları mevcut IDE'leri (JMeter, Selenium: Java destekli IDE'ler; Katalon Studio: Java, Android SDK; Telerik: Visual Studio) kullanır.</p>
+</li>
+</ul>
+<h3>4. Test Özellikleri</h3>
+<ul>
+<li>
+<p><strong>Test Türü:</strong> Her araç farklı alanlarda uzmanlaşır. Örneğin, Acunetix güvenlik testlerine, FitNesse kabul testlerine, LoadRunner ve JMeter performans/yük testlerine odaklanır. Araç seçimi, uygulamada yapılacak test tipine göre belirlenmelidir.</p>
+</li>
+<li>
+<p><strong>Diğer Araçlarla Entegrasyon:</strong> Bamboo, Jenkins ve Jira en yaygın entegrasyonlardır. <strong>Selenium</strong>, diğer ücretsiz veya lisanslı birçok araçla entegre çalışabilmesiyle öne çıkar.</p>
+</li>
+<li>
+<p><strong>Test Raporu:</strong> Çoğu araç CSV, HTML, XML ve PDF gibi standart formatları destekler. <strong>Selenium</strong>'un yerel bir raporlama olanağı sunmaması önemli bir dezavantajdır.</p>
+</li>
+</ul>
+<h3>5. Teknik Destek</h3>
+<ul>
+<li>
+<p><strong>Müşteri Desteği:</strong> Acunetix, Katalon Studio, QTP, Ranorex, TestComplete, TestIO, Testing Whiz ve Webload gibi birçok lisanslı araçta $7/24$ çevrimiçi teknik destek mevcuttur. <strong>Selenium</strong> profesyonel destek sunmazken, JMeter sınırlı topluluk desteği ile ücretsizdir.</p>
+</li>
+<li>
+<p><strong>Bloglar:</strong> FitNesse, LoadRunner ve Sahi Pro dışındaki tüm araçların web sitesinde blog sistemi bulunur.</p>
+</li>
+<li>
+<p><strong>Hata Takibi:</strong> Yalnızca <strong>Acunetix, JMeter, Selenium ve Telerik Test Studio</strong> araçlarında hata takip özelliği bulunur.</p>
+</li>
+</ul>
+<h2>Sonuç</h2>
+<p>Yazılım test otomasyonu araçları, tekrar eden veya yüksek veri içeren testlerde zaman kazandırır ve stabil sonuçlar sağlar. Ancak literatürdeki çalışmalar, hiçbir aracın diğerlerinden kesin olarak iyi olmadığını göstermektedir. Bu nedenle, en uygun otomasyon aracı seçimi; uygulamanın özellikleri, finansal koşullar ve teknik destek gibi birçok kritere göre dikkatlice yapılmalıdır.</p>
+<h1>9.Ünite - Yazılım Kalitesi</h1>
+<hr />
+<h3><strong>1. Kalite Nedir?</strong></h3>
+<p>Kalite, bir ürünün <strong>gereksinimleri karşılama derecesidir</strong>.<br />
+Elle tutulur ürünlerde ölçmesi kolaydır; yazılımda ise soyut olduğu için çeşitli <strong>standartlarla</strong> ölçülür.</p>
+<p>Kalite;</p>
+<ul>
+<li>
+<p>kalite kontrol,</p>
+</li>
+<li>
+<p>kalite yönetimi,</p>
+</li>
+<li>
+<p>kalite güvencesi,</p>
+</li>
+<li>
+<p>kalite planlama<br />
+    gibi süreçlerin birleşimidir.</p>
+</li>
+</ul>
+<hr />
+<h3><strong>2. Doğru Bilinen Yanlışlar</strong></h3>
+<ul>
+<li>
+<p><strong>“Kalite ölçülemez.”</strong> → Ölçülebilir. (Hata maliyeti, uygunsuzluk maliyeti vb.)</p>
+</li>
+<li>
+<p><strong>“Kalite başta pahalıdır.”</strong> → Baştan sağlamak daha ucuzdur.</p>
+</li>
+<li>
+<p><strong>“Hataları alt kademe yapar.”</strong> → Üst kademenin kararları daha büyük hatalara sebep olabilir.</p>
+</li>
+<li>
+<p><strong>“Kaliteyi kalite birimi başlatır.”</strong> → Üst yönetimden başlamalıdır.</p>
+</li>
+</ul>
+<hr />
+<h3><strong>3. Kalite Maliyeti</strong></h3>
+<p>Bir yazılımın kaliteli olması için veya kalitesizliğin giderilmesi için harcanan her şey bu kapsamdadır.</p>
+<ul>
+<li>
+<p><strong>Uygunsuzluk maliyeti:</strong> Hataların bedeli.</p>
+</li>
+<li>
+<p><strong>Uygunluğu sağlama maliyeti:</strong> Kaliteyi sağlamak için yapılanlar.</p>
+</li>
+<li>
+<p><strong>Hata bulma maliyeti:</strong> Test, gözden geçirme.</p>
+</li>
+<li>
+<p><strong>Hata önleme maliyeti:</strong> Eğitim, süreç iyileştirme.</p>
+</li>
+</ul>
+<hr />
+<h3><strong>4. Yazılım Kalitesi</strong></h3>
+<p>Kaliteli yazılım;</p>
+<ul>
+<li>
+<p>kabul edilebilir hata seviyesine sahip,</p>
+</li>
+<li>
+<p>müşteri gereksinimlerini karşılayan,</p>
+</li>
+<li>
+<p>zamanında ve bütçesinde teslim edilen,</p>
+</li>
+<li>
+<p>bakımı kolay olan yazılımdır.</p>
+</li>
+</ul>
+<h3>İki tür kalite:</h3>
+<ul>
+<li>
+<p><strong>Fonksiyonel kalite:</strong> Yazılım istenilen işi doğru yapıyor mu?</p>
+</li>
+<li>
+<p><strong>Yapısal kalite:</strong> Dayanıklılık, sürdürülebilirlik, güvenilirlik.</p>
+</li>
+</ul>
+<p>Hata ne kadar geç aşamada bulunursa <strong>düzeltme maliyeti o kadar artar</strong>.</p>
+<hr />
+<h3><strong>5. YKG (Yazılım Kalite Güvencesi)</strong></h3>
+<p>Amaç: <strong>Hataları bulmak değil, oluşmasını önlemek.</strong></p>
+<p>YKG &gt; Doğrulama (verification) &gt; Geçerleme (validation) &gt; Test</p>
+<ul>
+<li>
+<p><strong>Statik yöntemler:</strong> Kod çalıştırmadan yapılan incelemeler.</p>
+</li>
+<li>
+<p><strong>Dinamik yöntemler:</strong> Kod çalıştırılarak yapılan testler.</p>
+</li>
+</ul>
+<p><strong>Doğrulama:</strong> Ürünü doğru geliştirdik mi?<br />
+<strong>Geçerleme:</strong> Doğru ürünü geliştirdik mi?</p>
+<hr />
+<h3><strong>6. Yazılım Kalitesini Artırma Yolları</strong></h3>
+<ul>
+<li>
+<p>Gereksinimlerin iyi analiz edilmesi</p>
+</li>
+<li>
+<p>Düzenli kod iyileştirme (refactoring)</p>
+</li>
+<li>
+<p>Sürekli regresyon testi</p>
+</li>
+<li>
+<p>Hata analizi</p>
+</li>
+<li>
+<p>Sürekli entegrasyon / sürekli teslimat</p>
+</li>
+<li>
+<p>Sağlıklı ekip ve süreç yönetimi</p>
+</li>
+</ul>
+<hr />
+<h3><strong>7. Yazılım Olgunluk ve Yetenek Modelleri</strong></h3>
+<p>Yazılım süreçlerinin ne kadar olgun ve kontrollü olduğunu gösteren modeller:</p>
+<h4><strong>CMM</strong></h4>
+<p>5 seviye (1: Başlangıç → 5: Optimize).<br />
+Büyük firmalar için geliştirilmiş olgunluk modeli.</p>
+<h4><strong>ISO 9000</strong></h4>
+<p>Dışa yönelik kalite güvencesi sağlayan standartlar dizisi.</p>
+<h4><strong>TRILLIUM</strong></h4>
+<p>Telekom odaklı, yol haritası temelli olgunluk modeli (5 seviye).</p>
+<h4><strong>SPICE (ISO 15504)</strong></h4>
+<p>Detaylı süreç değerlendirme modeli.<br />
+6 seviye (0–5 arası).</p>
+<h4><strong>TICKIT</strong></h4>
+<p>ISO 9001’in yazılım uyarlaması.<br />
+Kalite sisteminin hem belgelerini hem uygulamasını denetler.</p>
+<hr />
+<h3><strong>Sonuç</strong></h3>
+<p>Yazılım kalitesi; süreç, ekip, standart, test ve yönetim birleşimidir.<br />
+Kalite sonradan eklenen bir şey değildir — <strong>başından sona sürekli sağlanır</strong>.</p>
+<h1>10.Ünite - Yazılım Kalite Metrikleri</h1>
+<hr />
+<p>Yazılım kalitesini ölçmek için kullanılan metriklerin ne olduğunu, nasıl sınıflandırıldığını ve ne işe yaradığını açıklar. Aşağıdaki özet sade ve kısa tutulmuştur.</p>
+<hr />
+<h2>1. Metrik Nedir?</h2>
+<p>Metrik, bir yazılımın veya geliştirme sürecinin <strong>ölçülebilir özelliklerini sayısallaştırma yöntemidir</strong>.<br />
+Ölçemedikçe iyileştirme yapılamaz; bu yüzden kalite için metrik zorunludur.</p>
+<hr />
+<h2>2. Yazılım Metriklerinin Amacı</h2>
+<ul>
+<li>
+<p>Yazılımın bakımını kolaylaştırmak</p>
+</li>
+<li>
+<p>Kaliteyi izlemek ve iyileştirmek</p>
+</li>
+<li>
+<p>Hataları erken tahmin etmek</p>
+</li>
+<li>
+<p>Proje maliyet ve çabasını daha doğru hesaplamak</p>
+</li>
+<li>
+<p>Daha iyi yönetim kararları sunmak</p>
+</li>
+</ul>
+<hr />
+<h2>3. Metrik Türleri</h2>
+<h3>Ürün Metrikleri</h3>
+<p>Yazılımın kendisini ölçer. Kod satırı, karmaşıklık, modüller arası bağımlılık gibi.</p>
+<h3>Süreç Metrikleri</h3>
+<p>Geliştirme sürecinin performansını ölçer. Gecikme, hata bulunma hızı, test kapsamı gibi.</p>
+<h3>Proje Metrikleri</h3>
+<p>Projenin ilerlemesini ve maliyetini ölçer. Efor, bütçe, zaman çizelgesi gibi.</p>
+<hr />
+<h2>4. Temel Kalite Özellikleri</h2>
+<p>Metrikler bu özellikleri ölçmek için kullanılır:</p>
+<ul>
+<li>
+<p>Doğruluk</p>
+</li>
+<li>
+<p>Güvenilirlik</p>
+</li>
+<li>
+<p>Verimlilik</p>
+</li>
+<li>
+<p>Bütünlük</p>
+</li>
+<li>
+<p>Bakım yapılabilirlik</p>
+</li>
+<li>
+<p>Taşınabilirlik</p>
+</li>
+<li>
+<p>Test edilebilirlik</p>
+</li>
+</ul>
+<hr />
+<h2>5. Yaygın Yazılım Metrikleri</h2>
+<h3>Kod Satırı Metrikleri (LOC)</h3>
+<p>Kod boyutunu ölçer. Üretkenlik ve büyüklük tahminlerinde kullanılır ama tek başına kaliteyi göstermez.</p>
+<h3>McCabe Siklomatik Karmaşıklığı</h3>
+<p>Kodun karar noktalarını sayarak modülün ne kadar karmaşık olduğunu ölçer. Karmaşıklık arttıkça test ihtiyacı artar.</p>
+<h3>Halstead Metrikleri</h3>
+<p>Operatör ve operand sayılarına dayanarak kodun karmaşıklığını ve geliştirme çabasını tahmin eder.</p>
+<h3>Fonksiyon Noktası Analizi</h3>
+<p>Kod satırından bağımsız olarak yazılımın sunduğu fonksiyonların büyüklüğünü ölçer. Dilden bağımsızdır.</p>
+<h3>Hata Metrikleri</h3>
+<p>Kaç hata bulunduğu, hata yoğunluğu, hatanın bulunma süresi.<br />
+Kalite düzeyinin en net göstergelerinden biridir.</p>
+<h3>Test Metrikleri</h3>
+<p>Test kapsamı, test başarı oranı, test çalıştırma süresi.<br />
+Ürünün ne kadar güvenle teslim edilebileceğini gösterir.</p>
+<hr />
+<h2>6. Olgunluk Modelleri ve Metrikler</h2>
+<p>CMMI, SPICE gibi olgunluk modelleri; süreç geliştirme ve kaliteyi ölçmek için metrik kullanımını zorunlu kılar. Süreç geliştikçe metrikler daha doğru ve verimli kullanılır.</p>
+<hr />
+<h2>7. Metriklerin Doğru Kullanılması</h2>
+<ul>
+<li>
+<p>Tek metrik hiçbir zaman kaliteyi tam temsil etmez.</p>
+</li>
+<li>
+<p>Farklı metrikler birlikte kullanılmalıdır.</p>
+</li>
+<li>
+<p>Metrikler projeyi cezalandırmak için değil, iyileştirmek için kullanılmalıdır.</p>
+</li>
+<li>
+<p>Metriklerin düzenli olarak izlenmesi gerekir.</p>
+</li>
+</ul>
+<hr />
+<h2>Sonuç</h2>
+<p>Yazılım kalite metrikleri; kaliteli ürün geliştirmek, süreci kontrol etmek ve hataları azaltmak için gereklidir. Kodun karmaşıklığı, hata oranı, test kapsamı gibi veriler projeyi daha öngörülebilir ve yönetilebilir hale getirir. Metrikler doğru kullanıldığında yazılım kalitesi doğal olarak yükselir.</p>
+<h1>11.Ünite - Kullanılabilirlik Kavramı ve Testi</h1>
+<hr />
+<p>Bir yazılımın kullanıcı tarafından ne kadar kolay ve verimli kullanılabildiğini ele alır. Aşağıdaki özet sade ve anlaşılır tutulmuştur.</p>
+<h2>1. Kullanılabilirlik Nedir?</h2>
+<p>Kullanılabilirlik, bir kullanıcının bir sistemi <strong>etkili, verimli ve memnuniyetle</strong> kullanabilme derecesidir.<br />
+Temel amaç, kullanıcıyı zorlamayan, öğrenmesi kolay bir sistem sunmaktır.</p>
+<hr />
+<h2>2. Kullanılabilirliğin Temel Özellikleri</h2>
+<ul>
+<li>
+<p><strong>Etkinlik:</strong> Kullanıcı görevi doğru bir şekilde tamamlayabiliyor mu?</p>
+</li>
+<li>
+<p><strong>Verim:</strong> Görev kısa sürede ve minimum çabayla yapılabiliyor mu?</p>
+</li>
+<li>
+<p><strong>Memnuniyet:</strong> Kullanıcı deneyimi olumlu mu?</p>
+</li>
+<li>
+<p><strong>Öğrenilebilirlik:</strong> Sistem kolay öğreniliyor mu?</p>
+</li>
+<li>
+<p><strong>Hataya dayanıklılık:</strong> Hata yapıldığında sistem toparlanmayı kolaylaştırıyor mu?</p>
+</li>
+</ul>
+<hr />
+<h2>3. Kullanılabilirlik ve Kullanıcı Deneyimi</h2>
+<p>Kullanılabilirlik daha teknik tarafı ölçer;<br />
+Kullanıcı deneyimi ise duygusal ve algısal tarafı kapsar.<br />
+İkisi birlikte ele alındığında ürün hem güçlü hem kullanılabilir olur.</p>
+<hr />
+<h2>4. Kullanılabilirliği Etkileyen Faktörler</h2>
+<ul>
+<li>
+<p>Kullanıcı arayüz tasarımı</p>
+</li>
+<li>
+<p>Düzen ve görsel hiyerarşi</p>
+</li>
+<li>
+<p>Geri bildirim mekanizmaları</p>
+</li>
+<li>
+<p>Tutarlılık</p>
+</li>
+<li>
+<p>Görev akışlarının netliği</p>
+</li>
+<li>
+<p>Hedef kullanıcı kitlesinin özellikleri</p>
+</li>
+</ul>
+<hr />
+<h2>5. Kullanılabilirlik Testi</h2>
+<p>Kullanılabilirlik testi gerçek kullanıcılarla yapılır ve kullanıcıların sistemi nasıl kullandığını gözlemlemeye dayanır.</p>
+<p>Kullanıcıdan genellikle şu bilgiler alınır:</p>
+<ul>
+<li>
+<p>Bir görevi nasıl tamamladığı</p>
+</li>
+<li>
+<p>Ne kadar sürede yaptığı</p>
+</li>
+<li>
+<p>Nerede zorlandığı</p>
+</li>
+<li>
+<p>Hangi noktada hata yaptığı</p>
+</li>
+<li>
+<p>Genel memnuniyet düzeyi</p>
+</li>
+</ul>
+<hr />
+<h2>6. Kullanılabilirlik Testinin Türleri</h2>
+<ul>
+<li>
+<p><strong>Laboratuvar testi:</strong> Kontrollü ortamda gözlem yapılır.</p>
+</li>
+<li>
+<p><strong>Saha testi:</strong> Kullanıcının doğal ortamında yapılır.</p>
+</li>
+<li>
+<p><strong>Uzaktan test:</strong> Çevrimiçi gözlem veya kayıtlar üzerinden yapılır.</p>
+</li>
+<li>
+<p><strong>A/B testi:</strong> İki tasarım karşılaştırılır.</p>
+</li>
+</ul>
+<hr />
+<h2>7. Test Sürecinin Aşamaları</h2>
+<ul>
+<li>
+<p>Hedef kitlenin belirlenmesi</p>
+</li>
+<li>
+<p>Görevlerin hazırlanması</p>
+</li>
+<li>
+<p>Test ortamının oluşturulması</p>
+</li>
+<li>
+<p>Kullanıcı gözlemi</p>
+</li>
+<li>
+<p>Bulguların analizi ve raporlanması</p>
+</li>
+</ul>
+<p>Amaç, hataları bulmak değil, <strong>kullanıcıyı zorlayan noktaları keşfetmek</strong> ve tasarımı geliştirmektir.</p>
+<hr />
+<h2>8. Kullanılabilirliğin Önemi</h2>
+<p>Kullanılabilirliği yüksek bir sistem:</p>
+<ul>
+<li>
+<p>Daha hızlı öğrenilir</p>
+</li>
+<li>
+<p>Daha az hata yapılır</p>
+</li>
+<li>
+<p>Daha memnun kullanıcılar üretir</p>
+</li>
+<li>
+<p>Müşteri desteği maliyetini düşürür</p>
+</li>
+<li>
+<p>Rekabet avantajı sağlar</p>
+</li>
+</ul>
+<hr />
+<h2>Sonuç</h2>
+<p>Kullanılabilirlik; etkinlik, verim, memnuniyet ve öğrenilebilirlik gibi unsurların birleşimidir.<br />
+Kullanılabilirlik testi ise bu unsurların gerçek kullanıcılar üzerinden ölçülmesidir.<br />
+Doğru tasarlanmış testler, yazılımın daha anlaşılır, güvenilir ve kullanıcı dostu olmasını sağlar.</p>
+<h1>12.Ünite - Gözden Geçirme</h1>
+<hr />
+<p>Yazılımı çalıştırmadan yapılan statik test türü olan gözden geçirmenin ne olduğunu, nasıl yapıldığını ve neden önemli olduğunu açıklar. Aşağıdaki özet sade ve hızlı anlaşılır şekilde hazırlanmıştır.</p>
+<h2>1. Gözden Geçirme Nedir?</h2>
+<p>Yazılımı çalıştırmadan; gereksinim, tasarım, kod, test planı, kullanım kılavuzu gibi belgelerin <strong>manuel olarak incelenmesidir</strong>.<br />
+Amaç, hataları <strong>erken aşamada</strong> bulmak ve maliyetleri azaltmaktır.</p>
+<hr />
+<h2>2. Gözden Geçirme Süreci</h2>
+<p>Süreç altı adımdan oluşur:</p>
+<ul>
+<li>
+<p><strong>Planlama:</strong> Hedefler, roller, kapsam belirlenir.</p>
+</li>
+<li>
+<p><strong>Başlama:</strong> Belgeler dağıtılır, süreç anlatılır.</p>
+</li>
+<li>
+<p><strong>Kişisel hazırlık:</strong> Herkes belgeyi inceleyip olası hataları belirler.</p>
+</li>
+<li>
+<p><strong>Toplantı:</strong> Hatalar tartışılır ve kayıt altına alınır.</p>
+</li>
+<li>
+<p><strong>Yeniden çalışma:</strong> Yazar hataları düzeltir.</p>
+</li>
+<li>
+<p><strong>Takip:</strong> Hataların gerçekten çözüldüğü kontrol edilir.</p>
+</li>
+</ul>
+<hr />
+<h2>3. Rol ve Sorumluluklar</h2>
+<ul>
+<li>
+<p><strong>Yönetici:</strong> Planlama, kaynak ayırma, kararlardan sorumlu.</p>
+</li>
+<li>
+<p><strong>Moderatör:</strong> Süreci yönetir, toplantıları yürütür.</p>
+</li>
+<li>
+<p><strong>Yazar:</strong> İncelenen belgenin sahibidir.</p>
+</li>
+<li>
+<p><strong>Gözden Geçiriciler:</strong> Teknik bilgiye sahip, hata bulan kişiler.</p>
+</li>
+<li>
+<p><strong>Katip:</strong> Bulunan hataları ve kararları kaydeder.</p>
+</li>
+</ul>
+<hr />
+<h2>4. Başarılı Gözden Geçirme İçin Gerekenler</h2>
+<ul>
+<li>
+<p>Net hedefler ve iyi tanımlanmış süreç</p>
+</li>
+<li>
+<p>Doğru kişilerin seçilmesi</p>
+</li>
+<li>
+<p>Güncel kontrol listeleri</p>
+</li>
+<li>
+<p>Küçük parçalara ayrılmış belgeler</p>
+</li>
+<li>
+<p>Katılımcıların yeterli hazırlığı</p>
+</li>
+<li>
+<p>Yönetim desteği</p>
+</li>
+<li>
+<p>Güven ortamı ve yapıcı iletişim</p>
+</li>
+</ul>
+<p>Başarısızlığa yol açan durumlar: kötü planlama, yetersiz eğitim, yanlış ekip seçimi, eksik materyal ve toplantı disiplininin bozulması.</p>
+<hr />
+<h2>5. Gözden Geçirme Türleri</h2>
+<p>Dört temel tür vardır:</p>
+<h3>Gayri Resmî Gözden Geçirme</h3>
+<p>Hızlı ve dokümansızdır. Ekip arkadaşının kontrol etmesi gibi.<br />
+Çevik süreçlerde yaygın.</p>
+<h3>Üzerinden Geçme</h3>
+<p>Belgeyi birlikte okuyup tartışarak hataları bulma yöntemidir.</p>
+<h3>Teknik Gözden Geçirme</h3>
+<p>Teknik uzmanlar tarafından yapılır. Daha yapılandırılmıştır, yazar dışında uzmanlar yer alır.</p>
+<h3>Teftiş</h3>
+<p>En resmî yöntemdir. Roller, giriş/çıkış kriterleri ve kayıtlar zorunludur.<br />
+Hataları bulma oranı en yüksek olan gözden geçirme türüdür.</p>
+<hr />
+<h2>6. Gözden Geçirme Teknikleri</h2>
+<p>Bireysel inceleme sırasında kullanılan teknikler:</p>
+<ul>
+<li>
+<p><strong>Kurgusuz gözden geçirme:</strong> Serbest okuma, sorunları not etme.</p>
+</li>
+<li>
+<p><strong>Kontrol listesine dayalı:</strong> Belirli sorular üzerinden sistematik inceleme.</p>
+</li>
+<li>
+<p><strong>Senaryo ve prova:</strong> Belgeyi kullanım senaryoları üzerinden değerlendirme.</p>
+</li>
+<li>
+<p><strong>Role dayalı:</strong> Belgeyi farklı kullanıcı rollerine göre inceleme.</p>
+</li>
+<li>
+<p><strong>Bakış açısına dayalı:</strong> Farklı paydaşların (kullanıcı, testçi, yönetici) bakışıyla inceleme.</p>
+</li>
+</ul>
+<hr />
+<h2>Sonuç</h2>
+<p>Gözden geçirme, hataları erken bulmak için kullanılan güçlü bir statik test yöntemidir.<br />
+Doğru roller, disiplinli süreç ve uygun teknikler kullanıldığında hem maliyeti düşürür hem kaliteyi yükseltir.</p>
+<h1>13.Ünite - Yazılım Test Sertifikasyonları</h1>
+<hr />
+<p>Yazılım testi alanında uzmanlaşmak isteyenler için uluslararası standartları belirleyen kuruluşları, sertifika türlerini ve Türkiye’deki faaliyetleri ele almaktadır.</p>
+<h2>1. Yazılım Test Sertifikasyonunun Önemi</h2>
+<p>Yazılım testi, günümüzde ayrı bir uzmanlık alanı haline gelmiştir. Artan popülerlik ve iş gücü talebi nedeniyle, işverenlerin yetkin adayları seçebilmesi için uluslararası geçerliliği olan sertifikalar önem kazanmıştır. Bu alandaki en önemli kuruluş <strong>ISTQB</strong>'dir.</p>
+<hr />
+<h2>2. ISTQB Nedir?</h2>
+<p><strong>ISTQB (International Software Testing Qualifications Board - Uluslararası Yazılım Testi Yeterlilikler Kurulu):</strong></p>
+<ul>
+<li>
+<p>2002 yılında Belçika’da kurulmuş, kar amacı gütmeyen uluslararası bir dernektir.</p>
+</li>
+<li>
+<p>Yazılım testi yeterliliklerinin belgelendirilmesinde dünya lideridir.</p>
+</li>
+<li>
+<p>Test uzmanlarının kariyerlerinde ilerlemelerini sağlamayı ve mesleğin değerini tanıtmayı amaçlar.</p>
+</li>
+<li>
+<p>Sınav sorularının içeriğini, kapsamını ve akreditasyon kurallarını belirler.</p>
+</li>
+</ul>
+<hr />
+<h2>3. ISTQB Sertifikalarının Avantajları</h2>
+<p>Sertifikalar hem bireyler hem de şirketler için çeşitli faydalar sağlar:</p>
+<ul>
+<li>
+<p><strong>Bireyler İçin:</strong></p>
+<ul>
+<li>
+<p>Uluslararası geçerliliği olan bir yetkinlik kanıtı sunar.</p>
+</li>
+<li>
+<p>Test mesleği için "Ortak Dil" ve sözlük oluşturur.</p>
+</li>
+<li>
+<p>Kariyer ilerlemesini destekler ve profesyonel güvenilirlik sağlar.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Şirketler İçin:</strong></p>
+<ul>
+<li>
+<p>Müşterilere güven vererek rekabet avantajı sağlar.</p>
+</li>
+<li>
+<p>Test süreçlerini standartlaştırarak verimliliği artırır.</p>
+</li>
+<li>
+<p>Danışmanlık şirketlerinin marka değerini yükseltir.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>4. Sertifikasyon Seviyeleri ve Yapısı</h2>
+<p>ISTQB sertifikaları üç ana uzmanlık seviyesinde yapılandırılmıştır:</p>
+<ol>
+<li>
+<p><strong>Temel Seviye (Foundation Level):</strong> Giriş seviyesidir. Test uzmanı, analist, mühendis veya yönetici olmak isteyen herkes için temel oluşturur. Diğer sertifikaları alabilmek için bu sertifikaya sahip olmak <strong>ön koşuldur</strong>.</p>
+</li>
+<li>
+<p><strong>İleri Seviye (Advanced Level):</strong> Kariyerinde ilerlemiş ve pratik deneyime sahip kişiler içindir (Test Yöneticisi, Test Analisti vb.).</p>
+</li>
+<li>
+<p><strong>Uzman Seviyesi (Expert Level):</strong> Konu hakkında derinlemesine uzmanlık gerektirir.</p>
+</li>
+</ol>
+<p>Ayrıca sertifikalar <strong>Agile (Çevik)</strong>, <strong>Core (Çekirdek)</strong> ve <strong>Specialist (Uzmanlık)</strong> olmak üzere farklı kategorilere ayrılır.</p>
+<hr />
+<h2>5. Türkiye'de Yapılan ISTQB Sınavları</h2>
+<p>Ülkemizde ISTQB müfredatının tamamı olmamakla birlikte, şu 5 temel sınav uygulanmaktadır:</p>
+<ul>
+<li>
+<p>ISTQB Certified Tester Foundation Level (Temel Seviye)</p>
+</li>
+<li>
+<p>ISTQB Certified Tester Foundation - Agile Tester Extension (Çevik Test)</p>
+</li>
+<li>
+<p>Test Manager - Advanced Level (Test Yöneticisi)</p>
+</li>
+<li>
+<p>Test Analyst - Advanced Level (Test Analisti)</p>
+</li>
+<li>
+<p>Technical Test Analyst - Advanced Level (Teknik Test Analisti)</p>
+</li>
+</ul>
+<hr />
+<h2>6. TTB (Turkish Testing Board)</h2>
+<p><strong>TTB (Türk Test Kurulu):</strong></p>
+<ul>
+<li>
+<p>2006 yılında ISTQB'ye bağlı olarak kurulmuştur.</p>
+</li>
+<li>
+<p>Türkiye'deki bilişim profesyonellerinin uluslararası standartlarda eğitilmesini ve sertifikalanmasını sağlar.</p>
+</li>
+<li>
+<p>Sınavları düzenler ve uluslararası içeriği Türkçeleştirir.</p>
+</li>
+<li>
+<p>Sektörü bilgilendirmek amacıyla konferanslar düzenler ve raporlar yayınlar.</p>
+</li>
+</ul>
+<hr />
+<h2>7. Türkiye'deki Etkinlikler ve Raporlar</h2>
+<p>TTB tarafından yürütülen iki önemli çalışma bulunmaktadır:</p>
+<ul>
+<li>
+<p><strong>TestIstanbul Konferansı:</strong></p>
+<ul>
+<li>
+<p>2010 yılından beri her yıl düzenlenen uluslararası bir konferanstır.</p>
+</li>
+<li>
+<p>Mobil test, test otomasyonu, DevOps, çevik test gibi her yıl farklı bir tema işlenir.</p>
+</li>
+<li>
+<p>Binlerce katılımcı ve onlarca global firmanın katılımıyla gerçekleşir.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Türkiye Yazılım Kalite Raporu (TSQR):</strong></p>
+<ul>
+<li>
+<p>2011 yılından beri her yıl yayınlanır.</p>
+</li>
+<li>
+<p>Bilişim profesyonellerinin katılımıyla sektörün durumunu, hedeflerini ve trendlerini analiz eder.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>Sonuç</h2>
+<p>Yazılım testinde profesyonelleşmek için ISTQB sertifikaları küresel bir standarttır. Türkiye'de TTB aracılığıyla yürütülen bu süreçler, hem bireysel yetkinliği belgelemek hem de sektörün kalite standartlarını yükseltmek için kritik bir rol oynamaktadır.</p>
+<h1>14.Ünite - Temel Seviye Yazılım Test Sertifikasyon Sınavı</h1>
+<hr />
+<p>ISTQB Temel Seviye sınavına hazırlık amacıyla, yazılım testinin temellerinden araç desteğine kadar olan tüm konuların genel bir tekrarını ve özetini içerir.</p>
+<h2>1. Yazılım Testinin Temelleri</h2>
+<p>Yazılım testi, sadece hataları bulmak değil, aynı zamanda gereksinimlerin karşılandığını doğrulamak ve ürün kalitesini artırmaktır.</p>
+<ul>
+<li>
+<p><strong>Test ve Hata Ayıklama (Debugging) Farkı:</strong> Test, yazılımdaki arızaları ortaya çıkarır; hata ayıklama ise bu arızaların kök nedenini bulup düzeltir.</p>
+</li>
+<li>
+<p><strong>Hata Zinciri:</strong> İnsanın yaptığı bir <strong>yanlışlık (error)</strong>, kodda bir <strong>kusura (defect/bug)</strong> yol açar; bu kusur çalıştırıldığında bir <strong>arıza (failure)</strong> meydana gelir.</p>
+</li>
+<li>
+<p><strong>Test Süreci:</strong> Test planlama, analiz, tasarım, uyarlama, koşum ve tamamlama aşamalarından oluşur.</p>
+</li>
+<li>
+<p><strong>Test Psikolojisi:</strong> Test uzmanları, "kötü haber getiren kişi" olarak algılanabilir; bu nedenle iletişim yapıcı olmalıdır.</p>
+</li>
+</ul>
+<hr />
+<h2>2. Yazılım Geliştirme Yaşam Döngüsü Boyunca Test</h2>
+<p>Test aktiviteleri, seçilen yazılım geliştirme modeline (Sıralı veya Döngüsel/Çevik) uygun olmalıdır.</p>
+<ul>
+<li>
+<p><strong>Test Seviyeleri:</strong> Birim, Entegrasyon, Sistem ve Kabul testleri gibi farklı seviyeler vardır.</p>
+</li>
+<li>
+<p><strong>Bakım Testleri:</strong> Yazılım canlıya alındıktan sonra yapılan değişiklikler, platform taşımaları (migration) veya kullanımdan kaldırma (retirement) durumlarında tetiklenir.</p>
+</li>
+<li>
+<p><strong>Etki Analizi:</strong> Yapılan bir değişikliğin sistemin diğer bölümlerinde yaratabileceği yan etkileri belirlemek için kullanılır.</p>
+</li>
+</ul>
+<hr />
+<h2>3. Statik Testler</h2>
+<p>Yazılım kodunu çalıştırmadan yapılan incelemelerdir (gözden geçirme ve statik analiz).</p>
+<ul>
+<li>
+<p><strong>Önemi:</strong> Hataları (gereksinim, tasarım veya kodlama hataları) erken aşamada bulmayı sağlar.</p>
+</li>
+<li>
+<p><strong>Maliyet Etkisi:</strong> Erken bulunan hataların düzeltilmesi, dinamik testlerde veya canlı ortamda bulunan hatalara göre çok daha az maliyetlidir.</p>
+</li>
+</ul>
+<hr />
+<h2>4. Test Tasarım Teknikleri</h2>
+<p>Test teknikleri, test senaryolarını oluşturmak için kullanılan yöntemlerdir ve üç ana kategoriye ayrılır:</p>
+<ul>
+<li>
+<p><strong>Kara Kutu Teknikleri (Davranışsal):</strong> Yazılımın iç yapısına bakılmaksızın girdilere ve çıktılara odaklanır.</p>
+<ul>
+<li>
+<p><em>Denklik Paylarına Ayırma:</em> Verileri benzer davranması beklenen sınıflara ayırır.</p>
+</li>
+<li>
+<p><em>Sınır Değer Analizi:</em> Hataların genellikle uç noktalarda olduğu varsayımına dayanır.</p>
+</li>
+<li>
+<p><em>Karar Tablosu Testi:</em> Karmaşık iş kurallarını ve kombinasyonları test eder.</p>
+</li>
+<li>
+<p><em>Durum Geçiş Testi:</em> Sistemin durumlar arasındaki geçişlerini inceler.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Beyaz Kutu Teknikleri (Yapısal):</strong> Kodun iç mantığına odaklanır.</p>
+<ul>
+<li>
+<p><em>Komut Kapsamı:</em> Çalıştırılabilir komutların test edilme oranıdır.</p>
+</li>
+<li>
+<p><em>Karar Kapsamı:</em> Karar noktalarının (doğru/yanlış çıktıları) test edilme oranıdır.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tecrübeye Dayalı Teknikler:</strong> Test uzmanının deneyimine dayanır.</p>
+<ul>
+<li>
+<p><em>Hata Tahminleme:</em> Olası hataları öngörerek test tasarlamaktır.</p>
+</li>
+<li>
+<p><em>Keşif Testi:</em> Testlerin eş zamanlı tasarlanıp uygulandığı dinamik bir yaklaşımdır.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>5. Test Yönetimi</h2>
+<p>Test süreci, uygun planlama, organizasyon ve risk yönetimi gerektirir.</p>
+<ul>
+<li>
+<p><strong>Test Organizasyonu:</strong> Bağımsız test ekipleri, testlerin etkinliğini artırabilir.</p>
+</li>
+<li>
+<p><strong>Roller:</strong></p>
+<ul>
+<li>
+<p><em>Test Yöneticisi:</em> Planlama, izleme, kontrol ve stratejiden sorumludur.</p>
+</li>
+<li>
+<p><em>Test Uzmanı:</em> Test tasarımı, veri hazırlığı ve koşumundan sorumludur.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Riskler:</strong></p>
+<ul>
+<li>
+<p><em>Ürün Riski:</em> Yazılımın beklenen fonksiyonu yerine getirememesi (kalite riski).</p>
+</li>
+<li>
+<p><em>Proje Riski:</em> Bütçe aşımı, personel sorunları veya tedarikçi problemleri.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>6. Test Araçları</h2>
+<p>Test araçları, manuel aktiviteleri otomatize ederek verimliliği artırır.</p>
+<ul>
+<li>
+<p><strong>Araç Kategorileri:</strong> Test yönetim araçları, test tasarım araçları, test koşum araçları ve performans/izleme araçları olarak sınıflandırılır.</p>
+</li>
+<li>
+<p><strong>Araç Seçimi ve Pilot Proje:</strong> Bir aracı kuruma yaymadan önce, güçlü ve zayıf yönlerini anlamak için pilot bir projede denenmesi esastır.</p>
+</li>
+</ul>
+<hr />
+<h2>Sonuç</h2>
+<p>Bu ünite, ISTQB müfredatının bir özetidir. Yazılım testinin temel prensipleri, yaşam döngüsü içindeki yeri, statik ve dinamik teknikler, test yönetimi ve araç desteği konularını kapsar. Başarılı bir test süreci için doğru tekniklerin seçilmesi, risklerin yönetilmesi ve uygun araçların kullanılması kritik öneme sahiptir.</p>

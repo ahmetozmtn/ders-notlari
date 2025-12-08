@@ -1,0 +1,2002 @@
+<meta charset='utf-8'>
+<h1>1.Ünite - Python ile Programlamaya Giriş</h1>
+<hr />
+<h2>Python'un Genel Özellikleri</h2>
+<ul>
+<li>
+<p><strong>Python</strong>, Guido van Rossum tarafından geliştirildi ve ilk sürümü <strong>1990</strong> yılında yayımlandı.</p>
+</li>
+<li>
+<p>İsmini, geliştiricinin hayranı olduğu <strong>“Monty Python’s Flying Circus”</strong> adlı komedi dizisinden aldı.</p>
+</li>
+<li>
+<p><strong>Statista (2025)</strong> verilerine göre 2025 yılında en popüler üçüncü programlama dili oldu (%51).</p>
+</li>
+</ul>
+<p><img alt="statista-most-used-languages.png" src="https://github.com/ahmetozmtn/ders-notlari/blob/main/images/statista-most-used-languages.png" /></p>
+<ul>
+<li>
+<p><strong>Nesneye Yönelimli Programlama (OOP)</strong> dilidir; her şey bir <strong>nesnedir (object)</strong>.</p>
+</li>
+<li>
+<p>Nesneler; <strong>özellikler (attributes)</strong> ve <strong>metotlardan (methods)</strong> oluşur, nokta (<code>.</code>) sözdizimiyle erişilir.</p>
+</li>
+<li>
+<p>OOP’nin temel ilkeleri:</p>
+<ul>
+<li>
+<p><strong>Miras alma (inheritance)</strong></p>
+</li>
+<li>
+<p><strong>Çok biçimlilik (polymorphism)</strong></p>
+</li>
+<li>
+<p><strong>Kapsülleme (encapsulation)</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Amaç, veriyi ve fonksiyonları tek bir birimde birleştirerek dış erişimi sınırlandırmaktır.</p>
+</li>
+<li>
+<p><strong>C, C++, C#</strong> gibi diller <strong>derleyici (compiler)</strong> kullanır; kodu bir defada çevirir.</p>
+</li>
+<li>
+<p><strong>Python</strong> ise <strong>yorumlayıcı (interpreter)</strong> kullanır; kodu <strong>satır satır çalıştırır</strong>, hata ayıklama kolaydır.</p>
+</li>
+<li>
+<p><strong>Derleyiciler:</strong></p>
+<ul>
+<li>
+<p>Kodun tamamını analiz eder, hatayı sonradan bildirir.</p>
+</li>
+<li>
+<p>Analiz yavaş ama çalıştırma hızlıdır.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Yorumlayıcılar:</strong></p>
+<ul>
+<li>
+<p>Hataları anında yakalar, çalışmayı durdurur.</p>
+</li>
+<li>
+<p>Hata tespiti kolaydır.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>Python’un Temel Özellikleri</h3>
+<ul>
+<li>
+<p>Farklı veri tipleri desteklenir: <strong>sayılar, metin (string), listeler, sözlükler (dict)</strong>.</p>
+</li>
+<li>
+<p><strong>Nesneye yönelimli programlama</strong> desteklenir (sınıflar, çoklu kalıtım).</p>
+</li>
+<li>
+<p>Kod <strong>modüller</strong> ve <strong>paketler</strong> halinde organize edilir.</p>
+</li>
+<li>
+<p><strong>İstisna yönetimi (exception handling)</strong> ile daha temiz hata işleme sağlanır.</p>
+</li>
+<li>
+<p><strong>Güçlü ve dinamik tip sistemi</strong> bulunur (uyumsuz tipler istisna üretir).</p>
+</li>
+<li>
+<p><strong>Generators</strong> ve <strong>list comprehensions</strong> gibi gelişmiş yapılar içerir.</p>
+</li>
+<li>
+<p><strong>Otomatik bellek yönetimi</strong> vardır (manuel bellek ayırma gerekmez).</p>
+</li>
+</ul>
+<hr />
+<h3>Python’un Lisans ve Topluluk Özellikleri</h3>
+<ul>
+<li>
+<p><strong>Özgür ve açık kaynaklı (open-source)</strong> bir dildir.</p>
+</li>
+<li>
+<p><strong>Ücretsizdir</strong>, indirilebilir, değiştirilebilir ve dağıtılabilir.</p>
+</li>
+<li>
+<p>Kodlar <strong>Kaggle</strong>, <strong>GitHub</strong> gibi platformlarda paylaşılabilir.</p>
+</li>
+<li>
+<p>Geniş bir topluluk tarafından desteklenir, sürekli gelişmektedir.</p>
+</li>
+</ul>
+<h2>Python'ın Kullanım Alanları</h2>
+<ul>
+<li>
+<p><strong>Yapay Zekâ (AI) ve Makine Öğrenmesi (ML):</strong><br />
+    TensorFlow, PyTorch, Scikit-learn gibi kütüphanelerle model geliştirme, veri analizi.</p>
+</li>
+<li>
+<p><strong>Veri Bilimi ve Analitiği:</strong><br />
+    NumPy, Pandas, Matplotlib, Seaborn gibi araçlarla veri toplama, temizleme ve görselleştirme.</p>
+</li>
+<li>
+<p><strong>Web Geliştirme:</strong><br />
+    Django, Flask, FastAPI gibi framework’lerle dinamik web siteleri ve API’ler geliştirme.</p>
+</li>
+<li>
+<p><strong>Otomasyon ve Betik Yazımı (Scripting):</strong><br />
+    Tekrarlayan görevleri otomatikleştirme (örneğin dosya işlemleri, web scraping).</p>
+</li>
+<li>
+<p><strong>Veritabanı Uygulamaları:</strong><br />
+    SQLite, MySQL, PostgreSQL, MongoDB gibi sistemlerle veri tabanı yönetimi.</p>
+</li>
+<li>
+<p><strong>Siber Güvenlik ve Etik Hacking:</strong><br />
+    Penetrasyon testleri, zafiyet taramaları ve güvenlik otomasyonu için (örneğin: <code>Scapy</code>, <code>Requests</code>).</p>
+</li>
+<li>
+<p><strong>Bilimsel ve Matematiksel Hesaplamalar:</strong><br />
+    SciPy, SymPy, NumPy gibi kütüphanelerle sayısal analiz ve mühendislik hesaplamaları.</p>
+</li>
+<li>
+<p><strong>Biyoenformatik ve Sağlık:</strong><br />
+    Genetik veri analizi, protein modelleme, medikal görüntü işleme.</p>
+</li>
+<li>
+<p><strong>Oyun Geliştirme:</strong><br />
+    Pygame, Panda3D gibi kütüphanelerle 2D/3D oyunlar geliştirme.</p>
+</li>
+<li>
+<p><strong>Masaüstü Uygulama Geliştirme:</strong><br />
+    Tkinter, PyQt, Kivy gibi araçlarla GUI tabanlı uygulamalar geliştirme.</p>
+</li>
+<li>
+<p><strong>Eğitim ve Programlama Öğretimi:</strong><br />
+    Kolay sözdizimi sayesinde yeni başlayanlar için ideal bir öğretim dili.</p>
+</li>
+<li>
+<p><strong>Mobil Uygulama Geliştirme:</strong><br />
+    Kivy, BeeWare gibi kütüphanelerle platformlar arası mobil uygulamalar geliştirme.</p>
+</li>
+<li>
+<p><strong>Bulut Bilişim ve DevOps:</strong><br />
+    AWS, Azure SDK’ları, otomasyon script’leri, altyapı yönetimi.</p>
+</li>
+<li>
+<p><strong>IoT (Nesnelerin İnterneti):</strong><br />
+    Raspberry Pi, MicroPython ile sensör verisi toplama ve cihaz kontrolü.</p>
+</li>
+</ul>
+<h2>Python Kurulumu</h2>
+<p>İşte <strong>Python kurulumu</strong> işletim sistemlerine göre sade ve net biçimde</p>
+<hr />
+<h3><strong>Windows</strong></h3>
+<ol>
+<li>
+<p><a href="https://www.python.org/downloads/">python.org/downloads</a> adresine git.</p>
+</li>
+<li>
+<p>“<strong>Download Python 3.x.x</strong>” butonuna tıkla.</p>
+</li>
+<li>
+<p>İndirdiğin <code>.exe</code> dosyasını çalıştır.</p>
+</li>
+<li>
+<p>Kurulum ekranında mutlaka <strong>“Add Python to PATH”</strong> kutusunu işaretle. </p>
+</li>
+<li>
+<p>“Install Now” seçeneğine tıkla ve kurulumun tamamlanmasını bekle.</p>
+</li>
+<li>
+<p>Kurulumdan sonra Başlat menüsünden <strong>CMD (Komut İstemi)</strong> aç →</p>
+<p><code>python --version</code></p>
+<p>yaz ve kurulumun başarılı olup olmadığını kontrol et.</p>
+</li>
+</ol>
+<hr />
+<h3><strong>macOS</strong></h3>
+<ol>
+<li>
+<p>macOS genellikle eski bir Python sürümüyle gelir; güncel sürüm için:<br />
+<a href="https://www.python.org/downloads/mac-osx/">python.org/downloads</a> adresine git.</p>
+</li>
+<li>
+<p><code>.pkg</code> dosyasını indir ve kurulum sihirbazını takip et.</p>
+</li>
+<li>
+<p>Terminal’i aç ve sürümü kontrol et:</p>
+<p><code>python3 --version</code></p>
+</li>
+<li>
+<p>İstersen <strong>Homebrew</strong> ile de kurabilirsin:</p>
+<p><code>brew install python</code></p>
+</li>
+</ol>
+<hr />
+<h3><strong>Linux (Ubuntu / Debian / Arch / Fedora vs.)</strong></h3>
+<p>Python çoğu Linux dağıtımında önceden kurulu gelir.<br />
+Yine de güncellemek veya manuel kurmak için:</p>
+<p><strong>Ubuntu / Debian:</strong></p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install python3
+</code></pre>
+<p><strong>Fedora:</strong></p>
+<pre><code class="language-bash">sudo dnf install python3
+</code></pre>
+<p><strong>Arch Linux:</strong></p>
+<pre><code class="language-bash">sudo pacman -S python
+</code></pre>
+<p>Kurulumu doğrulamak için:</p>
+<pre><code class="language-bash">python3 --version
+</code></pre>
+<hr />
+<p><code>pip</code> (Python Paket Yöneticisi) versiyonunu kontrol etmek için</p>
+<pre><code class="language-bash">pip --version
+</code></pre>
+<h2>Python ile "Hello World"</h2>
+<ol>
+<li>
+<p>Terminal (veya Komut İstemi) aç.</p>
+</li>
+<li>
+<p><code>python</code> (veya bazı sistemlerde <code>python3</code>) yaz ve Enter’a bas.</p>
+</li>
+<li>
+<p>Açılan Python etkileşimli kabuğuna şunu yaz:</p>
+<p><code>python
+print("Hello, World!")</code></p>
+</li>
+<li>
+<p>Enter’a bastığında konsolda şu sonucu göreceksin:</p>
+<p><code>Hello, World!</code></p>
+</li>
+</ol>
+<hr />
+<p><strong>Alternatif:</strong><br />
+Bir <code>.py</code> dosyası oluşturup da yazabilirsin.</p>
+<ol>
+<li>
+<p>Yeni bir dosya oluştur: <code>hello.py</code></p>
+</li>
+<li>
+<p>Dosyanın içine yaz:</p>
+<p><code>python
+print("Hello, World!")</code></p>
+</li>
+<li>
+<p>Terminalde çalıştır:</p>
+<p><code>python hello.py</code></p>
+</li>
+<li>
+<p>Çıktı:</p>
+<p><code>Hello, World!</code></p>
+</li>
+</ol>
+<h2>Python Geliştirme Ortamları.</h2>
+<h2><strong>IDE’ler</strong></h2>
+<ul>
+<li>
+<p><strong>PyCharm</strong> </p>
+</li>
+<li>
+<p><strong>Spyder</strong> </p>
+</li>
+<li>
+<p><strong>Thonny</strong></p>
+</li>
+<li>
+<p><strong>Python IDLE</strong></p>
+</li>
+<li>
+<p><strong>Jupyter Notebook / JupyterLab</strong></p>
+</li>
+<li>
+<p><strong>Anaconda Navigator</strong></p>
+</li>
+</ul>
+<hr />
+<h2>Editörler</h2>
+<ul>
+<li>
+<p><strong>Visual Studio Code (VS Code)</strong></p>
+</li>
+<li>
+<p><strong>Sublime Text</strong> </p>
+</li>
+<li>
+<p><strong>Atom</strong> → Artık geliştirilmiyor.</p>
+</li>
+<li>
+<p><strong>Notepad++</strong></p>
+</li>
+<li>
+<p><strong>Vim / Neovim</strong></p>
+</li>
+</ul>
+<h2>Python da Modül, Paket, Kütüphane ve Çerçeve</h2>
+<h3>Modül (Module)</h3>
+<ul>
+<li><code>.py</code> uzantılı dosyalara kaydedilmiş, birbiriyle ilişkili bir grup Python kodu.</li>
+<li>Fonksiyonlar, sınıflar veya değişkenler yerleştirilebilir.</li>
+<li><strong>Örnekler:</strong> <code>random</code>, <code>math</code>, <code>html</code>, <code>datetime</code>, <code>re</code>.</li>
+<li><strong>Çağırma Yöntemleri:</strong><ul>
+<li><strong>Tümünü Çağırma:</strong>
+    <code>python
+    import math
+    print(math.pi)</code></li>
+<li><strong>Belirli Bir Unsuru Çağırma:</strong>
+    <code>python
+    from math import pi
+    print(pi)</code></li>
+<li><strong>Yeniden Adlandırarak Çağırma:</strong>
+    <code>python
+    import math as m
+    print(m.pi)</code></li>
+</ul>
+</li>
+<li><strong>Kullanım Örneği (OS Modülü):</strong> Çalışma dizini işlemlerini yönetmek için <code>os</code> modülü kullanılır (<code>os.getcwd()</code>, <code>os.chdir()</code>).
+    <code>python
+    import os
+    calismaKlasoru = os.getcwd() # Mevcut dizini al
+    print(calismaKlasoru)
+    os.chdir("D://auzef") # Yeni dizini ayarla (dosya yolunda `//` kullanılır)
+    print(os.getcwd())</code></li>
+</ul>
+<hr />
+<h3>Paket (Package)</h3>
+<ul>
+<li>Temel olarak bir <strong>modül koleksiyonunun bir dizinidir</strong>.</li>
+<li><strong>Yapı:</strong> Mantıksal olarak ilişkili modülleri bir klasör hiyerarşisi altında gruplar (tıpkı sabit sürücüdeki klasörler/alt klasörler gibi).</li>
+<li><strong>Amaç:</strong> Modül ad alanının (namespace) hiyerarşik yapısına olanak sağlamak.</li>
+<li><strong>Örnekler:</strong> <code>xml</code>, <code>email</code>, <code>numpy.linalg</code>, <code>pandas.plotting</code>.</li>
+<li><strong>Çağırma Yöntemi:</strong>
+    <code>python
+    import paket_adı
+    from paket.altmodül import fonksiyon</code></li>
+</ul>
+<hr />
+<h3>Kütüphane (Library)</h3>
+<ul>
+<li>Yeniden kullanılabilir bir kod topluluğuna atıfta bulunan geniş anlamlı bir terimdir.</li>
+<li><strong>Yapı:</strong> Genellikle ilgili <strong>modüller ve paketlerden</strong> oluşan bir koleksiyonu içerir.</li>
+<li><strong>Kullanım:</strong> Python'da "paket" ve "kütüphane" terimleri sıkça birbirinin yerine kullanılabilir, ancak genellikle <strong>kütüphane, bir paketler koleksiyonu</strong> olarak görülür.</li>
+<li><strong>Örnekler:</strong> <code>NumPy</code>, <code>pandas</code>, <code>Matplotlib</code>, <code>PyTorch</code>, <code>pygame</code>.</li>
+<li><strong>Çağırma Yöntemi:</strong>
+    <code>python
+    import kütüphane_adı</code></li>
+</ul>
+<hr />
+<h3>Çerçeve (Framework)</h3>
+<ul>
+<li>Programcıların geliştirme sürecini hızlandırmaya yardımcı olan bir <strong>modüller ve paketler koleksiyonudur</strong> (kütüphanelere benzer).</li>
+<li>Kütüphaneler belirli işlemleri gerçekleştiren paketleri içerirken, <strong>çerçeveler uygulamanın temel akışını ve mimarisini</strong> içerir. Uygulamanın genel yapısını (iskeleyi) belirler.</li>
+<li><strong>Örnekler:</strong> <code>django</code>, <code>flask</code>, <code>bottle</code>.</li>
+</ul>
+<h1>2.Ünite - Python'da Değişkenler ve Veri Tipleri</h1>
+<hr />
+<h2>Değişkenler</h2>
+<ul>
+<li>
+<p><strong>Değişken (variable):</strong> Bellekte veri saklamak için kullanılan isimdir.<br />
+    Örn: <code>int a = 25</code> → <code>a</code> isimli bir bellek alanına 25 değeri atanmıştır.</p>
+</li>
+<li>
+<p><strong>Atama (assignment):</strong> <code>=</code> işareti matematikteki eşitlik değil, <strong>değer atamayı</strong> temsil eder.</p>
+<ul>
+<li>
+<p>Çoğu dilde atama <strong>sağdan sola</strong> yapılır (Python dahil).</p>
+</li>
+<li>
+<p>R dilinde farklı yazımlar da mümkündür (<code>a = 25</code>, <code>25 -&gt; a</code>, <code>a &lt;- 25</code>).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Python’da:</strong></p>
+<ul>
+<li>
+<p>Değişken tanımlanırken veri tipi <strong>önceden belirtilmez</strong>, <strong>dinamik olarak</strong> belirlenir.</p>
+</li>
+<li>
+<p><code>a</code> aslında bir <strong>işaretçidir (pointer)</strong> → bellekteki bir veriyi işaret eder.</p>
+</li>
+<li>
+<p>Atanabilen değerlere <strong>literal</strong> denir:</p>
+<p><code>python
+a = 25        # int
+a = "25"      # str
+a = 2.5       # float</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Noktalı virgül (;) kullanımı:</strong></p>
+<ul>
+<li>
+<p>C, C++, Java gibi dillerde satır sonunu belirtir.</p>
+</li>
+<li>
+<p>Python’da zorunlu değildir, sadece <strong>aynı satırda birden fazla ifade</strong> yazmak için kullanılır.</p>
+<p><code>python
+a = 10; b = 9; c = 8</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Yorum satırları (comments):</strong></p>
+<ul>
+<li>
+<p>Tek satırlık yorum: <code>#</code> ile başlar.</p>
+</li>
+<li>
+<p>Çok satırlı yorum: Üç çift tırnak (<code>""" ... """</code>) arasına yazılır.</p>
+<p>```python</p>
+<h1>Bu bir yorum satırıdır</h1>
+<p>"""
+@title: Değişkenler ve Veri Tipleri
+@author: ...
+"""
+```</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Özetle</h4>
+<ul>
+<li>Python’da değişkenler önceden tanımsızdır, tipi dinamik olarak belirlenir; noktalı virgül isteğe bağlıdır; yorum satırları ise kodun okunabilirliğini artırmak için kullanılır.</li>
+</ul>
+<h3>Değişken Tanımlama Kuralları</h3>
+<ul>
+<li>
+<p>Harf veya alt çizgi (<code>_</code>) ile başlamalıdır.</p>
+</li>
+<li>
+<p><strong>Sayı ile başlayamaz.</strong></p>
+</li>
+<li>
+<p>Sadece <strong>alfanümerik karakterler</strong> ve <code>_</code> kullanılabilir (<code>A–Z</code>, <code>a–z</code>, <code>0–9</code>, <code>_</code>).</p>
+</li>
+<li>
+<p><strong>Türkçe karakter</strong> (ç, ğ, ı, ö, ş, ü) kullanılmamalıdır.</p>
+</li>
+<li>
+<p><strong>Boşluk</strong> içeremez (<code>ilk sayi</code> hatalıdır).</p>
+</li>
+<li>
+<p><strong>Kısa çizgi (-)</strong> kullanılamaz, çünkü işlem operatörüdür (<code>ilk-sayi</code> hatalıdır).</p>
+</li>
+<li>
+<p><strong>Python anahtar kelimeleri</strong> değişken adı olamaz (<code>if</code>, <code>elif</code>, <code>for</code>, <code>while</code>, <code>sum</code> vb.).</p>
+</li>
+</ul>
+<hr />
+<h3>❌ Hatalı değişken örnekleri</h3>
+<pre><code class="language-python">086_sayi = 1    # sayı ile başlıyor
+ilk-sayi = 81   # kısa çizgi içeriyor
+ilk sayi = 1903 # boşluk içeriyor
+elif = 37       # anahtar kelime kullanılmış
+</code></pre>
+<h3>✅ Doğru değişken örnekleri</h3>
+<pre><code class="language-python">sayi = 1903
+_sayi = 1903
+ilkSayim = 1903
+ilk_sayi = 1903
+ilkSayim1 = 1903
+</code></pre>
+<hr />
+<ul>
+<li>
+<p><strong>Python büyük/küçük harfe duyarlıdır (case sensitive):</strong><br />
+<code>ilkSayi</code> ≠ <code>ilksayi</code></p>
+</li>
+<li>
+<p><strong>Çoklu atama</strong> yapılabilir:</p>
+<p><code>python
+a, b, c, d = 5, 10, 20, 25</code></p>
+<p>Bu, birden fazla değişkene tek satırda değer atamayı sağlar.</p>
+</li>
+</ul>
+<hr />
+<h4>Özetle</h4>
+<ul>
+<li>Python’da değişken isimleri açık, kurallara uygun ve anlamlı olmalıdır. Harf veya <code>_</code> ile başlamalı, anahtar kelimelerden kaçınılmalı ve istenirse tek satırda birden fazla değişken tanımlanabilir.</li>
+</ul>
+<h3>Bellek Yönetimi(Memory Management)</h3>
+<ul>
+<li>
+<p>Bilgisayarın belleği, bir kitabın sayfalarına benzetilebilir. Veriler bellekte saklanır, gerekirse silinir ve yeni verilere yer açılır. Bu işlemleri <strong>işletim sistemi</strong> yürütür, ancak Python’da bu yönetimi <strong>Python yorumlayıcısı (CPython)</strong> üstlenir.</p>
+</li>
+<li>
+<p><strong>Bellek tahsisi (Memory Allocation):</strong><br />
+    Bellekte veri saklamak için bir alan ayrılması işlemidir.</p>
+<ul>
+<li>
+<p>C dilinde:</p>
+<p><code>c
+int x = 10;</code></p>
+<p>→ “x” için bir bellek alanı ayrılır.</p>
+</li>
+<li>
+<p>Python’da her şey bir <strong>nesnedir (object)</strong>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<p><strong>Python’da her şey nesnedir:</strong><br />
+    Her değişken bir <strong>nesne</strong> olarak kabul edilir.</p>
+<p><code>python
+x = 10
+ad = "Elif"
+isinstance(x, object)  # True
+isinstance(ad, object) # True</code></p>
+<p>Her Python nesnesi üç bilgi içerir:</p>
+<ol>
+<li>
+<p><strong>type (veri tipi)</strong></p>
+</li>
+<li>
+<p><strong>value (değer)</strong></p>
+</li>
+<li>
+<p><strong>reference count (referans sayısı)</strong></p>
+</li>
+</ol>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<p><strong>Referans sayısı (Reference Count):</strong><br />
+    Bir nesnenin sistemde kaç kez kullanıldığını gösterir.</p>
+<ul>
+<li>Yeni bir değişken aynı nesneye atıfta bulunursa referans sayısı artar.</li>
+</ul>
+<p><code>python
+x = 10
+y = x
+id(x) == id(y)  # True → aynı bellek adresi</code></p>
+<ul>
+<li>x’in değeri değişirse, yeni bir nesne oluşur ve artık farklı adresi gösterir.</li>
+</ul>
+<p><code>python
+x = x + 10
+id(x) != id(y)</code></p>
+</li>
+</ul>
+<hr />
+<ul>
+<li>
+<p><strong>Intern Nesneler (Intern Objects):</strong><br />
+    Python, sık kullanılan bazı nesneleri bellekte <strong>önceden saklar</strong>.</p>
+<ul>
+<li>
+<p>CPython 3.7’de:</p>
+<ul>
+<li>
+<p><strong>-5 ile 256</strong> arasındaki sayılar</p>
+</li>
+<li>
+<p><strong>Sadece ASCII karakterleri içeren metinler</strong><br />
+    otomatik olarak bellekte tutulur.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Bu nedenle aynı değere sahip değişkenler aynı bellek adresini paylaşır:</p>
+<p><code>python
+a = 200; b = 200
+id(a) == id(b)  # True
+c = 257; d = 257
+id(c) == id(d)  # False</code></p>
+<p>Aynı durum bazı kısa metinler için de geçerlidir:</p>
+<p><code>python
+metin1 = "Merhaba"
+metin2 = "Merhaba"
+id(metin1) == id(metin2)  # True
+metin3 = "Merhaba!"
+metin4 = "Merhaba!"
+id(metin3) == id(metin4)  # False</code></p>
+</li>
+</ul>
+<hr />
+<h4>Özetle</h4>
+<ul>
+<li>Python, belleği otomatik yönetir; her şey nesne temellidir. Aynı değere sahip küçük sayılar ve basit metinler bellekte <strong>tek kopya</strong> olarak tutulur (interning). Bu sistem, hem bellek tasarrufu hem de performans artışı sağlar.</li>
+</ul>
+<h3>Python Dilinde Temel Veri Tipleri</h3>
+<p><strong>1. Sayılar (Numbers)</strong></p>
+<ul>
+<li><strong>int</strong>: Tam sayılar</li>
+</ul>
+<p><code>python
+  x = 10
+  y = -3</code>
+* <strong>float</strong>: Ondalıklı sayılar</p>
+<p><code>python
+  pi = 3.14
+  sıcaklık = -12.5</code>
+* <strong>complex</strong>: Karmaşık sayılar</p>
+<p><code>python
+  z = 2 + 3j</code></p>
+<p><strong>2. Metinler (Strings)</strong>
+Karakter dizileridir.</p>
+<pre><code class="language-python">ad = &quot;Ahmet&quot;
+mesaj = 'Merhaba Dünya'
+print(ad[0])  # 'A'
+</code></pre>
+<p><strong>3. Boolean (Mantıksal)</strong>
+True veya False değerleri alır.</p>
+<pre><code class="language-python">a = True
+b = False
+print(5 &gt; 3)  # True
+</code></pre>
+<p><strong>4. Listeler (Lists)</strong>
+Birden fazla değeri sıralı tutar, değiştirilebilir.</p>
+<pre><code class="language-python">meyveler = [&quot;elma&quot;, &quot;muz&quot;, &quot;kiraz&quot;]
+meyveler.append(&quot;armut&quot;)
+</code></pre>
+<p><strong>5. Demetler (Tuples)</strong>
+Listelere benzer ama değiştirilemez.</p>
+<pre><code class="language-python">renkler = (&quot;kırmızı&quot;, &quot;mavi&quot;, &quot;yeşil&quot;)
+</code></pre>
+<p><strong>6. Kümeler (Sets)</strong>
+Sırasız, benzersiz öğeler içerir.</p>
+<pre><code class="language-python">sayilar = {1, 2, 3, 3}
+print(sayilar)  # {1, 2, 3}
+</code></pre>
+<p><strong>7. Sözlükler (Dictionaries)</strong>
+Anahtar-değer (key-value) çiftlerinden oluşur.</p>
+<pre><code class="language-python">öğrenci = {&quot;ad&quot;: &quot;Ahmet&quot;, &quot;yaş&quot;: 21}
+print(öğrenci[&quot;ad&quot;])
+</code></pre>
+<p>Python dinamik tipli olduğu için değişkenin tipi sonradan değiştirilebilir:</p>
+<pre><code class="language-python">x = 5
+x = &quot;Merhaba&quot;
+</code></pre>
+<p><strong>Python Temel Veri Tipleri Özeti Tablosu</strong></p>
+<table>
+<thead>
+<tr>
+<th>Veri Tipi</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+<th>Çıktı / Not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>int</strong></td>
+<td>Tam sayılar</td>
+<td><code>x = 10</code></td>
+<td><code>type(x)</code> → <code>&lt;class 'int'&gt;</code></td>
+</tr>
+<tr>
+<td><strong>float</strong></td>
+<td>Ondalıklı sayılar</td>
+<td><code>pi = 3.14</code></td>
+<td><code>type(pi)</code> → <code>&lt;class 'float'&gt;</code></td>
+</tr>
+<tr>
+<td><strong>complex</strong></td>
+<td>Karmaşık sayılar</td>
+<td><code>z = 2 + 3j</code></td>
+<td><code>z.real → 2</code>, <code>z.imag → 3</code></td>
+</tr>
+<tr>
+<td><strong>str</strong></td>
+<td>Metin (karakter dizisi)</td>
+<td><code>ad = "Ahmet"</code></td>
+<td><code>ad[0] → 'A'</code></td>
+</tr>
+<tr>
+<td><strong>bool</strong></td>
+<td>Mantıksal değer</td>
+<td><code>a = True</code></td>
+<td><code>5 &gt; 3 → True</code></td>
+</tr>
+<tr>
+<td><strong>list</strong></td>
+<td>Sıralı, değiştirilebilir koleksiyon</td>
+<td><code>liste = [1, 2, 3]</code></td>
+<td><code>liste.append(4)</code> → <code>[1, 2, 3, 4]</code></td>
+</tr>
+<tr>
+<td><strong>tuple</strong></td>
+<td>Sıralı ama değiştirilemez koleksiyon</td>
+<td><code>t = (1, 2, 3)</code></td>
+<td><code>t[1] → 2</code></td>
+</tr>
+<tr>
+<td><strong>set</strong></td>
+<td>Sırasız, benzersiz öğeler</td>
+<td><code>s = {1, 2, 2, 3}</code></td>
+<td><code>{1, 2, 3}</code></td>
+</tr>
+<tr>
+<td><strong>dict</strong></td>
+<td>Anahtar–değer yapısı</td>
+<td><code>d = {"ad": "Ahmet", "yaş": 21}</code></td>
+<td><code>d["ad"] → "Ahmet"</code></td>
+</tr>
+</tbody>
+</table>
+<h4>Python Kaçış (Escape) Karakterleri</h4>
+<ul>
+<li>Kaçış karakterleri, metin içinde özel anlamlı karakterleri göstermek veya biçimlendirme yapmak için kullanılır.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Kaçış Karakteri</th>
+<th>Anlamı</th>
+<th>Örnek Kod</th>
+<th>Çıktı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td>Yeni satır</td>
+<td><code>print("Merhaba\nDünya")</code></td>
+<td>Merhaba<br>Dünya</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>Sekme (tab boşluğu)</td>
+<td><code>print("Ad:\tAhmet")</code></td>
+<td>Ad: Ahmet</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>Ters eğik çizgi (<code>\</code>)</td>
+<td><code>print("C:\\Users\\Ahmet")</code></td>
+<td>C:\Users\Ahmet</td>
+</tr>
+<tr>
+<td><code>\'</code></td>
+<td>Tek tırnak (<code>'</code>)</td>
+<td><code>print('Ahmet\'in kalemi')</code></td>
+<td>Ahmet'in kalemi</td>
+</tr>
+<tr>
+<td><code>\"</code></td>
+<td>Çift tırnak (<code>"</code>)</td>
+<td><code>print("Ahmet\"in evi")</code></td>
+<td>Ahmet"in evi</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>Satır başına dön (carriage return)</td>
+<td><code>print("Merhaba\rDünya")</code></td>
+<td>Dünya</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>Geri silme (backspace)</td>
+<td><code>print("Ahmet\b!")</code></td>
+<td>Ahme!</td>
+</tr>
+<tr>
+<td><code>\f</code></td>
+<td>Sayfa sonu (form feed)</td>
+<td><code>print("A\fB")</code></td>
+<td>A↡B <em>(bazı ortamlarda görünmez)</em></td>
+</tr>
+<tr>
+<td><code>\a</code></td>
+<td>Uyarı sesi (beep)</td>
+<td><code>print("\a")</code></td>
+<td>🔊 <em>(bazı sistemlerde ses çıkarır)</em></td>
+</tr>
+<tr>
+<td><code>\uXXXX</code></td>
+<td>Unicode karakter (16 bit)</td>
+<td><code>print("\u03A9")</code></td>
+<td>Ω</td>
+</tr>
+<tr>
+<td><code>\UXXXXXXXX</code></td>
+<td>Unicode karakter (32 bit)</td>
+<td><code>print("\U0001F600")</code></td>
+<td>😀</td>
+</tr>
+</tbody>
+</table>
+<h2>Python'da Operatörler ile İşlemler</h2>
+<h3>1. Matematiksel Operatörler</h3>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+<th>Çıktı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Toplama</td>
+<td><code>5 + 3</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Çıkarma</td>
+<td><code>5 - 3</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Çarpma</td>
+<td><code>5 * 3</code></td>
+<td>15</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Bölme</td>
+<td><code>5 / 2</code></td>
+<td>2.5</td>
+</tr>
+<tr>
+<td><code>//</code></td>
+<td>Tam bölme</td>
+<td><code>5 // 2</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modül (kalan)</td>
+<td><code>5 % 2</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>Üs alma</td>
+<td><code>2 ** 3</code></td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+<h3>2. Atama Operatörleri</h3>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>Atama</td>
+<td><code>x = 5</code></td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>Topla ve ata</td>
+<td><code>x += 3</code> → <code>x = x + 3</code></td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>Çıkar ve ata</td>
+<td><code>x -= 2</code> → <code>x = x - 2</code></td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>Çarp ve ata</td>
+<td><code>x *= 4</code> → <code>x = x * 4</code></td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>Böl ve ata</td>
+<td><code>x /= 2</code> → <code>x = x / 2</code></td>
+</tr>
+<tr>
+<td><code>//=</code></td>
+<td>Tam böl ve ata</td>
+<td><code>x //= 3</code></td>
+</tr>
+<tr>
+<td><code>%=</code></td>
+<td>Mod al ve ata</td>
+<td><code>x %= 2</code></td>
+</tr>
+<tr>
+<td><code>**=</code></td>
+<td>Üs al ve ata</td>
+<td><code>x **= 3</code></td>
+</tr>
+</tbody>
+</table>
+<h3>3. Karşılaştırma Operatörleri</h3>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+<th>Çıktı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>Eşit mi?</td>
+<td><code>5 == 3</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Eşit değil mi?</td>
+<td><code>5 != 3</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Büyük mü?</td>
+<td><code>5 &gt; 3</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Küçük mü?</td>
+<td><code>5 &lt; 3</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Büyük veya eşit</td>
+<td><code>5 &gt;= 5</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Küçük veya eşit</td>
+<td><code>3 &lt;= 5</code></td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<h3>4. Mantıksal Operatörler</h3>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+<th>Çıktı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>and</code></td>
+<td>Ve</td>
+<td><code>True and False</code></td>
+<td>False</td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>Veya</td>
+<td><code>True or False</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>Değil</td>
+<td><code>not True</code></td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+<h3>5. Üyelik ve Kimlik Operatörleri</h3>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+<th>Çıktı</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in</code></td>
+<td>Eleman içeriyor mu?</td>
+<td><code>'a' in 'abc'</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>not in</code></td>
+<td>Eleman içermiyor mu?</td>
+<td><code>'d' not in 'abc'</code></td>
+<td>True</td>
+</tr>
+<tr>
+<td><code>is</code></td>
+<td>Aynı nesne mi?</td>
+<td><code>a is b</code></td>
+<td>True/False</td>
+</tr>
+<tr>
+<td><code>is not</code></td>
+<td>Farklı nesne mi?</td>
+<td><code>a is not b</code></td>
+<td>True/False</td>
+</tr>
+</tbody>
+</table>
+<h2>Açık ve Örtülü Veri Tipi Dönüşümü</h2>
+<p>Python’da <strong>tür değişimi (type conversion)</strong> ikiye ayrılır;
+- <strong>örtülü (implicit)</strong> 
+- <strong>açık (explicit)</strong></p>
+<p><strong>1. Örtülü Tür Değişimi (Implicit Type Conversion)</strong><br />
+Python bazı türleri <strong>kendisi otomatik olarak dönüştürür</strong>. Genellikle sayısal türler arasında olur.</p>
+<pre><code class="language-python">x = 5      # int
+y = 2.5    # float
+z = x + y  # Python otomatik olarak int'i float'a çevirir
+print(z)   # 7.5
+print(type(z))  # &lt;class 'float'&gt;
+</code></pre>
+<p>Yani türler uyumluysa, Python hata vermeden uygun olan tipe çevirir.</p>
+<p><strong>2. Açık Tür Değişimi (Explicit Type Conversion)</strong><br />
+Programcı türü <strong>kendisi dönüştürür</strong> — <code>int()</code>, <code>float()</code>, <code>str()</code> gibi fonksiyonlarla.</p>
+<pre><code class="language-python"># string → int
+x = &quot;10&quot;
+y = int(x)
+print(y + 5)  # 15
+
+# float → int
+z = int(3.9)
+print(z)  # 3
+
+# int → string
+a = str(123)
+print(a + &quot;4&quot;)  # &quot;1234&quot;
+</code></pre>
+<p>Özetle:</p>
+<ul>
+<li>
+<p><strong>Örtülü dönüşüm:</strong> Python kendisi yapar.</p>
+</li>
+<li>
+<p><strong>Açık dönüşüm:</strong> Programcı yapar.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tür</th>
+<th>Açıklama</th>
+<th>Örnek Kod</th>
+<th>Çıktı</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Örtülü (Implicit)</strong></td>
+<td>Python’un otomatik yaptığı dönüşüm</td>
+<td><code>x = 5</code><br><code>y = 2.5</code><br><code>z = x + y</code></td>
+<td><code>z = 7.5</code></td>
+<td><code>int</code> → <code>float</code> otomatik dönüşür</td>
+</tr>
+<tr>
+<td><strong>Açık (Explicit)</strong></td>
+<td>Programcının elle yaptığı dönüşüm</td>
+<td><code>x = "10"</code><br><code>y = int(x)</code><br><code>print(y + 5)</code></td>
+<td><code>15</code></td>
+<td><code>str</code> → <code>int</code> dönüşümü</td>
+</tr>
+<tr>
+<td><strong>Açık (Explicit)</strong></td>
+<td><code>float()</code> ile dönüştürme</td>
+<td><code>a = float(5)</code></td>
+<td><code>5.0</code></td>
+<td><code>int</code> → <code>float</code></td>
+</tr>
+<tr>
+<td><strong>Açık (Explicit)</strong></td>
+<td><code>str()</code> ile dönüştürme</td>
+<td><code>b = str(123)</code></td>
+<td><code>"123"</code></td>
+<td><code>int</code> → <code>str</code></td>
+</tr>
+<tr>
+<td><strong>Açık (Explicit)</strong></td>
+<td><code>int()</code> ile kesirli sayıyı tam yapma</td>
+<td><code>c = int(3.9)</code></td>
+<td><code>3</code></td>
+<td>Ondalık kısmı atılır</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Not:</strong> Örtülü dönüşüm sadece <strong>uyumlu türler</strong> arasında olur.  </li>
+<li>Örneğin <code>"5" + 3</code> hatadır, çünkü string ve int otomatik çevrilemez.</li>
+</ul>
+<h2>Değişir ve Değişmez Nesneler</h2>
+<ul>
+<li>
+<p>Python’da veri tipleri <strong>değişir (mutable)</strong> ve <strong>değişmez (immutable)</strong> olarak ikiye ayrılır:</p>
+</li>
+<li>
+<p><strong>Değişmez (Immutable):</strong> Oluşturulduktan sonra içeriği değiştirilemez. Yeni değer verilirse aslında <strong>yeni bir nesne</strong> oluşur.<br />
+    Örnek: <code>int</code>, <code>float</code>, <code>complex</code>, <code>bool</code>, <code>str</code>, <code>tuple</code></p>
+</li>
+<li>
+<p><strong>Değişir (Mutable):</strong> Oluşturulduktan sonra içeriği değiştirilebilir.<br />
+    Örnek: <code>list</code>, <code>set</code>, <code>dict</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Kategori</th>
+<th>Veri Tipi</th>
+<th>Değiştirilebilir mi?</th>
+<th>Örnek</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Immutable (Değişmez)</strong></td>
+<td><code>int</code></td>
+<td>❌ Hayır</td>
+<td><code>x = 5</code> → <code>x = 6</code> yeni nesne oluşturur</td>
+<td>Sayılar değiştirilemez</td>
+</tr>
+<tr>
+<td><strong>Immutable (Değişmez)</strong></td>
+<td><code>float</code></td>
+<td>❌ Hayır</td>
+<td><code>pi = 3.14</code></td>
+<td>Değeri değişirse yeni nesne olur</td>
+</tr>
+<tr>
+<td><strong>Immutable (Değişmez)</strong></td>
+<td><code>complex</code></td>
+<td>❌ Hayır</td>
+<td><code>z = 2 + 3j</code></td>
+<td>Karmaşık sayılar da değişmezdir</td>
+</tr>
+<tr>
+<td><strong>Immutable (Değişmez)</strong></td>
+<td><code>bool</code></td>
+<td>❌ Hayır</td>
+<td><code>a = True</code></td>
+<td>Boolean değer değiştirilemez</td>
+</tr>
+<tr>
+<td><strong>Immutable (Değişmez)</strong></td>
+<td><code>str</code></td>
+<td>❌ Hayır</td>
+<td><code>s = "Ahmet"</code> → <code>s[0] = "B"</code> hata verir</td>
+<td>Metinler değiştirilemez</td>
+</tr>
+<tr>
+<td><strong>Immutable (Değişmez)</strong></td>
+<td><code>tuple</code></td>
+<td>❌ Hayır</td>
+<td><code>t = (1, 2, 3)</code></td>
+<td>Eleman eklenemez veya silinemez</td>
+</tr>
+<tr>
+<td><strong>Mutable (Değişir)</strong></td>
+<td><code>list</code></td>
+<td>✅ Evet</td>
+<td><code>l = [1,2]; l.append(3)</code></td>
+<td>Liste içeriği değiştirilebilir</td>
+</tr>
+<tr>
+<td><strong>Mutable (Değişir)</strong></td>
+<td><code>set</code></td>
+<td>✅ Evet</td>
+<td><code>s = {1,2}; s.add(3)</code></td>
+<td>Küme elemanları değiştirilebilir</td>
+</tr>
+<tr>
+<td><strong>Mutable (Değişir)</strong></td>
+<td><code>dict</code></td>
+<td>✅ Evet</td>
+<td><code>d = {"a":1}; d["b"]=2</code></td>
+<td>Anahtar-değer çiftleri eklenebilir</td>
+</tr>
+</tbody>
+</table>
+<h4>Özet</h4>
+<ul>
+<li><strong>Değişmez tipler:</strong> yeni değer → yeni nesne.  </li>
+<li><strong>Değişir tipler:</strong> aynı nesne → içeriği değiştirilebilir.</li>
+</ul>
+<h1>3.Ünite - Veri Yapıları</h1>
+<hr />
+<p>Python’daki temel veri tiplerinden sonra gelen <strong>bileşik veri yapıları</strong>nı tanıtıyor. Bu yapılar, birden fazla veriyi tutabilen “kaplar”dır.</p>
+<p>Python’daki başlıca bileşik veri yapıları:</p>
+<ul>
+<li>
+<p><strong>List (liste):</strong> Köşeli parantez <code>[ ]</code> ile oluşturulur, değiştirilebilir.</p>
+</li>
+<li>
+<p><strong>Tuple (demet):</strong> Yuvarlak parantez <code>( )</code> ile oluşturulur, değiştirilemez.</p>
+</li>
+<li>
+<p><strong>Set (küme):</strong> Süslü parantez <code>{ }</code> ile oluşturulur, elemanlar tekrarlanmaz.</p>
+</li>
+<li>
+<p><strong>Dictionary (sözlük):</strong> Anahtar-değer çiftleri <code>{key: value}</code> şeklindedir.</p>
+</li>
+</ul>
+<h2>Lists</h2>
+<pre><code class="language-python">names = [&quot;Ahmet&quot;, &quot;Mehmet&quot;, &quot;Ali&quot;, &quot;Muhammed&quot;]
+print(type(names)) # list
+print(len(names)) # 4
+</code></pre>
+<h3>İndexing</h3>
+<pre><code class="language-python">numbers = [1, 3, 5, 9, 12, 45, 67]
+print(numbers[0]) # 1
+print(numbers[1]) # 3
+print(numbers[3]) # 9
+print(numbers[-1]) # 67 - listenin sonundaki elemanı return eder.
+print(numbers[-3]) # 12 
+print(numbers[2:]) # [5, 9, 12, 45, 67] | 2. indexten başlar listenin sonunda kadar return eder .
+print(numbers[-3:]) # [12, 45, 67] | -3. indexten başlar listenin sonunda kadar return eder. 
+print(numbers[0:5:2]) # [1, 5, 12] | 0-5 indexler arasındaki 2'şer atlayrak return eder.
+print(numbers[::-1]) # [67, 45, 12, 5, 3, 1] | listeyi ters çevrip return eder
+</code></pre>
+<p>Listeler tek veri tipinden oluşabileceği gibi, birbirinden farklı veri tipinde nesnelere sahip olabilir.</p>
+<p><code>python
+ a = [True, False, False, True]
+ print(a) # [True, False, False, True]
+ b = ["A" True, 1, 1.5, [0, 3, 6, 9]]
+ print(b) # ["A" True, 1, 1.5, [0, 3, 6, 9]]</code></p>
+<h3>List ait bazı methodlar</h3>
+<pre><code class="language-python">numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+numbers.append(11) # listenin sonuna eleman ekler.
+print(numbers) # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+numbers.remove(1) # listeden eleman siler. 
+print(numbers) # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+numbers.pop() # listenin sonundaki elemanı siler.
+print(numbers) # [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+print(numbers.index(5)) # 3 | girilen sayının listedeki indexini return eder.
+
+numbers.sort() # listeyi sıralamak için kullanılır. Default olarak artan biçimde sıralar.
+print(numbers) # [2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+numbers.reverse() # listeyi tersine çevirir.
+
+print(numbers) # [10, 9, 8, 7, 6, 5, 4, 3, 2]
+
+del numbers # listeyi siler.
+</code></pre>
+<h2>Tuples</h2>
+<ul>
+<li>
+<p>Tuple birçok yönden listelere benzemektedir; ancak köşeli parantezler yerine yuvarlak parantezlerle tanımlanırlar. Ayrıca herhangi bir parantez kullanmadan da tanımlanabilirler.</p>
+</li>
+<li>
+<p>Tuples hakkında unutulmaması gereken en önemli özelliklerden biri değişemez
+(immutable) olduklarıdır.</p>
+</li>
+</ul>
+<pre><code class="language-python">tuple1 = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, 0, 1, 2, 3)
+tuple2 = &quot;Ahmet&quot;, &quot;Mehmet&quot;, &quot;Muhammed&quot;
+
+print(tuple1[0]) # a
+print(tuple1[3]) # d
+print(tuple1[-1]) # 3
+
+print(tuple2[0]) # Ahmet
+print(tuple2[2]) # Muhammed
+</code></pre>
+<ul>
+<li>Bir tuple tanımlarken parantezin içindeki elemanları "," (virgül) ile ayrılması gerek. </li>
+</ul>
+<pre><code class="language-python">a = (&quot;Ahmet&quot;)
+print(type(a)) # str
+
+b = (&quot;Ahmet&quot;,)
+print(type(b)) # tuple
+
+</code></pre>
+<h4>Tuple ait bazı methodlar</h4>
+<p>`</p>
+<pre><code class="language-python">tuple1 = (&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, 0, 1, 2, 3)
+
+del tuple1 # tuple siler
+len(tuple1) # tuple eleman sayısını return eder
+tuple.count(b) # bir elemanın tuple içinde kaç defa tekrarlandığı return eder.
+tuple(sorted(tuple1)) # tuple ters çevirir.
+
+</code></pre>
+<h2>Dicts</h2>
+<ul>
+<li>Dict (key:value) prensibini kullanan son derece esnek eşleme yapılardır.</li>
+<li>Kıvırcık parantezler arasına tanımlanırlar, elemanlar virgül ile ayrılır.</li>
+<li>Dict boyutu ne olursa olsun rastgele öğelere erişim çok hızlıdır.</li>
+</ul>
+<pre><code class="language-python">dict1 = {&quot;name&quot;: &quot;Ahmet&quot;, &quot;age&quot;: 25}
+print(dict1) # {&quot;name&quot;: &quot;Ahmet&quot;, &quot;age&quot;: 25}
+print(dict1[name]) # Ahmet
+print(dict1.get(name)) # Ahmet
+
+print(list(dict1.keys())) # [&quot;name&quot;, &quot;age&quot;]
+print(list(dict1.values())) # [&quot;Ahmet&quot;, &quot;25&quot;]
+
+dict1[&quot;hobby&quot;] = &quot;Music&quot;
+print(dict1) # {&quot;name&quot;: &quot;Ahmet&quot;, &quot;age&quot;: 25, &quot;hobby&quot;: &quot;Music&quot;}
+
+del dict1[hobby] # dict1 den hobby siler.
+
+dict1.pop(&quot;age&quot;) # dict deki son elemanı siler ve dict return eder
+
+dict1.popitem() # dict deki son elemanı return eder.
+
+dict1.items() # dict deki tüm elemanları listeler  
+
+
+</code></pre>
+<h2>Sets</h2>
+<p><strong>kümeler (set)</strong>, <strong>benzersiz</strong> ve <strong>sırasız</strong> elemanlardan oluşan <strong>değiştirilebilir</strong> veri yapılarıdır.<br />
+Küme işlemleri matematikteki gibi yerleşik metotlarla yapılır:</p>
+<ul>
+<li>
+<p><strong>Eleman ekleme:</strong> <code>add()</code></p>
+</li>
+<li>
+<p><strong>Eleman silme:</strong> <code>pop()</code> (rastgele bir elemanı siler)</p>
+</li>
+</ul>
+<p>Örnek kümeler:</p>
+<pre><code class="language-python">asalSayilar = {2, 3, 5, 7, 11, 13, 17, 19}
+tekSayilar = {1, 3, 5, 7, 9, 11, 13, 15, 17, 19}
+</code></pre>
+<p>Temel işlemler:</p>
+<ul>
+<li>
+<p><strong>Kesişim:</strong> <code>asalSayilar.intersection(tekSayilar)</code> veya <code>asalSayilar &amp; tekSayilar</code></p>
+</li>
+<li>
+<p><strong>Birleşim:</strong> <code>asalSayilar.union(tekSayilar)</code> veya <code>asalSayilar | tekSayilar</code></p>
+</li>
+<li>
+<p><strong>Fark:</strong> <code>asalSayilar.difference(tekSayilar)</code> veya <code>asalSayilar - tekSayilar</code></p>
+</li>
+</ul>
+<p>Bu işlemler, kümeler arasında ortak, tüm veya farklı elemanları bulmayı sağlar.</p>
+<h1>4.Ünite - Koşullu İfadeler</h1>
+<hr />
+<p>Python’da <strong>koşul ifadeleri (if statements)</strong>, programın belirli durumlarda farklı işlemler yapmasını sağlar.</p>
+<p><strong>Temel yapı:</strong></p>
+<pre><code class="language-python">if koşul:
+    işlem
+</code></pre>
+<p>Koşul <strong>True</strong> ise blok çalışır, <strong>False</strong> ise atlanır.<br />
+Girintiler (indentation) çok önemlidir; if bloğundaki tüm satırlar aynı hizada olmalıdır.</p>
+<p><strong>Örnekler:</strong></p>
+<ul>
+<li>
+<p><strong>Tek koşul:</strong></p>
+<p>```python
+x = 10
+y = 10</p>
+<p>if x == y:
+    print("Eşit")
+```</p>
+</li>
+<li>
+<p><strong>Kısa biçim (short-hand):</strong></p>
+<p>```python
+x = 10
+y = 10</p>
+<p>if x == y: print("Eşit")
+```</p>
+</li>
+<li>
+<p><strong>Birleşik koşullar:</strong> <code>and</code>, <code>or</code> kullanılır.</p>
+<p>```python
+x = 10
+y = 10</p>
+<p>if x == y and x &gt; 0 and y &gt; 0:
+    print("Eşit ve pozitif")
+```</p>
+</li>
+<li>
+<p><strong>if–else:</strong></p>
+<p>```python
+x = 15
+y = 10</p>
+<p>if x &gt; y:
+    print("x büyük")
+else:
+    print("x küçük veya eşit")
+```</p>
+</li>
+<li>
+<p><strong>Kısa if–else:</strong></p>
+<p>```python
+x = 10
+y = 15</p>
+<p>print("x büyük") if x &gt; y else print("x küçük veya eşit")
+```</p>
+</li>
+<li>
+<p><strong>elif (çoklu koşul):</strong></p>
+<p>```python
+x = 10
+y = 15</p>
+<p>if x &gt; y:
+    print("büyük")
+elif x &lt; y:
+    print("küçük")
+else:
+    print("eşit")
+```</p>
+</li>
+<li>
+<p><strong>İç içe if (nested if):</strong></p>
+<p>```python
+x = 12</p>
+<p>if x &lt; 20:
+    if x &gt; 0:
+        print("0 &lt; x &lt; 20")
+    else:
+        print("x &lt;= 0")
+else:
+    print("x &gt;= 20")
+```</p>
+</li>
+</ul>
+<p><strong>Kısaca:</strong><br />
+<code>if</code> bir koşulu kontrol eder, <code>elif</code> başka durumları test eder, <code>else</code> tüm kalan durumları yakalar.<br />
+Koşullar mantıksal değer döndürür ve program akışını buna göre yönlendirir.</p>
+<p><code>match-case</code>, Python 3.10 ile gelen <strong>yeni bir kontrol yapısıdır</strong> ve diğer dillerdeki <em>switch-case</em> mantığına benzer.<br />
+Ama aslında bundan daha güçlüdür; sadece sayıları ya da metinleri değil, <strong>desenleri (patterns)</strong> de eşleştirebilir.</p>
+<p><strong>Temel yapı:</strong></p>
+<pre><code class="language-python">match ifade:
+    case değer1:
+        işlem1
+    case değer2:
+        işlem2
+    case _:
+        varsayılan_işlem
+</code></pre>
+<p><code>_</code> karakteri, <em>her şeye uyan</em> yani “else” gibi çalışan bir yapıdır.</p>
+<p><strong>Örnek 1 – Basit kullanım:</strong></p>
+<pre><code class="language-python">gun = &quot;pazartesi&quot;
+
+match gun:
+    case &quot;pazartesi&quot;:
+        print(&quot;Haftanın ilk günü&quot;)
+    case &quot;cuma&quot;:
+        print(&quot;Haftanın son iş günü&quot;)
+    case &quot;cumartesi&quot; | &quot;pazar&quot;:
+        print(&quot;Hafta sonu&quot;)
+    case _:
+        print(&quot;Geçersiz gün&quot;)
+</code></pre>
+<p>Burada <code>"cumartesi" | "pazar"</code> ile birden fazla değeri aynı durumda yakalayabiliyoruz.</p>
+<p><strong>Örnek 2 – Sayılarla:</strong></p>
+<pre><code class="language-python">sayi = int(input(&quot;Bir sayı gir: &quot;))
+
+match sayi:
+    case 0:
+        print(&quot;Sıfır&quot;)
+    case 1 | 2 | 3:
+        print(&quot;Küçük sayı&quot;)
+    case _:
+        print(&quot;Büyük sayı&quot;)
+</code></pre>
+<p><strong>Örnek 3 – Desen eşleme (pattern matching):</strong></p>
+<pre><code class="language-python">veri = (&quot;kullanıcı&quot;, 25)
+
+match veri:
+    case (&quot;kullanıcı&quot;, yas) if yas &gt;= 18:
+        print(&quot;Erişkin kullanıcı&quot;)
+    case (&quot;kullanıcı&quot;, yas):
+        print(&quot;Reşit değil&quot;)
+    case _:
+        print(&quot;Bilinmeyen veri&quot;)
+</code></pre>
+<p>Burada <code>yas</code> değişkeni doğrudan desenden alınır ve koşul içinde kullanılabilir.</p>
+<p><strong>Özetle:</strong><br />
+<code>match-case</code>, if–elif–else zincirlerini daha okunabilir hale getirir.<br />
+Basit karşılaştırmalardan karmaşık veri desenlerine kadar kullanılabilir, özellikle veri yapılarıyla (tuple, dict, list) çalışırken çok faydalıdır.</p>
+<h3>Not;</h3>
+<ul>
+<li>Koşullu ifadeleri anlamakta zorlandıysanız Youtube, Google gibi platformlardan çeşitli örneklere bakmanız iyi olur.</li>
+</ul>
+<h1>5.Ünite - 1. Döngüler</h1>
+<hr />
+<p>Bir işlemi belirli bir koşul sağlandıkça tekrar eden yapılardır.<br />
+Python’da iki temel döngü vardır:</p>
+<ul>
+<li>
+<p><strong>for döngüsü</strong></p>
+</li>
+<li>
+<p><strong>while döngüsü</strong></p>
+</li>
+</ul>
+<hr />
+<h2><strong>2. for Döngüsü</strong></h2>
+<p>Liste, string, tuple gibi üzerinde gezilebilen yapılarda kullanılır.</p>
+<pre><code class="language-python">for eleman in koleksiyon:
+    işlem
+</code></pre>
+<p>Örnek:</p>
+<pre><code class="language-python">for i in [1,2,3]:
+    print(i)
+</code></pre>
+<hr />
+<h2><strong>3. range() Fonksiyonu</strong></h2>
+<p>Sayı üretmek için kullanılır.</p>
+<pre><code class="language-python">range(bitis)
+range(baslangic, bitis)
+range(bas, bitis, artis)
+</code></pre>
+<p>Örnek:</p>
+<pre><code class="language-python">for i in range(0,10,2):
+    print(i)
+</code></pre>
+<hr />
+<h2><strong>4. İç İçe Döngüler</strong></h2>
+<p>Bir döngü içinde başka bir döngü.</p>
+<pre><code class="language-python">for i in range(3):
+    for j in range(2):
+        print(i, j)
+</code></pre>
+<hr />
+<h2><strong>5. while Döngüsü</strong></h2>
+<p>Koşul True olduğu sürece çalışır.</p>
+<pre><code class="language-python">while koşul:
+    işlem
+</code></pre>
+<p>Örnek:</p>
+<pre><code class="language-python">sayi = 0
+while sayi &lt; 5:
+    print(sayi)
+    sayi += 1
+</code></pre>
+<hr />
+<h2><strong>6. break ve continue</strong></h2>
+<ul>
+<li>
+<p><strong>break:</strong> Döngüyü tamamen bitirir.</p>
+</li>
+<li>
+<p><strong>continue:</strong> O turu geçer, döngü devam eder.</p>
+</li>
+</ul>
+<p>Örnek:</p>
+<pre><code class="language-python">a = [2, 27, 35, 46, 39, 88, 100, 11]
+
+i = 0
+while i &lt; len(a):
+    if a[i] % 2 == 0:
+        i += 1
+        continue
+    else:
+        print(a[i], end=&quot; &quot;)
+        i += 1  
+
+</code></pre>
+<p>output:</p>
+<pre><code>27 35 39 11
+</code></pre>
+<hr />
+<h2><strong>7. Liste Kavramı (List)</strong></h2>
+<p>Değiştirilebilir veri yapılarını tutar.</p>
+<pre><code class="language-python">liste = [1,2,3]
+liste.append(4)
+</code></pre>
+<hr />
+<h2><strong>8. List Comprehension</strong></h2>
+<p>Kısa, temiz liste üretme yöntemi.</p>
+<pre><code class="language-python">kares = [i*i for i in range(10)]
+</code></pre>
+<p>Koşullu kullanım:</p>
+<pre><code class="language-python">ciftler = [i for i in range(20) if i % 2 == 0]
+</code></pre>
+<hr />
+<h2><strong>9. Fonksiyonlara Giriş</strong></h2>
+<p>Fonksiyon, tekrar eden işlemleri toplar.</p>
+<pre><code class="language-python">def topla(a, b):
+    return a + b
+</code></pre>
+<p>Parametre alabilir, değer döndürebilir.</p>
+<h1>6.Ünite - Fonksiyon Nedir?</h1>
+<hr />
+<p>Belirli bir işi yapan, tekrar kullanılabilir kod parçacıklarıdır.<br />
+Avantajları: modülerlik, okunabilirlik, hata tespiti kolaylığı.</p>
+<ul>
+<li>
+<p><strong>Parametre:</strong> Fonksiyonun aldığı girdi.</p>
+</li>
+<li>
+<p><strong>Argüman:</strong> Fonksiyon çağrılırken verilen değer.</p>
+</li>
+<li>
+<p><strong>return:</strong> Değer döndürür.</p>
+</li>
+</ul>
+<hr />
+<h2><strong>1. def ile Fonksiyon Tanımlama</strong></h2>
+<p>Genel yapı:</p>
+<pre><code class="language-python">def fonk_adi(parametreler):
+    işlemler
+    return değer
+</code></pre>
+<p>Örnek:</p>
+<pre><code class="language-python">def selamVer():
+    print(&quot;Merhaba!&quot;)
+</code></pre>
+<p>Parametreli:</p>
+<pre><code class="language-python">def adaGoreSelamVer(isim):
+    print(isim, &quot;Merhaba!&quot;)
+</code></pre>
+<p>Birden fazla parametre:</p>
+<pre><code class="language-python">def adSoyad_SelamVer(isim, soyisim):
+    print(isim, soyisim, &quot;Merhaba!&quot;)
+</code></pre>
+<hr />
+<h2><strong>2. Return ile Değer Döndürme</strong></h2>
+<p>Tek değer:</p>
+<pre><code class="language-python">def toplam(a, b):
+    return a + b
+</code></pre>
+<p>Birden fazla değer (tuple):</p>
+<pre><code class="language-python">def toplam_fark(a, b):
+    return a+b, a-b
+</code></pre>
+<hr />
+<h2><strong>3. Varsayılan Parametre</strong></h2>
+<pre><code class="language-python">def ciftSayilariGetir(n, bas=0):
+    sayilar = []
+    while len(sayilar) &lt; n:
+        if bas % 2 == 0:
+            sayilar.append(bas)
+        bas += 1
+    return(sayilar)
+</code></pre>
+<p>Çağrı:</p>
+<pre><code class="language-python">ciftSayilariGetir(5) # [0, 2, 4, 6, 8] 
+ciftSayilariGetir(5, 20) # [20, 22, 24, 26, 28]
+</code></pre>
+<hr />
+<h2><strong>4. lambda Fonksiyonları</strong></h2>
+<p>Tek satırlık fonksiyonlar.</p>
+<p>Örnek:</p>
+<pre><code class="language-python">toplam = lambda a,b: a+b
+tek_mi = lambda a: a % 2 == 1
+</code></pre>
+<hr />
+<h2><strong>5. map() ve filter()</strong></h2>
+<pre><code class="language-python">liste = [0,1,2,3,4,5]
+
+sonuc = map(lambda x: x*10, liste)
+filtre = filter(lambda x: x % 2 == 1, liste)
+</code></pre>
+<hr />
+<h2><strong>6. Örnek Fonksiyon Problemleri</strong></h2>
+<p><strong>Asal sayı testi:</strong></p>
+<pre><code class="language-python">def asal_mi(n):
+    if n &gt;= 2:
+        for i in range(2, n):
+            if sayi % i == 0:
+                return False
+                break
+            else:
+                return True
+    else:
+        return False
+</code></pre>
+<p><strong>Sayı yer değiştirme:</strong></p>
+<pre><code class="language-python">def degistir(a,b):
+    return b,a
+</code></pre>
+<p><strong>Metni ters çevirme:</strong></p>
+<pre><code class="language-python">def tersCevir(metin):
+    return metin[::-1]
+</code></pre>
+<p><strong>Sesli harf sayısı:</strong></p>
+<pre><code class="language-python">def sesliHarfSayisi(metin):
+    ...
+</code></pre>
+<p><strong>Tekrarlayan karakterleri kaldırma:</strong></p>
+<pre><code class="language-python">def tekrarlari_kaldir(metin):
+    ...
+</code></pre>
+<p><strong>Fibonacci listesi:</strong></p>
+<pre><code class="language-python">def fibonacciSerisi(n):
+    ...
+</code></pre>
+<p><strong>Liste eleman tipi kontrolü ve toplam:</strong></p>
+<pre><code class="language-python">def listeKontrol(liste):
+    ...
+</code></pre>
+<p><strong>Çember alan ve çevre (varsayılan pi):</strong></p>
+<pre><code class="language-python">def hesapla(r, pi=3.14):
+    return 2*pi*r, pi*r*r
+</code></pre>
+<hr />
+<p>İstersen bu iki özetin birleşik tek bir PDF veya tek bir uzun MD halinde versiyonunu da hazırlayabilirim.</p>
+<h1>7.Ünite - Nesneye Yönelimli Programlama</h1>
+<hr />
+<ul>
+<li>
+<p>Nesneye Yönelimli Programlama, bir programı <strong>özellikler</strong> ve <strong>davranışlar</strong> içeren nesneler etrafında düzenleyen programlama yaklaşımıdır. Java, C#, Python, PHP ve JavaScript gibi birçok modern dil bu paradigmayı destekler.</p>
+</li>
+<li>
+<p>Gerçek dünyadaki varlıkların programlama ortamında temsil edilmesi mantığına dayanır. Örneğin bir <strong>kişi</strong> nesnesi; <em>ad, yaş</em> gibi özelliklere ve <em>yürüme, konuşma</em> gibi davranışlara sahip olabilir. Bir <strong>e-posta</strong> nesnesi de; <em>alıcı, konu, gövde</em> gibi özellikleri ve <em>gönderme, ek ekleme</em> gibi davranışları içerir.</p>
+</li>
+<li>
+<p>Prosedürel programlamada kod adım adım ilerlerken, OOP’de kod nesneler ve onların etkileşimleri etrafında şekillenir.</p>
+</li>
+</ul>
+<p>OOP’nin iki temel yapı taşı vardır:</p>
+<p><strong>1. Kalıtım (Inheritance)</strong><br />
+Bir sınıfın başka bir sınıfın özellik ve davranışlarını miras almasıdır.<br />
+Örneğin <em>pizza yapan robotlar</em>, “robot” sınıfının genel özelliklerini otomatik olarak kazanır. Genel davranışlar bir kez yazılır, tüm alt türler tekrar kullanır.</p>
+<p><strong>2. Kompozisyon (Composition)</strong><br />
+Bir nesnenin başka nesnelerden oluşmasıdır.<br />
+Pizza yapan bir robot; <em>kol, motor, sensör</em> gibi bileşenlerden oluşur. Her bileşen kendi sınıfıdır ve bir araya geldiklerinde robotun davranışını oluştururlar.</p>
+<p>Özetle OOP, kodu daha modüler, yeniden kullanılabilir ve gerçek dünyaya daha yakın bir yapıda kurgulama tekniğidir.</p>
+<h2>Sınıf &amp; Nesne</h2>
+<ul>
+<li>
+<p><code>class SınıfAdı:</code> ile tanımlanır.</p>
+</li>
+<li>
+<p><strong>Özellik (attribute/state)</strong>: nesnenin verileri.</p>
+</li>
+<li>
+<p><strong>Metot (method/behaviour)</strong>: nesnenin eylemleri.</p>
+</li>
+<li>
+<p><code>__init__(self, ...)</code> = yapıcı (constructor).</p>
+</li>
+<li>
+<p>Örnek:</p>
+</li>
+</ul>
+<pre><code class="language-python">class Evcil:
+    tur = &quot;Kedi&quot;
+    def __init__(self, ad):
+        self.ad = ad
+    def kısaBilgi(self):
+        print(self.tur, self.ad)
+</code></pre>
+<h2>Kompozisyon vs Kalıtım</h2>
+<ul>
+<li>
+<p><strong>Kompozisyon:</strong> Nesne, diğer nesneleri içerir (parça-para whole).</p>
+</li>
+<li>
+<p><strong>Kalıtım (Inheritance):</strong> <code>class Child(Parent):</code> — parent özellikleri child tarafından kullanılır/özelleştirilir.</p>
+</li>
+<li>
+<p>Parent <code>__init__</code> child içinde çağrılmalıdır (veya <code>super()</code> kullanılabilir).</p>
+</li>
+</ul>
+<h2>Polimorfizm (Çok Biçimlilik)</h2>
+<ul>
+<li>
+<p>Aynı isimli metodun alt sınıflarda farklı davranması (method overriding).</p>
+</li>
+<li>
+<p>Örnek: <code>Sekil</code> sınıfı; <code>Kare</code> ve <code>Dikdortgen</code> kendi <code>alan()</code> / <code>cevre()</code> hesaplarını yapar.</p>
+</li>
+</ul>
+<h2>Kapsülleme (Encapsulation)</h2>
+<ul>
+<li>
+<p>Veriyi gizleme; Python’da <strong>özel</strong> öznitelik için çift alt çizgi <code>__isim</code> kullanılır (isim kırpma — name mangling).</p>
+</li>
+<li>
+<p>Erişim/set için <code>get_...</code> / <code>set_...</code> metodları; setter içinde doğrulama yapılır (ör. puan 1–10 arası).</p>
+</li>
+</ul>
+<h2>Örnek sınıflar</h2>
+<ul>
+<li>
+<p><code>evcilHayvanPasaportu</code> (özellikler, metot, örnekleme)</p>
+</li>
+<li>
+<p><code>Market</code> (urun_ekle, urun_sil, urunleri_listele)</p>
+</li>
+<li>
+<p><code>Agac</code>, <code>MeyveAgaci</code>, <code>YaprakDokmeyenAgac</code> (kalıtım ve genişletme)</p>
+</li>
+<li>
+<p><code>Calisan</code>, <code>Sinav</code>, <code>Film</code>, <code>Hasta</code> — kapsülleme ve getter/setter kullanımı.</p>
+</li>
+</ul>
+<h2>Özet</h2>
+<ul>
+<li>
+<p>Sınıfları modüler, tek sorumluluklu tut.</p>
+</li>
+<li>
+<p><code>__init__</code> içinde gerekli başlangıçları yap.</p>
+</li>
+<li>
+<p>Kapsülleme ile veri tutarlılığını koru (setter doğrulaması).</p>
+</li>
+<li>
+<p>Kalıtımı gerektiğinde, kompozisyonu tercih et, yeniden kullanım ve esneklik için.</p>
+</li>
+</ul>
+<h1>8.Ünite - Python Numpy ve Pandas</h1>
+<hr />
+<h2>1. NumPy (Numerical Python)</h2>
+<p>Çok boyutlu dizileri saklamak, vektör ve matrisler üzerinde hızlı matematiksel işlemler yapmak için kullanılır.</p>
+<p><strong>Kurulum ve Çağırma:</strong></p>
+<pre><code class="language-python">pip install numpy  # Kurulum
+import numpy as np 
+</code></pre>
+<h3>Temel Dizi (Array) İşlemleri</h3>
+<ul>
+<li>
+<p><strong>Dizi Oluşturma:</strong></p>
+<ul>
+<li>
+<p><code>np.array([1, 2, 3])</code>: Listeden dizi oluşturur.</p>
+</li>
+<li>
+<p><code>np.zeros((2,2))</code>: Sıfırlardan oluşan matris.</p>
+</li>
+<li>
+<p><code>np.ones((2,3))</code>: Birlerden oluşan matris.</p>
+</li>
+<li>
+<p><code>np.arange(15)</code>: Belirli aralıkta sayı dizisi üretir.</p>
+</li>
+<li>
+<p><code>np.random.randint(0, 10, 5)</code>: Rastgele tam sayı üretir.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Dizi Özellikleri:</strong></p>
+<ul>
+<li>
+<p><code>.ndim</code>: Boyut sayısı.</p>
+</li>
+<li>
+<p><code>.shape</code>: Boyut bilgisi (satır, sütun)</p>
+</li>
+<li>
+<p><code>.size</code>: Toplam eleman sayısı.</p>
+</li>
+<li>
+<p><code>.dtype</code>: Veri tipi.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Manipülasyon ve Hesaplama</h3>
+<ul>
+<li>
+<p><strong>İndeksleme &amp; Dilimleme:</strong></p>
+<ul>
+<li>
+<p><code>A[0:5]</code>: İlk 5 eleman.</p>
+</li>
+<li>
+<p><code>A[::-1]</code>: Diziyi ters çevirir.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Şekil Değiştirme:</strong> <code>np.reshape(D, (4,5))</code> dizinin boyutlarını değiştirir.</p>
+</li>
+<li>
+<p><strong>Birleştirme:</strong> <code>np.concatenate([a, b], axis=0)</code> dizileri birleştirir.</p>
+</li>
+<li>
+<p><strong>İstatistiksel İşlemler:</strong> <code>np.sum()</code>, <code>np.mean()</code>, <code>np.max()</code>, <code>np.std()</code></p>
+</li>
+<li>
+<p><strong>Filtreleme:</strong> <code>A[A &gt; 50]</code> koşulu sağlayan elemanları getirir.</p>
+</li>
+</ul>
+<hr />
+<h2>2. pandas Kütüphanesi</h2>
+<p>NumPy üzerine inşa edilmiştir. Veri analizi, temizleme ve işleme için <strong>Series</strong> ve <strong>DataFrame</strong> yapılarını sunar.</p>
+<p><strong>Kurulum ve Çağırma:</strong></p>
+<pre><code class="language-python">pip install pandas  # Kurulum
+import pandas as pd 
+</code></pre>
+<h3>Veri Yapıları</h3>
+<ol>
+<li>
+<p><strong>Series (Seriler):</strong> Tek boyutlu, etiketli dizilerdir.</p>
+<ul>
+<li><code>pd.Series([10, 20], index=["a", "b"])</code> şeklinde oluşturulur.</li>
+</ul>
+</li>
+<li>
+<p><strong>DataFrame:</strong> Satır ve sütunlardan oluşan iki boyutlu veri yapısıdır (Excel tablosu gibi).</p>
+<ul>
+<li>Sözlükten oluşturma: <code>pd.DataFrame({"Urun": ["Elma", "Armut"], "Fiyat": [10, 20]})</code></li>
+</ul>
+</li>
+</ol>
+<h3>Dosya İşlemleri (I/O)</h3>
+<p>Veri setlerini okumak ve kaydetmek için kullanılır.</p>
+<ul>
+<li>
+<p><strong>Okuma:</strong></p>
+<ul>
+<li><code>pd.read_csv("dosya.csv")</code>: CSV okuma</li>
+</ul>
+<h2>- <code>pd.read_excel("dosya.xlsx")</code>: Excel okuma (openpyxl gerektirir)</h2>
+<ul>
+<li>
+<p><strong>Yazma:</strong></p>
+</li>
+<li>
+<p><code>df.to_csv("yeni.csv")</code> veya <code>df.to_excel("yeni.xlsx")</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Veri Keşfi ve Analizi</h3>
+<p>Veri setini hızlıca tanımak için kullanılan komutlar:</p>
+<ul>
+<li>
+<p><code>df.head(5)</code>: İlk 5 satırı gösterir.</p>
+</li>
+<li>
+<p><code>df.tail()</code>: Son satırları gösterir.</p>
+</li>
+<li>
+<p><code>df.info()</code>: Bellek kullanımı ve veri tipleri hakkında özet bilgi.</p>
+</li>
+<li>
+<p><code>df.describe()</code>: Sayısal sütunların istatistiksel özeti (ortalama, std, min, max)</p>
+</li>
+<li>
+<p><code>df["sütun"].value_counts()</code>: Kategorik verilerin frekansını sayar</p>
+</li>
+</ul>
+<h3>Veri Seçimi: <code>loc</code> ve <code>iloc</code></h3>
+<p>DataFrame içerisinden satır/sütun seçmek için iki temel yöntem vardır:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Özellik</strong></th>
+<th><strong>loc</strong></th>
+<th><strong>iloc</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mantık</strong></td>
+<td>Etiket tabanlı (İsimle seçim)</td>
+<td>İndeks tabanlı (Sayı ile seçim)</td>
+</tr>
+<tr>
+<td><strong>Aralık</strong></td>
+<td>Son eleman <strong>dahil</strong> (<code>"A":"C"</code>)</td>
+<td>Son eleman <strong>hariç</strong> (<code>0:3</code>)</td>
+</tr>
+<tr>
+<td><strong>Örnek</strong></td>
+<td><code>df.loc[:, "Ad"]</code> (Tüm satırlar, "Ad" sütunu)</td>
+<td><code>df.iloc[:, 0]</code> (Tüm satırlar, 0. sütun)</td>
+</tr>
+</tbody>
+</table>
+<p>Filtreleme Örneği:</p>
+<p><code>df.loc[df["yas"] &gt; 18]</code> komutu, "yas" sütunu 18'den büyük olan satırları getirir.</p>

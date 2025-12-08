@@ -1,0 +1,1540 @@
+<meta charset='utf-8'>
+<h1>1.Ünite - Kurulum ve PL/SQL’e Giriş</h1>
+<hr />
+<h2>1. Giriş</h2>
+<p><strong>PL/SQL (Procedural Language/SQL)</strong>, Oracle tarafından geliştirilen <strong>prosedürel veritabanı programlama dili</strong>dir.<br />
+Amaç, SQL sorgularına <strong>koşul, döngü, hata yönetimi</strong> gibi programlama yapıları kazandırmaktır.<br />
+Dil yapısı <strong>Ada</strong> ve <strong>Pascal</strong> dillerine benzer.</p>
+<p>PL/SQL dili Oracle Database 6.0 (1991) sürümünde ortaya çıkmış, zamanla <strong>prosedür, fonksiyon, trigger, paket</strong> gibi yapılar eklenmiştir.<br />
+Oracle dışında da benzer sürümler geliştirilmiştir:</p>
+<ul>
+<li>
+<p>IBM DB2 → PL/SQL desteği (v9.7+)</p>
+</li>
+<li>
+<p>PostgreSQL → PL/pgSQL</p>
+</li>
+<li>
+<p>MariaDB → PL/SQL alt kümesi (v10.3+)</p>
+</li>
+</ul>
+<hr />
+<h2>2. Gerekli Yazılımlar ve Kurulum</h2>
+<p>PL/SQL uygulamaları için gerekli bileşenler:</p>
+<table>
+<thead>
+<tr>
+<th>Yazılım</th>
+<th>Amaç</th>
+<th>Not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Oracle VirtualBox</strong></td>
+<td>Sanal makine çalıştırma</td>
+<td>Windows üzerinde Oracle Linux imajı için gerekli</td>
+</tr>
+<tr>
+<td><strong>Oracle Database 23c Free (Developer Release)</strong></td>
+<td>Oracle veritabanı</td>
+<td>Linux tabanlı sanal imaj (.ova) kullanılır</td>
+</tr>
+<tr>
+<td><strong>Oracle SQL Developer</strong></td>
+<td>SQL ve PL/SQL editörü</td>
+<td>Oracle hesabı ile indirilir</td>
+</tr>
+<tr>
+<td><strong>VirtualBox Extension Pack</strong></td>
+<td>Ek sürücü ve ağ desteği</td>
+<td>VirtualBox ile birlikte kurulmalıdır</td>
+</tr>
+</tbody>
+</table>
+<h3>Sanal Makine Özellikleri</h3>
+<ul>
+<li>
+<p><strong>OS:</strong> Oracle Linux 8.7</p>
+</li>
+<li>
+<p><strong>DB:</strong> Oracle Database 23.2 Free</p>
+</li>
+<li>
+<p><strong>Araçlar:</strong> Oracle REST Data Services, APEX, SQLcl</p>
+</li>
+</ul>
+<p><strong>Minimum sistem gereksinimleri:</strong><br />
+4 GB RAM, 20 GB disk, 2 CPU çekirdeği<br />
+(önerilen: 8 GB RAM ve üzeri)</p>
+<h3>Oracle SQL Developer Kurulumu</h3>
+<ul>
+<li>
+<p>Zip dosyası indirildikten sonra açılır.</p>
+</li>
+<li>
+<p><code>sqldeveloper.exe</code> çalıştırılarak başlatılır.</p>
+</li>
+<li>
+<p>Menü görüntü problemi varsa <strong>Tools → Preferences → Oracle → Windows</strong> seçilmelidir.</p>
+</li>
+</ul>
+<hr />
+<h2>3. Oracle Bağlantı Kurulumu</h2>
+<h3>Tarayıcı Üzerinden Bağlantı</h3>
+<ol>
+<li>
+<p>Tarayıcıdan <code>http://localhost:8080/ords/sql-developer</code> adresi açılır.</p>
+</li>
+<li>
+<p>Kullanıcı adı: <code>HR</code></p>
+</li>
+<li>
+<p>Şifre: <code>oracle</code></p>
+</li>
+<li>
+<p>Örnek sorgu:</p>
+<p><code>sql
+SELECT * FROM COUNTRIES WHERE REGION_ID = 1;</code></p>
+</li>
+</ol>
+<h3>Oracle SQL Developer ile Bağlantı</h3>
+<ol>
+<li>
+<p><strong>Connections → + (New Connection)</strong></p>
+</li>
+<li>
+<p>Bilgiler:</p>
+<ul>
+<li>
+<p>Name: <code>Oracle Sanal Makine</code></p>
+</li>
+<li>
+<p>Username: <code>HR</code></p>
+</li>
+<li>
+<p>Password: <code>oracle</code></p>
+</li>
+<li>
+<p>Hostname: <code>localhost</code></p>
+</li>
+<li>
+<p>Port: <code>1521</code></p>
+</li>
+<li>
+<p>Service name: <code>freepdb1</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Test</strong> → “Success” mesajı alınırsa bağlantı tamamdır.</p>
+</li>
+<li>
+<p>Aynı yöntemle diğer şemalar (<code>OE</code>, <code>PM</code>, <code>IX</code>, <code>BI</code>, <code>SH</code>) da eklenebilir.</p>
+</li>
+</ol>
+<hr />
+<h2>4. PL/SQL’e Giriş</h2>
+<p>PL/SQL, SQL’in yetersiz kaldığı yerlerde <strong>kontrol yapıları, hata yönetimi, modülerlik</strong> sağlar.<br />
+Her PL/SQL komutu <strong>noktalı virgül (;)</strong> ile biter.<br />
+Tip güvenli, taşınabilir ve modüler bir dildir.</p>
+<h3>PL/SQL’in Sağladıkları</h3>
+<ul>
+<li>
+<p><strong>Prosedürler</strong> ve <strong>fonksiyonlar</strong></p>
+</li>
+<li>
+<p><strong>Koşullar</strong> (<code>IF</code>, <code>CASE</code>)</p>
+</li>
+<li>
+<p><strong>Döngüler</strong> (<code>LOOP</code>, <code>FOR</code>, <code>WHILE</code>)</p>
+</li>
+<li>
+<p><strong>İstisna yönetimi (EXCEPTION)</strong></p>
+</li>
+<li>
+<p><strong>Paketler</strong> (package / package body)</p>
+</li>
+<li>
+<p><strong>Tip güvenliği</strong> ve derleme zamanı kontrolü</p>
+</li>
+</ul>
+<h3>Avantajları</h3>
+<ul>
+<li>
+<p>Sunucu tarafında çalıştığı için hızlıdır.</p>
+</li>
+<li>
+<p>Modüler yapı kod bakımını kolaylaştırır.</p>
+</li>
+<li>
+<p>Farklı platformlarda taşınabilir.</p>
+</li>
+<li>
+<p>Java, C#, PHP gibi dillerden çağrılabilir.</p>
+</li>
+</ul>
+<hr />
+<h2>5. PL/SQL Kod Mimarisi</h2>
+<p>PL/SQL kodları <strong>iki ana yapıdadır</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Tür</th>
+<th>Açıklama</th>
+<th>Özellik</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Anonim Blok</strong></td>
+<td>Veri tabanına kaydedilmez, isimsizdir.</td>
+<td>Her çalıştırmada yeniden derlenir.</td>
+</tr>
+<tr>
+<td><strong>İsimli Blok</strong></td>
+<td>Veri tabanına kaydedilir (örneğin prosedür, fonksiyon, paket).</td>
+<td>Derlenmiş hali saklanır, hızlı çalışır.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>5.1. Anonim Blok Yapısı</h3>
+<pre><code class="language-sql">DECLARE
+  -- değişken tanımlamaları
+BEGIN
+  -- çalıştırılabilir ifadeler
+EXCEPTION
+  -- hata yönetimi
+END;
+</code></pre>
+<p><strong>Bölümler:</strong></p>
+<ol>
+<li>
+<p><strong>DECLARE</strong> → Değişkenlerin tanımlandığı bölüm (isteğe bağlı)</p>
+</li>
+<li>
+<p><strong>BEGIN … END</strong> → Çalıştırılabilir komutlar (zorunlu)</p>
+</li>
+<li>
+<p><strong>EXCEPTION</strong> → Hataların yakalandığı bölüm (isteğe bağlı)</p>
+</li>
+</ol>
+<p><strong>Örnek:</strong></p>
+<pre><code class="language-sql">DECLARE
+  v_name VARCHAR2(20);
+BEGIN
+  v_name := 'Ahmet';
+  DBMS_OUTPUT.PUT_LINE('Merhaba ' || v_name);
+END;
+</code></pre>
+<ul>
+<li>
+<p>İç içe bloklar (nested blocks) oluşturulabilir.</p>
+</li>
+<li>
+<p>Bloklara etiket verilebilir (<code>&lt;&lt;etiket&gt;&gt;</code>).</p>
+</li>
+</ul>
+<hr />
+<h3>5.2. İsimli Blok Yapısı</h3>
+<table>
+<thead>
+<tr>
+<th>Yapı Türü</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prosedür (Procedure)</strong></td>
+<td>Geri değer döndürmez</td>
+<td><code>CREATE PROCEDURE selamla IS ...</code></td>
+</tr>
+<tr>
+<td><strong>Fonksiyon (Function)</strong></td>
+<td><code>RETURN</code> ile değer döndürür</td>
+<td><code>CREATE FUNCTION topla RETURN NUMBER IS ...</code></td>
+</tr>
+<tr>
+<td><strong>Paket / Paket Gövdesi</strong></td>
+<td>Birden fazla altprogramı toplar</td>
+<td><code>CREATE PACKAGE personel_pkg AS ...</code></td>
+</tr>
+<tr>
+<td><strong>Trigger / Type / Library</strong></td>
+<td>Veritabanı olaylarını veya veri tiplerini yönetir</td>
+<td><code>CREATE TRIGGER ...</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Avantajları:</strong></p>
+<ul>
+<li>
+<p>Performans (önceden derlenmiş halde saklanır)</p>
+</li>
+<li>
+<p>Modülerlik ve kodun tekrar kullanılabilirliği</p>
+</li>
+<li>
+<p>Taşınabilirlik ve kolay bakım</p>
+</li>
+</ul>
+<hr />
+<h2>6. PL/SQL Girdi/Çıktı Komutları</h2>
+<h3><strong>Konsola Yazdırma</strong></h3>
+<pre><code class="language-sql">SET SERVEROUTPUT ON;
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Merhaba PL/SQL!');
+END;
+</code></pre>
+<ul>
+<li>
+<p><code>DBMS_OUTPUT.PUT_LINE</code> → Satır sonu ekleyerek yazdırır.</p>
+</li>
+<li>
+<p><code>DBMS_OUTPUT.PUT</code> → Satır sonu eklemeden yazar.</p>
+</li>
+</ul>
+<blockquote>
+<p>Bu komutlar genelde test ve hata ayıklama aşamasında kullanılır.</p>
+</blockquote>
+<h3><strong>Kullanıcıdan Girdi Alma</strong></h3>
+<pre><code class="language-sql">ACCEPT sayi NUMBER PROMPT 'Bir sayı giriniz: '
+DECLARE
+  v_num NUMBER := &amp;sayi;
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('Girdiğiniz sayı: ' || v_num);
+END;
+</code></pre>
+<ul>
+<li><code>&amp;</code> operatörü kullanıcıdan girdi alır.</li>
+</ul>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p>Oracle Database 23c Free sanal makine ile çalıştırılır.</p>
+</li>
+<li>
+<p>PL/SQL, SQL diline prosedürel özellikler kazandırır.</p>
+</li>
+<li>
+<p>Kodlar <strong>anonim</strong> veya <strong>isimli blok</strong> biçiminde yazılır.</p>
+</li>
+<li>
+<p>Üç ana bölüm: <strong>DECLARE</strong>, <strong>BEGIN</strong>, <strong>EXCEPTION</strong>.</p>
+</li>
+<li>
+<p><code>DBMS_OUTPUT.PUT_LINE</code> ile çıktı alınır, <code>&amp;</code> ile girdi istenir.</p>
+</li>
+<li>
+<p>İsimli bloklar derlenmiş biçimde saklandığı için performans sağlar.</p>
+</li>
+</ul>
+<h1>2.Ünite - PL/SQL Temelleri</h1>
+<hr />
+<h4><strong>PL/SQL’de Kullanılan Karakterler</strong></h4>
+<p>PL/SQL, veritabanı karakter setinde yer alan harfler (A-Z, a-z), rakamlar (0-9), noktalama işaretleri ve beyaz boşluklardan oluşur. Bu karakterler, komut ve ifadeleri oluşturmak için kullanılır.</p>
+<h4><strong>PL/SQL Sözcük Türleri</strong></h4>
+<p>PL/SQL dilinde sözcük türleri; ayraçlar, tanıtıcılar, literaller, değişkenler ve sabitler, ayrılmış ve anahtar kelimeler ile yorum satırlarıdır.</p>
+<h5><strong>Ayraçlar (Delimiters)</strong></h5>
+<p>Kod içinde özel işlevi olan semboller veya karakter gruplarıdır.
+Örnekler:</p>
+<ul>
+<li><code>:=</code> atama,</li>
+<li><code>||</code> birleştirme,</li>
+<li><code>/* ... */</code> çok satırlı yorum,</li>
+<li><code>--</code> tek satırlı yorum,</li>
+<li><code>;</code> komut sonlandırıcı,</li>
+<li><code>**</code> üs alma operatörü.</li>
+</ul>
+<h5><strong>Tanıtıcılar (Identifiers)</strong></h5>
+<p>Programcı tarafından değişken, sabit, fonksiyon, paket gibi nesnelere verilen isimlerdir.
+Kurallar:</p>
+<ul>
+<li>Harf ile başlar, boşluk ve yasak karakter içermez.</li>
+<li><code>$</code>, <code>_</code>, <code>#</code> kullanılabilir.</li>
+<li>Türkçe karakter kullanılmaz.</li>
+<li>PL/SQL’e özgü ayrılmış kelimeler tanıtıcı olarak kullanılamaz.</li>
+<li>Maksimum uzunluk 128 bayttır.
+  Tanıtıcılar büyük/küçük harfe duyarsızdır; ancak çift tırnak içinde kullanıldığında duyarlı hale gelir.</li>
+</ul>
+<p><strong>Görünürlük (Scope):</strong>
+Bir tanıtıcı yalnızca tanımlandığı blokta geçerlidir. Dış blokta tanımlanan değişken iç blokta erişilebilir; ancak iç blokta tanımlanan değişken dış bloktan erişilemez.</p>
+<h5><strong>Literaller</strong></h5>
+<p>Sabit değerleri ifade eder. Türleri:</p>
+<ul>
+<li><strong>Sayı:</strong> <code>1453</code>, <code>-15072016</code>, <code>36E5</code></li>
+<li><strong>Karakter:</strong> <code>'PL/SQL'</code>, <code>'A'</code></li>
+<li><strong>Tarih:</strong> <code>'01-Dec-1980'</code></li>
+<li><strong>Zaman Aralığı:</strong> <code>'123-2'</code></li>
+<li><strong>Boolean:</strong> <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code></li>
+</ul>
+<p><strong>Kaçış karakterleri:</strong> Tek tırnak içindeki tek tırnaklar <code>''</code> veya <code>q'! ... !'</code> biçimiyle kaçırılır.</p>
+<h5><strong>Değişkenler ve Sabitler</strong></h5>
+<ul>
+<li><strong>Değişkenler:</strong> Bellekte veri saklamak için kullanılır. Veri tipi belirtilmelidir.</li>
+</ul>
+<p><code>plsql
+  DECLARE
+     sayi NUMBER := 10;</code>
+* <strong>Sabitler:</strong> Değeri değiştirilemez. <code>CONSTANT</code> ile tanımlanır.</p>
+<p><code>plsql
+  pi CONSTANT NUMBER := 3.14;</code></p>
+<h5><strong>Ayrılmış ve Anahtar Kelimeler</strong></h5>
+<ul>
+<li><strong>Ayrılmış Kelimeler:</strong> PL/SQL’in kendi sözdizimi için kullanılır; tanıtıcı olarak kullanılamaz.
+  Örn: <code>BEGIN</code>, <code>END</code>, <code>SELECT</code>, <code>IF</code>, <code>NULL</code></li>
+<li><strong>Anahtar Kelimeler:</strong> Tanıtıcı olarak kullanılabilir, fakat önerilmez.
+  Örn: <code>ADD</code>, <code>BODY</code>, <code>DATE</code>, <code>DELETE</code>, <code>UPDATE</code></li>
+</ul>
+<h5><strong>Yorum Satırları</strong></h5>
+<ul>
+<li>Tek satır: <code>-- açıklama</code></li>
+<li>Çok satır: <code>/* açıklama */</code></li>
+</ul>
+<h4><strong>PL/SQL Operatörleri</strong></h4>
+<h5><strong>Atama Operatörü</strong></h5>
+<p><code>:=</code> operatörü, sağdaki değeri soldaki değişkene atar.</p>
+<h5><strong>Birleştirme Operatörü</strong></h5>
+<p><code>||</code> operatörü karakterleri veya dizgeleri birleştirir.
+Örn: <code>'Merhaba' || ' Dünya'</code></p>
+<h5><strong>Aritmetik Operatörler</strong></h5>
+<p><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>**</code>
+Üs alma: <code>a ** b</code> veya <code>POWER(a,b)</code>
+Mod alma: <code>MOD(a,b)</code></p>
+<h5><strong>Karşılaştırma Operatörleri</strong></h5>
+<p><code>=</code>, <code>!=</code>, <code>&lt;&gt;</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>
+Eşitlik, büyüklük, küçüklük ilişkilerini kontrol eder.</p>
+<h5><strong>Mantıksal Operatörler</strong></h5>
+<p><code>AND</code>, <code>OR</code>, <code>NOT</code>
+Koşul ifadelerinde mantıksal bağlantılar kurmak için kullanılır.</p>
+<hr />
+<h3>Sonuç</h3>
+<p>PL/SQL dilinin temellerini oluşturan karakter seti, sözcük türleri, tanıtıcı kuralları, literaller, değişken-sabit tanımlamaları, yorum satırları ve operatörleri öğretir. Bu bilgiler, sonraki ünitelerdeki PL/SQL blok yapısı, akış kontrolü ve hata yönetimi konularını anlamak için ön koşuldur.</p>
+<h1>3.Ünite - PL/SQL Veri Tipleri</h1>
+<hr />
+<h2>1. Genel Bakış</h2>
+<p>PL/SQL’de veri tipleri, verilerin <strong>nasıl saklanacağını ve işleneceğini</strong> belirler.<br />
+İki ana gruba ayrılır:</p>
+<ul>
+<li>
+<p><strong>Skaler (Scalar)</strong>: Tek bir değer tutar (ör. sayı, karakter, tarih)</p>
+</li>
+<li>
+<p><strong>Bütünleşik (Composite)</strong>: Birden fazla veri içerir (ör. tablo, kayıt türleri)</p>
+</li>
+</ul>
+<p>PL/SQL, hem <strong>Oracle SQL veri tiplerini</strong> hem de kendine özel veri tiplerini destekler.<br />
+Örneğin: <code>PLS_INTEGER</code>, <code>BINARY_INTEGER</code>, <code>REF CURSOR</code> sadece PL/SQL’e özeldir.</p>
+<hr />
+<h2>2. Karakter Veri Tipleri</h2>
+<p>Alfanümerik (harf + rakam) verileri saklamak için kullanılır.</p>
+<table>
+<thead>
+<tr>
+<th>Veri Tipi</th>
+<th>Açıklama</th>
+<th>PL/SQL Maks. Boyut</th>
+<th>SQL Maks. Boyut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CHAR</strong></td>
+<td>Sabit uzunlukta karakter dizisi</td>
+<td>32767 bayt</td>
+<td>2000 bayt</td>
+</tr>
+<tr>
+<td><strong>NCHAR</strong></td>
+<td>Sabit uzunlukta <em>ulusal karakter seti</em></td>
+<td>32767 bayt</td>
+<td>2000 bayt</td>
+</tr>
+<tr>
+<td><strong>VARCHAR2</strong></td>
+<td>Değişken uzunlukta karakter dizisi</td>
+<td>32767 bayt</td>
+<td>4000–32767 bayt</td>
+</tr>
+<tr>
+<td><strong>NVARCHAR2</strong></td>
+<td>Değişken uzunlukta <em>ulusal karakter seti</em></td>
+<td>32767 bayt</td>
+<td>4000–32767 bayt</td>
+</tr>
+</tbody>
+</table>
+<h3>CHAR</h3>
+<ul>
+<li>
+<p>Sabit uzunlukludur, kalan kısımlar <strong>boşluk karakteriyle</strong> doldurulur.</p>
+<p><code>sql
+ch CHAR(5) := 'A';
+-- Bellekte "A    " olarak saklanır.</code></p>
+</li>
+</ul>
+<h3>VARCHAR2</h3>
+<ul>
+<li>
+<p>Değişken uzunluktadır, <strong>boşluk eklenmez</strong>.</p>
+<p><code>sql
+v VARCHAR2(20) := 'Ahmet';</code></p>
+</li>
+</ul>
+<h3>NCHAR / NVARCHAR2</h3>
+<ul>
+<li>Uluslararası karakterleri (ör. Türkçe, Çince) doğru saklamak için kullanılır.</li>
+</ul>
+<hr />
+<h2>3. Nümerik Veri Tipleri</h2>
+<p>Sayıları (tam veya ondalıklı) saklar.</p>
+<h3>3.1. NUMBER</h3>
+<ul>
+<li>
+<p>Tüm platformlarda <strong>taşınabilir</strong> ve en yaygın kullanılan tiptir.</p>
+</li>
+<li>
+<p>1–22 bayt arası yer kaplar.</p>
+<p><code>sql
+salary NUMBER(8,2); -- 6 tam + 2 ondalık basamak</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Alt Tip</th>
+<th>Tür</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>INTEGER</code>, <code>INT</code>, <code>SMALLINT</code></td>
+<td>Tam sayı</td>
+<td>38 basamağa kadar</td>
+</tr>
+<tr>
+<td><code>DEC</code>, <code>DECIMAL</code>, <code>NUMERIC</code></td>
+<td>Sabit noktalı</td>
+<td>38 basamağa kadar ondalıklı</td>
+</tr>
+<tr>
+<td><code>FLOAT</code>, <code>DOUBLE PRECISION</code>, <code>REAL</code></td>
+<td>Kayan noktalı</td>
+<td>63–126 bit hassasiyet</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2. FLOAT</h3>
+<ul>
+<li>Kayan noktalı sayıları depolar, <strong>yüksek hassasiyet</strong> sağlar.</li>
+</ul>
+<h3>3.3. BINARY_FLOAT / BINARY_DOUBLE</h3>
+<ul>
+<li>
+<p>Donanım tabanlı, <strong>hızlı matematiksel işlem</strong> için kullanılır.</p>
+</li>
+<li>
+<p>Yaklaşık sonuçlar döndürebilir (örneğin 0.1 + 0.2 = 0.30000004).</p>
+</li>
+</ul>
+<h3>3.4. PLS_INTEGER / BINARY_INTEGER</h3>
+<ul>
+<li>
+<p>-2.147.483.648 ↔ 2.147.483.647 aralığında değer alır.</p>
+</li>
+<li>
+<p><strong>NUMBER’dan daha hızlıdır</strong> (işlemci üzerinden hesaplanır).</p>
+</li>
+<li>
+<p>4 bayt yer kaplar.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Alt Tip</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NATURAL</code></td>
+<td>0–2.147.483.647, NULL olabilir</td>
+</tr>
+<tr>
+<td><code>NATURALN</code></td>
+<td>0–2.147.483.647, NULL olamaz</td>
+</tr>
+<tr>
+<td><code>POSITIVE</code></td>
+<td>1–2.147.483.647, NULL olabilir</td>
+</tr>
+<tr>
+<td><code>POSITIVEN</code></td>
+<td>1–2.147.483.647, NULL olamaz</td>
+</tr>
+<tr>
+<td><code>SIGNTYPE</code></td>
+<td>-1, 0, 1, NULL değerlerini alır</td>
+</tr>
+<tr>
+<td><code>SIMPLE_INTEGER</code></td>
+<td>Aynı aralıkta, NULL alamaz, en hızlı tip</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. Tarih ve Saat Veri Tipleri</h2>
+<table>
+<thead>
+<tr>
+<th>Veri Tipi</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DATE</strong></td>
+<td>Tarih + saat (saniyeye kadar)</td>
+</tr>
+<tr>
+<td><strong>TIMESTAMP</strong></td>
+<td>Daha hassas (milisaniye düzeyi)</td>
+</tr>
+<tr>
+<td><strong>TIMESTAMP WITH TIME ZONE</strong></td>
+<td>Saat dilimi içerir</td>
+</tr>
+<tr>
+<td><strong>TIMESTAMP WITH LOCAL TIME ZONE</strong></td>
+<td>Kullanıcı saat dilimine göre kaydeder</td>
+</tr>
+<tr>
+<td><strong>INTERVAL</strong></td>
+<td>Zaman aralığı saklar</td>
+</tr>
+</tbody>
+</table>
+<h3>Önemli Fonksiyonlar</h3>
+<table>
+<thead>
+<tr>
+<th>Fonksiyon</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SYSDATE</code></td>
+<td>Sunucunun tarih/saat bilgisi</td>
+</tr>
+<tr>
+<td><code>CURRENT_DATE</code></td>
+<td>Oturumun tarih/saat bilgisi</td>
+</tr>
+<tr>
+<td><code>CURRENT_TIMESTAMP</code></td>
+<td>Oturumun zaman damgası (saat dilimi dahil)</td>
+</tr>
+<tr>
+<td><code>SYSTIMESTAMP</code></td>
+<td>Sunucunun zaman damgası</td>
+</tr>
+<tr>
+<td><code>LOCALTIMESTAMP</code></td>
+<td>Yerel zaman damgası</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. INTERVAL Veri Tipleri</h2>
+<p>Zaman aralıklarını tutar.</p>
+<h3>5.1. INTERVAL YEAR TO MONTH</h3>
+<ul>
+<li>
+<p>Yıl ve ay cinsinden zaman farkı saklar.</p>
+<p><code>sql
+INTERVAL '2-6' YEAR TO MONTH -- 2 yıl 6 ay</code></p>
+</li>
+</ul>
+<h3>5.2. INTERVAL DAY TO SECOND</h3>
+<ul>
+<li>
+<p>Gün, saat, dakika ve saniye cinsinden zaman farkı saklar.</p>
+<p><code>sql
+INTERVAL '5 12:30:45' DAY TO SECOND -- 5 gün 12 saat 30 dk 45 sn</code></p>
+</li>
+</ul>
+<hr />
+<h2>6. BOOLEAN Veri Tipi</h2>
+<ul>
+<li>
+<p><strong>Mantıksal değerler</strong> tutar: <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>.</p>
+</li>
+<li>
+<p>Oracle tablolarında kullanılmaz, sadece <strong>PL/SQL değişkenleri</strong> için geçerlidir.</p>
+<p><code>sql
+DECLARE
+  kontrol BOOLEAN := TRUE;
+BEGIN
+  IF kontrol THEN
+    DBMS_OUTPUT.PUT_LINE('Evet');
+  END IF;
+END;</code></p>
+</li>
+</ul>
+<hr />
+<h2>7. LOB (Large Object) Veri Tipleri</h2>
+<p>Büyük boyutlu veriler (metin, dosya, resim, video vb.) için kullanılır.<br />
+32 KB sınırını aşan verilerde tercih edilir.</p>
+<table>
+<thead>
+<tr>
+<th>Veri Tipi</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CLOB</strong></td>
+<td>Karakter verisi (veritabanı karakter seti)</td>
+</tr>
+<tr>
+<td><strong>NCLOB</strong></td>
+<td>Ulusal karakter seti</td>
+</tr>
+<tr>
+<td><strong>BLOB</strong></td>
+<td>Binary (resim, ses, video) veriler</td>
+</tr>
+<tr>
+<td><strong>BFILE</strong></td>
+<td>Dosyanın içeriğini değil, <strong>dosya yolunu</strong> saklar</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. <code>%TYPE</code> Özniteliği</h2>
+<p>Bir değişkenin veri tipini, bir tablo kolonuna <strong>otomatik olarak bağlar</strong>.<br />
+Kolon tipi değişirse kodda değişiklik gerekmez.</p>
+<pre><code class="language-sql">DECLARE
+  v_region_id regions.region_id%TYPE;
+  v_region_name regions.region_name%TYPE;
+BEGIN
+  SELECT region_id, region_name
+  INTO v_region_id, v_region_name
+  FROM regions
+  WHERE region_id = 4;
+END;
+</code></pre>
+<hr />
+<h2>9. Veri Tipi Dönüşümleri</h2>
+<h3>9.1. Örtük (Implicit)</h3>
+<ul>
+<li>
+<p>PL/SQL otomatik dönüştürür.</p>
+<p><code>sql
+num NUMBER := '123';  -- string → number
+txt VARCHAR2(10) := 456;  -- number → string</code></p>
+</li>
+</ul>
+<h3>9.2. Aşikâr (Explicit)</h3>
+<ul>
+<li>Kullanıcı dönüşüm fonksiyonu belirtir.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Fonksiyon</th>
+<th>Dönüşüm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TO_CHAR()</code></td>
+<td>Sayı/tarih → karakter</td>
+</tr>
+<tr>
+<td><code>TO_NCHAR()</code></td>
+<td>Sayı/tarih → ulusal karakter</td>
+</tr>
+<tr>
+<td><code>TO_NUMBER()</code></td>
+<td>Karakter → sayı</td>
+</tr>
+<tr>
+<td><code>TO_DATE()</code></td>
+<td>Karakter → tarih</td>
+</tr>
+<tr>
+<td><code>TO_TIMESTAMP()</code></td>
+<td>Karakter → timestamp</td>
+</tr>
+<tr>
+<td><code>TO_TIMESTAMP_TZ()</code></td>
+<td>Karakter → timestamp (saat dilimiyle)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p>PL/SQL veri tipleri: <strong>karakter, sayısal, tarih/zaman, mantıksal, büyük veri nesneleri</strong></p>
+</li>
+<li>
+<p><code>%TYPE</code> özniteliği, dinamik ve bakımı kolay kod sağlar.</p>
+</li>
+<li>
+<p>Veri tipi dönüşümleri <strong>örtük</strong> veya <strong>aşikâr</strong> şekilde yapılır.</p>
+</li>
+<li>
+<p><code>BOOLEAN</code>, <code>PLS_INTEGER</code>, <code>BLOB</code>, <code>INTERVAL</code> gibi türler <strong>PL/SQL’e özgüdür</strong>.</p>
+</li>
+</ul>
+<h1>4.Ünite - Koşul ve Döngü Yapıları</h1>
+<hr />
+<h2>1. Giriş</h2>
+<p>PL/SQL’de <strong>koşullar ve döngüler</strong>, program akışını yönlendiren temel yapılardır.</p>
+<ul>
+<li>
+<p><strong>Koşul yapıları</strong> → Programın belirli durumlara göre farklı işlemler yapmasını sağlar.</p>
+</li>
+<li>
+<p><strong>Döngüler</strong> → Belirli işlemleri tekrar tekrar çalıştırır.</p>
+</li>
+<li>
+<p><strong>Sıralı kontrol deyimleri</strong> (GOTO, NULL) → Akış kontrolünü özel durumlarda düzenler.</p>
+</li>
+</ul>
+<hr />
+<h2>2. Koşul Yapıları</h2>
+<p>Koşul (kontrol) yapıları, <strong>BOOLEAN</strong> (TRUE / FALSE / NULL) değerine göre karar verir.<br />
+Sadece <code>TRUE</code> dönen koşulların içindeki kodlar çalıştırılır.</p>
+<p>PL/SQL’de iki temel koşul yapısı vardır:</p>
+<ol>
+<li>
+<p><code>IF</code> yapısı</p>
+</li>
+<li>
+<p><code>CASE</code> yapısı</p>
+</li>
+</ol>
+<hr />
+<h3>2.1. IF Koşul Yapısı</h3>
+<h4><strong>IF-THEN</strong></h4>
+<ul>
+<li>
+<p>En basit yapı.</p>
+</li>
+<li>
+<p>Koşul sağlanırsa blok çalışır; aksi halde atlanır.</p>
+</li>
+</ul>
+<pre><code class="language-sql">IF sayi &lt; 0 THEN
+  DBMS_OUTPUT.PUT_LINE('Negatif sayı girdiniz.');
+END IF;
+</code></pre>
+<h4><strong>IF-THEN-ELSE</strong></h4>
+<ul>
+<li>Koşul sağlanmazsa ELSE bloğu çalışır.</li>
+</ul>
+<pre><code class="language-sql">IF sayi &gt; 0 THEN
+  DBMS_OUTPUT.PUT_LINE('Pozitif');
+ELSE
+  DBMS_OUTPUT.PUT_LINE('Negatif veya Sıfır');
+END IF;
+</code></pre>
+<h4><strong>IF-THEN-ELSIF</strong></h4>
+<ul>
+<li>Birden fazla koşul kontrolü için kullanılır.</li>
+</ul>
+<pre><code class="language-sql">IF sayi &gt; 0 THEN
+  DBMS_OUTPUT.PUT_LINE('Pozitif');
+ELSIF sayi &lt; 0 THEN
+  DBMS_OUTPUT.PUT_LINE('Negatif');
+ELSE
+  DBMS_OUTPUT.PUT_LINE('Sıfır');
+END IF;
+</code></pre>
+<blockquote>
+<p><strong>Not:</strong> NULL değerli değişkenlerle yapılan karşılaştırmalar her zaman <strong>NULL</strong> döndürür.<br />
+Bu durumda IF bloğu çalışmaz, ELSE bloğu yürütülür.</p>
+</blockquote>
+<hr />
+<h3>2.2. CASE Koşul Yapısı</h3>
+<h4><strong>Basit CASE</strong></h4>
+<p>Bir değişkenin belirli değerlerle eşleşmesini kontrol eder.</p>
+<pre><code class="language-sql">CASE sayi
+  WHEN 0 THEN DBMS_OUTPUT.PUT_LINE('Sıfır');
+  WHEN 1 THEN DBMS_OUTPUT.PUT_LINE('Bir');
+  ELSE DBMS_OUTPUT.PUT_LINE('Bilinmiyor');
+END CASE;
+</code></pre>
+<h4><strong>Aramalı (Searched) CASE</strong></h4>
+<p>Koşullar açıkça belirtilir.</p>
+<pre><code class="language-sql">CASE
+  WHEN sayi MOD 2 = 0 THEN DBMS_OUTPUT.PUT_LINE('Çift');
+  ELSE DBMS_OUTPUT.PUT_LINE('Tek');
+END CASE;
+</code></pre>
+<blockquote>
+<p>CASE yapısı, çoklu IF bloklarına göre daha okunaklıdır.</p>
+</blockquote>
+<hr />
+<h2>3. Döngü Yapıları</h2>
+<p>Döngüler, belirli koşullar sağlandığı sürece kodun tekrar çalışmasını sağlar.<br />
+PL/SQL’de 3 temel döngü vardır:</p>
+<ol>
+<li>
+<p><strong>LOOP</strong> (temel döngü)</p>
+</li>
+<li>
+<p><strong>FOR döngüsü</strong></p>
+</li>
+<li>
+<p><strong>WHILE döngüsü</strong></p>
+</li>
+</ol>
+<p>Ayrıca:</p>
+<ul>
+<li>
+<p><strong>İç içe döngüler (nested loops)</strong></p>
+</li>
+<li>
+<p><strong>Döngü etiketleri</strong></p>
+</li>
+<li>
+<p><strong>EXIT</strong>, <strong>EXIT WHEN</strong>, <strong>CONTINUE</strong>, <strong>CONTINUE WHEN</strong> deyimleri<br />
+    ile kontrol sağlanır.</p>
+</li>
+</ul>
+<hr />
+<h3>3.1. LOOP Döngüsü</h3>
+<p><strong>Sınırsız döngüdür</strong>, koşul verilmez.<br />
+Sonlandırmak için <code>EXIT</code> veya <code>EXIT WHEN</code> kullanılır.</p>
+<pre><code class="language-sql">DECLARE
+  i NUMBER := 1;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+    i := i + 1;
+    EXIT WHEN i &gt; 10;
+  END LOOP;
+END;
+</code></pre>
+<blockquote>
+<p>Eğer <code>EXIT</code> eklenmezse <strong>sonsuz döngü</strong> oluşur.</p>
+</blockquote>
+<hr />
+<h3>3.2. FOR Döngüsü</h3>
+<p>Başlangıç ve bitiş değerleri bellidir.</p>
+<pre><code class="language-sql">FOR i IN 1..5 LOOP
+  DBMS_OUTPUT.PUT_LINE(i);
+END LOOP;
+</code></pre>
+<p><strong>Geriye doğru sayım</strong> için <code>REVERSE</code> kullanılır:</p>
+<pre><code class="language-sql">FOR i IN REVERSE 10..1 LOOP
+  DBMS_OUTPUT.PUT_LINE(i);
+END LOOP;
+</code></pre>
+<blockquote>
+<p>Döngü indisi (<code>i</code>) sadece döngü bloğu içinde geçerlidir.<br />
+Döngü bitince erişilemez.</p>
+</blockquote>
+<hr />
+<h3>3.3. WHILE Döngüsü</h3>
+<p>Koşul doğru olduğu sürece döngü çalışır.</p>
+<pre><code class="language-sql">DECLARE
+  i NUMBER := 1;
+BEGIN
+  WHILE i &lt;= 5 LOOP
+    DBMS_OUTPUT.PUT_LINE(i);
+    i := i + 1;
+  END LOOP;
+END;
+</code></pre>
+<blockquote>
+<p>Koşul başlangıçta FALSE ise döngü hiç çalışmaz.</p>
+</blockquote>
+<hr />
+<h2>4. İç İçe Döngüler (Nested Loops) ve Etiketler</h2>
+<p>Bir döngü içinde başka bir döngü çalıştırılabilir.<br />
+Her döngünün sayaç değişkeni farklı olmalıdır.</p>
+<pre><code class="language-sql">FOR i IN 1..3 LOOP
+  FOR j IN 1..3 LOOP
+    DBMS_OUTPUT.PUT_LINE('i='||i||', j='||j);
+  END LOOP;
+END LOOP;
+</code></pre>
+<h3><strong>Etiket Kullanımı</strong></h3>
+<p>Okunabilirliği artırır, karmaşık döngülerde özellikle faydalıdır.</p>
+<pre><code class="language-sql">&lt;&lt;dis_dongu&gt;&gt;
+FOR i IN 1..5 LOOP
+  &lt;&lt;ic_dongu&gt;&gt;
+  FOR j IN 1..5 LOOP
+    EXIT dis_dongu WHEN j = 3;
+  END LOOP ic_dongu;
+END LOOP dis_dongu;
+</code></pre>
+<blockquote>
+<p>Dış döngü, içteki döngü tarafından <strong>etiketle sonlandırılabilir</strong>.<br />
+Ancak tersi (iç döngünün dıştan kapatılması) mümkün değildir.</p>
+</blockquote>
+<hr />
+<h2>5. Sıralı Kontrol Deyimleri</h2>
+<p>PL/SQL, akışı özel durumlarda yönlendirmek için iki deyim sunar:</p>
+<h3><strong>5.1. GOTO</strong></h3>
+<p>Program akışını belirtilen etikete yönlendirir.<br />
+Ancak <strong>tavsiye edilmez</strong> (kodun okunurluğunu düşürür).</p>
+<pre><code class="language-sql">BEGIN
+  GOTO atla;
+  DBMS_OUTPUT.PUT_LINE('Bu satır çalışmaz.');
+  &lt;&lt;atla&gt;&gt;
+  DBMS_OUTPUT.PUT_LINE('GOTO etiketi atlandı.');
+END;
+</code></pre>
+<h3><strong>5.2. NULL</strong></h3>
+<p>Hiçbir işlem yapmaz, genellikle <strong>boş koşul</strong> için kullanılır.</p>
+<pre><code class="language-sql">IF sayi = 0 THEN
+  NULL; -- hiçbir şey yapılmaz
+ELSE
+  DBMS_OUTPUT.PUT_LINE('Sıfır değil');
+END IF;
+</code></pre>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p><strong>Koşullar</strong>: <code>IF</code>, <code>ELSIF</code>, <code>CASE</code></p>
+</li>
+<li>
+<p><strong>Döngüler</strong>: <code>LOOP</code>, <code>FOR</code>, <code>WHILE</code></p>
+</li>
+<li>
+<p><strong>Kontrol deyimleri</strong>: <code>EXIT</code>, <code>CONTINUE</code>, <code>GOTO</code>, <code>NULL</code></p>
+</li>
+<li>
+<p>İç içe döngülerde <strong>etiketler</strong> okunabilirliği artırır.</p>
+</li>
+<li>
+<p><code>EXIT WHEN</code> koşulu sağlanmazsa <strong>sonsuz döngü</strong> oluşur.</p>
+</li>
+</ul>
+<h1>5.Ünite - Kursörler</h1>
+<hr />
+<p>Veritabanı sorgularından dönen sonuçların satır satır işlenmesini sağlayan kursör (imleç) yapısını ve detaylarını ele almaktadır.</p>
+<h3>1. Kursör (İmleç) Temel Kavramları</h3>
+<ul>
+<li>
+<p><strong>Tanım:</strong> Sorgu sonuçlarını bir döngü aracılığıyla tek tek işlemeye yarayan PL/SQL bileşenidir.</p>
+</li>
+<li>
+<p><strong>Aktif Set (Active Set):</strong> Oracle, sorgu sonuçlarını tutmak için özel bir bellek alanı ayırır; bu alana "aktif set" denir. Kursör bu setin en başına konumlanır ve satır satır ilerler.</p>
+</li>
+<li>
+<p><strong>Avantajları:</strong></p>
+<ul>
+<li>
+<p>Çok satırlı sorgu sonuçlarının yönetilmesini sağlar.</p>
+</li>
+<li>
+<p>Veri istemciye çekilmeden sunucu belleğinde işlendiği için performans sağlar.</p>
+</li>
+<li>
+<p>Veri bütünlüğünü korumak için satır kilitleme (locking) yapılabilir.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>2. Kursör Türleri</h3>
+<p>PL/SQL'de iki ana kursör türü bulunur:</p>
+<h4>A. Örtük (Implicit) Kursörler</h4>
+<ul>
+<li>
+<p><strong>Otomatik Oluşum:</strong> <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code> gibi DML komutları veya tek satır döndüren <code>SELECT</code> sorguları çalıştığında sunucu tarafından otomatik oluşturulur ve kapatılır.</p>
+</li>
+<li>
+<p><strong>Yönetim:</strong> Programcı müdahale edemez, sadece niteliklerini okuyabilir.</p>
+</li>
+<li>
+<p><strong>Nitelikler:</strong></p>
+<ul>
+<li>
+<p><code>SQL%ISOPEN</code>: Örtük kursörlerde her zaman <code>FALSE</code> döner çünkü işlem bitince hemen kapanır.</p>
+</li>
+<li>
+<p><code>SQL%FOUND</code> / <code>SQL%NOTFOUND</code>: İşlem sonucunda satır dönüp dönmediğini belirtir.</p>
+</li>
+<li>
+<p><code>SQL%ROWCOUNT</code>: İşlemden etkilenen satır sayısını verir.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>B. Aşikâr (Explicit) Kursörler</h4>
+<ul>
+<li>
+<p><strong>Manuel Kontrol:</strong> Birden fazla satır döndüren sorgular için programcı tarafından <code>DECLARE</code> bloğunda tanımlanır.</p>
+</li>
+<li>
+<p><strong>Yaşam Döngüsü:</strong> 4 aşamadan oluşur:</p>
+<ol>
+<li>
+<p><strong>Tanımlama (Declare):</strong> <code>CURSOR kursör_adı IS SELECT...</code> şeklinde yapılır.</p>
+</li>
+<li>
+<p><strong>Açma (Open):</strong> <code>OPEN kursör_adı;</code> komutuyla aktif set oluşturulur.</p>
+</li>
+<li>
+<p><strong>Veri Çekme (Fetch):</strong> <code>FETCH kursör_adı INTO değişkenler;</code> ile veriler satır satır alınır.</p>
+</li>
+<li>
+<p><strong>Kapatma (Close):</strong> <code>CLOSE kursör_adı;</code> ile bellek serbest bırakılır.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Performans:</strong> Sorgu sadece ilk açılışta çözümlenir (parse edilir), kapatılıp tekrar açıldığında tekrar çözümleme yapılmaz.</p>
+</li>
+<li>
+<p><strong>Parametre Kullanımı:</strong> Kursörler parametre alarak daha esnek hale getirilebilir.</p>
+</li>
+</ul>
+<h3>3. Kullanım Yöntemleri ve İpuçları</h3>
+<ul>
+<li>
+<p><strong>FOR Döngüsü:</strong> Aşikâr kursörler <code>FOR</code> döngüsü ile kullanıldığında; açma, veri çekme ve kapatma işlemleri otomatik yapılır, kod kısalır.</p>
+</li>
+<li>
+<p><strong>SELECT FOR UPDATE:</strong> Veriler işlenirken başka oturumların bu verileri değiştirmesini engellemek (kilitlemek) için kullanılır.</p>
+<ul>
+<li>
+<p><code>NOWAIT</code>: Kilitli satır varsa beklemeden hata fırlatır.</p>
+</li>
+<li>
+<p><code>WAIT n</code>: Kilidin kalkması için n saniye bekler.</p>
+</li>
+<li>
+<p><code>SKIP LOCKED</code>: Kilitli satırları atlar.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>4. Kursör Değişkenleri (Ref Cursor)</h3>
+<ul>
+<li>
+<p><strong>Referans Mantığı:</strong> Doğrudan sonucu değil, sonucun bulunduğu bellek adresini referans alır.</p>
+</li>
+<li>
+<p><strong>Esneklik:</strong> Bir kez tanımlandıktan sonra farklı sorgular için tekrar tekrar kullanılabilir ve alt programlara parametre olarak gönderilebilir.</p>
+</li>
+<li>
+<p><strong>Türleri:</strong></p>
+<ul>
+<li>
+<p><strong>Zayıf (Weak):</strong> Dönüş tipi belli değildir (<code>SYS_REFCURSOR</code> veya <code>REF CURSOR</code>). Her türlü sorguyla ilişkilendirilebilir.</p>
+</li>
+<li>
+<p><strong>Kuvvetli (Strong):</strong> <code>RETURN</code> ile dönüş tipi belirtilir, sadece uyumlu sorgularla çalışır.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h1>6.Ünite - Kayıt ve Koleksiyon Veri Tipi</h1>
+<hr />
+<p>Tek bir değer tutan değişkenlerin ötesine geçerek, birden fazla veriyi mantıksal bir yapı altında saklamayı sağlayan <strong>Bütünleşik Veri Yapılarını</strong> (Record ve Collection) ele almaktadır.</p>
+<h3>1. Bütünleşik Veri Yapıları</h3>
+<p>Tek seferde tek bir veri tutan skaler tiplerin (VARCHAR2, NUMBER vb.) aksine, bütünleşik veri tipleri veriyi bir grup halinde yönetmeyi sağlar. Bu yapılar kodun okunabilirliğini artırır ve bakım maliyetlerini düşürür. İki temel yapı vardır: <strong>Record (Kayıt)</strong> ve <strong>Collection (Koleksiyon)</strong>.</p>
+<h3>2. Kayıt Veri Tipi (Record)</h3>
+<p>Farklı veri tiplerindeki verilerin (örneğin bir öğrencinin adı, numarası ve doğum tarihi) tek bir mantıksal çatı altında tutulmasını sağlar. Bir veritabanı tablosundaki "satır" mantığına benzer.</p>
+<ul>
+<li>
+<p><strong>Yapısı:</strong> "Field" adı verilen bileşenlerden oluşur. Verilere nokta notasyonu (<code>kayit_adi.alan_adi</code>) ile erişilir.</p>
+</li>
+<li>
+<p><strong>Record Türleri:</strong></p>
+<ol>
+<li>
+<p><strong>Programcı Tanımlı Record:</strong> Alanların isimleri ve veri tipleri programcı tarafından <code>TYPE ... IS RECORD</code> bloğu içinde tek tek belirtilir.</p>
+</li>
+<li>
+<p><strong>Kursör Tabanlı Record:</strong> Bir kursörün döndürdüğü sonuç kümesinin yapısını referans alır (<code>%ROWTYPE</code> kullanılır).</p>
+</li>
+<li>
+<p><strong>Tablo Tabanlı Record:</strong> Doğrudan bir veritabanı tablosunun veya view'ın yapısını referans alır (<code>tablo_adi%ROWTYPE</code>). Tablodaki bir sütun değişirse, record yapısı da otomatik uyum sağlar.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3>3. Koleksiyon Veri Yapısı (Collection)</h3>
+<p>Dizi (array) mantığına benzer şekilde, <strong>aynı türdeki</strong> çok sayıda veriyi saklamak için kullanılır.</p>
+<ul>
+<li>
+<p><strong>Temel Koleksiyon Türleri:</strong></p>
+<ol>
+<li>
+<p><strong>Associative Array (İlişkisel Dizi):</strong> Anahtar-değer (Key-Value) çifti mantığıyla çalışır. Boyutu dinamiktir, eleman sayısı baştan belirtilmez. İndisler sayısal veya metin (string) tabanlı olabilir. Sıralı olma zorunluluğu yoktur (seyrek yapı).</p>
+</li>
+<li>
+<p><strong>VARRAY (Değişken Boyutlu Dizi):</strong> Boyutu (maksimum eleman sayısı) tanımlanırken belirtilir ve sabit sınırları vardır. Elemanlar sıralı ve bitişiktir (sık yapı).</p>
+</li>
+<li>
+<p><strong>Nested Table (İç İçe Tablo):</strong> Boyutu sınırlandırılmamıştır, dinamik olarak büyüyüp küçülebilir. Tek boyutlu dizi gibi davranır ve indisler 1'den başlar.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3>4. Koleksiyon Metodları</h3>
+<p>Koleksiyonlar üzerinde işlem yapmak, gezinmek veya boyutlarını yönetmek için kullanılan fonksiyonlardır:</p>
+<ul>
+<li>
+<p><strong>Gezinme:</strong> <code>FIRST</code> (ilk eleman), <code>LAST</code> (son eleman), <code>PRIOR</code> (önceki), <code>NEXT</code> (sonraki).</p>
+</li>
+<li>
+<p><strong>Yönetim:</strong> <code>COUNT</code> (mevcut eleman sayısı), <code>LIMIT</code> (maksimum kapasite - sadece VARRAY için), <code>EXISTS</code> (eleman var mı?).</p>
+</li>
+<li>
+<p><strong>Değişiklik:</strong> <code>EXTEND</code> (yeni eleman için yer açar), <code>TRIM</code> (sondan eleman siler), <code>DELETE</code> (belirli veya tüm elemanları siler).</p>
+</li>
+</ul>
+<h1>7.Ünite - Alt Program ve Paketler</h1>
+<hr />
+<p>Kod tekrarını önlemek, yönetimi kolaylaştırmak ve performansı artırmak amacıyla kullanılan <strong>Alt Programlar</strong> (Prosedür ve Fonksiyonlar) ile bunları gruplayan <strong>Paket</strong> yapılarını ele almaktadır.</p>
+<h3>1. Alt Programlar (Subprograms)</h3>
+<p>Sürekli tekrar eden kod bloklarının isimlendirilerek saklanmasıdır. Derlenmiş halde sunucuda tutuldukları için her çağrıldıklarında tekrar derlenmezler, bu da performans artışı sağlar.</p>
+<ul>
+<li>
+<p><strong>Alt Program Türleri:</strong></p>
+<ol>
+<li>
+<p><strong>Bağımsız (Standalone):</strong> <code>CREATE</code> komutuyla doğrudan şema altında oluşturulan ve veritabanında saklanan türdür.</p>
+</li>
+<li>
+<p><strong>Paket Alt Programları:</strong> Bir paket yapısı içinde tanımlananlardır.</p>
+</li>
+<li>
+<p><strong>İç İçe (Nested):</strong> Bir PL/SQL bloğu içinde tanımlanan ve sadece o blokta geçerli olan türdür.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Prosedür (Procedure) ve Fonksiyon (Function) Ayrımı:</strong></p>
+<ul>
+<li>
+<p><strong>Prosedür:</strong> Belirli bir işi (eylemi) yerine getirmek için kullanılır. Geriye bir değer döndürme zorunluluğu yoktur (ancak parametreler ile değer taşıyabilir). SQL sorguları (SELECT) içinde doğrudan kullanılamazlar.</p>
+</li>
+<li>
+<p><strong>Fonksiyon:</strong> Muhakkak geriye bir değer döndürmelidir (<code>RETURN</code> kullanımı zorunludur). Bir atama işleminde veya SQL sorgusu içinde kullanılabilirler.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Parametre Modları:</strong></p>
+<ul>
+<li>
+<p><strong>IN:</strong> Varsayılan moddur. Parametre dışarıdan değer alır, alt program içinde kullanılır ancak değiştirilemez.</p>
+</li>
+<li>
+<p><strong>OUT:</strong> Parametre dışarıdan değer almaz, alt program içinde değer atanarak dışarıya sonuç gönderir.</p>
+</li>
+<li>
+<p><strong>IN OUT:</strong> Parametre hem dışarıdan başlangıç değeri alır hem de alt program içinde değiştirilerek güncel değeri dışarıya gönderir.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>2. Paketler (Packages)</h3>
+<p>Birbiriyle ilişkili prosedür, fonksiyon, değişken, imleç (cursor) ve tipleri mantıksal bir çatı altında toplayan nesnelerdir. İki temel bileşenden oluşur:</p>
+<ol>
+<li>
+<p><strong>Paket Başlığı (Specification/Header):</strong> Paketin "vitrini" veya arayüzüdür. Dışarıdan erişilebilecek değişkenler ve alt programların prototipleri (imzaları) burada tanımlanır. Kodun gövdesi (işleyişi) burada bulunmaz.</p>
+</li>
+<li>
+<p><strong>Paket Gövdesi (Body):</strong> Başlıkta tanımlanan alt programların asıl kodlarının (implementation) yazıldığı yerdir. Ayrıca sadece paket içinde geçerli olan (dışarıya kapalı/private) değişken ve alt programlar da burada tanımlanabilir.</p>
+</li>
+<li>
+<p><strong>Avantajları:</strong></p>
+<ul>
+<li>
+<p><strong>Modülerlik:</strong> İlişkili işlemler bir arada tutulur.</p>
+</li>
+<li>
+<p><strong>Gizlilik:</strong> Paket gövdesindeki özel tanımlar dışarıdan görülmez.</p>
+</li>
+<li>
+<p><strong>Kalıcılık:</strong> Paket değişkenleri, oturum boyunca değerlerini korurlar.</p>
+</li>
+<li>
+<p><strong>Aşırı Yükleme (Overloading):</strong> Aynı isimde fakat farklı parametre yapılarına (farklı veri tipi veya sayısı) sahip birden fazla alt programın tanımlanabilmesine olanak sağlar. Bu özellik sadece paketlerde kullanılabilir.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2>Örnekler</h2>
+<h3>Örnek 1: Parametreli Prosedür (IN ve OUT Kullanımı)</h3>
+<p>Bu örnek, dışarıdan bir çalışan ID'si alır (IN) ve o çalışanın maaşını bulup dışarıya döndürür (OUT).</p>
+<pre><code class="language-plsql">-- Prosedürün Tanımlanması
+CREATE OR REPLACE PROCEDURE maas_bul (
+    p_calisan_id IN NUMBER,      -- Dışarıdan veri alır
+    p_maas OUT NUMBER            -- Dışarıya veri gönderir
+) IS
+BEGIN
+    SELECT salary INTO p_maas
+    FROM employees
+    WHERE employee_id = p_calisan_id;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        p_maas := 0; -- Çalışan bulunamazsa 0 döndür
+        DBMS_OUTPUT.PUT_LINE('Çalışan bulunamadı.');
+END;
+/
+
+-- Prosedürün Çağrılması (Anonim Blok)
+DECLARE
+    v_gelen_maas NUMBER;
+BEGIN
+    -- 100 numaralı çalışanın maaşını bulup v_gelen_maas değişkenine atar
+    maas_bul(100, v_gelen_maas);
+    DBMS_OUTPUT.PUT_LINE('Çalışanın Maaşı: ' || v_gelen_maas);
+END;
+/
+</code></pre>
+<h3>Örnek 2: Değer Döndüren Fonksiyon (Function)</h3>
+<p>Bu örnek, verilen bir yarıçap değerine göre dairenin alanını hesaplar ve sonucu <code>RETURN</code> ile döndürür.</p>
+<pre><code class="language-plsql">-- Fonksiyonun Tanımlanması
+CREATE OR REPLACE FUNCTION daire_alani_hesapla (
+    p_yaricap NUMBER
+) RETURN NUMBER IS
+    v_pi CONSTANT NUMBER := 3.14159;
+    v_alan NUMBER;
+BEGIN
+    v_alan := v_pi * POWER(p_yaricap, 2);
+    RETURN v_alan; -- Hesaplanan değeri döndürür
+END;
+/
+
+-- Fonksiyonun Kullanımı (SELECT içinde)
+SELECT daire_alani_hesapla(5) AS Alan FROM DUAL;
+
+-- Veya Anonim Blok İçinde
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Alan: ' || daire_alani_hesapla(10));
+END;
+/
+</code></pre>
+<h3>Örnek 3: Paket (Package) ve Aşırı Yükleme (Overloading)</h3>
+<p>Bu örnek, ders notlarında vurgulanan "Paketlerde aynı isimde metod tanımlama" (Method Overloading) konusunu gösterir. <code>yazdir</code> isminde iki prosedür tanımlanır; biri sayıları, diğeri metinleri ekrana basar.</p>
+<p><strong>Adım 1: Paket Başlığı (Specification)</strong></p>
+<pre><code class="language-plsql">CREATE OR REPLACE PACKAGE yazdirma_araclari IS
+    -- Aynı isimde iki farklı prosedür bildirimi
+    PROCEDURE yazdir(p_veri NUMBER);
+    PROCEDURE yazdir(p_veri VARCHAR2);
+END yazdirma_araclari;
+/
+</code></pre>
+<p><strong>Adım 2: Paket Gövdesi (Body)</strong></p>
+<pre><code class="language-plsql">CREATE OR REPLACE PACKAGE BODY yazdirma_araclari IS
+
+    -- Sayı alan versiyonun kodlanması
+    PROCEDURE yazdir(p_veri NUMBER) IS
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Sayısal Değer: ' || p_veri);
+    END yazdir;
+
+    -- Metin alan versiyonun kodlanması
+    PROCEDURE yazdir(p_veri VARCHAR2) IS
+    BEGIN
+        DBMS_OUTPUT.PUT_LINE('Metinsel Değer: ' || p_veri);
+    END yazdir;
+
+END yazdirma_araclari;
+/
+</code></pre>
+<p><strong>Adım 3: Paketin Kullanımı</strong></p>
+<pre><code class="language-plsql">BEGIN
+    -- PL/SQL hangi prosedürü çağıracağını veri tipinden anlar
+    yazdirma_araclari.yazdir(1923);       -- Sayısal versiyon çalışır
+    yazdirma_araclari.yazdir('Merhaba');  -- Metinsel versiyon çalışır
+END;
+/
+</code></pre>
+<h1>8.Ünite - Trigger ve İstisna İşleme</h1>
+<hr />
+<p>Veritabanı olaylarına otomatik tepki veren <strong>Trigger (Tetikleyici)</strong> mekanizmasını ve çalışma zamanı hatalarını yönetmeyi sağlayan <strong>İstisna İşleme (Exception Handling)</strong> yapısını ele almaktadır.</p>
+<hr />
+<h2>BÖLÜM 1: Trigger (Tetikleyici)</h2>
+<p>Trigger, veritabanında gerçekleşen belirli bir olaya (INSERT, UPDATE, DELETE vb.) bağlı olarak, o olaydan önce (<code>BEFORE</code>) veya sonra (<code>AFTER</code>) sunucu tarafından <strong>otomatik</strong> olarak çalıştırılan özel prosedürlerdir.</p>
+<h3>1. Triggerların Özellikleri ve Kullanım Alanları</h3>
+<ul>
+<li>
+<p><strong>Otomatik Çalışma:</strong> Prosedürler gibi kullanıcı tarafından manuel çağrılmazlar, tanımlandıkları olay gerçekleşince devreye girerler.</p>
+</li>
+<li>
+<p><strong>Yönetim:</strong> <code>DISABLE</code> komutu ile geçici olarak durdurulabilir, <code>ENABLE</code> ile tekrar aktif edilebilirler.</p>
+</li>
+<li>
+<p><strong>Kullanım Alanları:</strong></p>
+<ul>
+<li>
+<p>Veri güvenliği ve denetimi (Auditing/Loglama).</p>
+</li>
+<li>
+<p>Karmaşık veri bütünlüğü kontrolleri.</p>
+</li>
+<li>
+<p>Otomatik değer atama (Örn: Doğum tarihinden yaş hesaplama).</p>
+</li>
+<li>
+<p>Yetkisiz erişimi engelleme (Örn: Mesai saatleri dışında işlem yasağı).</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>2. Trigger Türleri ve Bileşenleri</h3>
+<ul>
+<li>
+<p><strong>DML Triggerları:</strong> Tablo üzerinde veri değişikliği (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) yapıldığında çalışır.</p>
+<ul>
+<li>
+<p><strong>Deyim Seviyesi (Statement Level):</strong> İşlemden kaç satır etkilenirse etkilensin sadece bir kez çalışır.</p>
+</li>
+<li>
+<p><strong>Satır Seviyesi (Row Level):</strong> İşlemden etkilenen her bir satır için ayrı ayrı çalışır (<code>FOR EACH ROW</code> ile tanımlanır).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sistem Triggerları:</strong> Veritabanı (<code>STARTUP</code>, <code>SHUTDOWN</code>) veya şema olaylarına (<code>CREATE</code>, <code>DROP</code>, <code>ALTER</code>) bağlı çalışır.</p>
+</li>
+<li>
+<p><strong>Compound (Bütünleşik) Trigger:</strong> Tek bir trigger bloğu içinde hem işlem öncesi/sonrası hem de satır bazlı işlemleri birleştiren yapıdır.</p>
+</li>
+<li>
+<p><strong>Instead Of Trigger:</strong> Genellikle View'lar üzerinde, gerçekleşen işlemin yerine başka bir işlem yapmak için kullanılır.</p>
+</li>
+</ul>
+<h3>3. Koşullu Predikatlar</h3>
+<p>Trigger gövdesinde hangi işlemin yapıldığını anlamak için kullanılır:</p>
+<ul>
+<li>
+<p><code>INSERTING</code>: Ekleme işlemi mi?</p>
+</li>
+<li>
+<p><code>UPDATING</code>: Güncelleme işlemi mi?</p>
+</li>
+<li>
+<p><code>DELETING</code>: Silme işlemi mi?</p>
+</li>
+</ul>
+<hr />
+<h2>BÖLÜM 2: İstisna İşleme (Exception Handling)</h2>
+<p>Programın çalışması sırasında meydana gelen hatalara (Runtime Errors) <strong>istisna</strong> denir. İstisnalar işlenmezse program aniden sonlanır ve veri tutarsızlığına yol açabilir.</p>
+<h3>1. İstisna İşleme Bloğu</h3>
+<p>Hataları yakalamak için <code>BEGIN ... END</code> bloğunun sonuna <code>EXCEPTION</code> kısmı eklenir.</p>
+<ul>
+<li>
+<p><code>WHEN hata_adi THEN ...</code> yapısı ile spesifik hatalar yakalanır.</p>
+</li>
+<li>
+<p><code>WHEN OTHERS THEN ...</code> ile tanımlanmamış diğer tüm hatalar yakalanır.</p>
+</li>
+</ul>
+<h3>2. İstisna Türleri</h3>
+<ol>
+<li>
+<p><strong>Sistem İstisnaları (Oracle Tanımlı):</strong></p>
+<ul>
+<li>
+<p><strong>İsimli (Ön Tanımlı):</strong> Sık karşılaşılan hatalardır. Örn: <code>NO_DATA_FOUND</code> (veri bulunamadı), <code>ZERO_DIVIDE</code> (sıfıra bölme hatası), <code>TOO_MANY_ROWS</code> (tek satır beklerken çok satır gelmesi).</p>
+</li>
+<li>
+<p><strong>İsimsiz (Dahili):</strong> Bir ismi olmayan, sadece hata kodu (ORA-xxxxx) olan hatalardır. <code>PRAGMA EXCEPTION_INIT</code> ile isim verilebilir veya <code>SQLCODE</code> ile yakalanabilir.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Kullanıcı Tanımlı İstisnalar:</strong> Programcının belirlediği iş kurallarına aykırı durumlarda (Örn: Stok miktarının negatife düşmesi) oluşturduğu istisnalardır.</p>
+<ul>
+<li>
+<p>Tanımlama: <code>hata_adi EXCEPTION;</code></p>
+</li>
+<li>
+<p>Fırlatma: <code>RAISE hata_adi;</code> veya <code>RAISE_APPLICATION_ERROR</code> kullanılır.</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3>3. Hata Bilgisi Alma Fonksiyonları</h3>
+<ul>
+<li>
+<p><code>SQLCODE</code>: Hatanın sayısal kodunu döndürür.</p>
+</li>
+<li>
+<p><code>SQLERRM</code>: Hatanın açıklama mesajını döndürür.</p>
+</li>
+</ul>
+<hr />
+<h2>BÖLÜM 3: Pratik Kod Örnekleri</h2>
+<p>Aşağıda trigger ve istisna işleme konularını pekiştiren, doğru sözdizimi ile hazırlanmış örnekler yer almaktadır.</p>
+<h3>Örnek 1: DML Trigger (Loglama İşlemi)</h3>
+<p>Bir çalışanın maaşı güncellendiğinde, eski ve yeni maaşı kaydeden bir trigger örneği.</p>
+<pre><code class="language-plsql">-- Trigger Tanımlama
+CREATE OR REPLACE TRIGGER trg_maas_kontrol
+AFTER UPDATE OF salary ON employees -- Sadece salary kolonu güncellenirse çalış
+FOR EACH ROW -- Her satır için çalış (Eski ve yeni değerlere erişmek için)
+BEGIN
+    -- Maaş değiştiyse ekrana bilgi yaz (veya log tablosuna ekle)
+    DBMS_OUTPUT.PUT_LINE('Eski Maaş: ' || :OLD.salary || 
+                         ' - Yeni Maaş: ' || :NEW.salary);
+END;
+/
+</code></pre>
+<h3>Örnek 2: İstisna İşleme (Sıfıra Bölme ve Diğerleri)</h3>
+<p>Bir bölme işleminde olası hataları yakalayan blok.</p>
+<pre><code class="language-plsql">DECLARE
+    v_bolunen NUMBER := 100;
+    v_bolen   NUMBER := 0;
+    v_sonuc   NUMBER;
+BEGIN
+    -- Bölme işlemi deneniyor
+    v_sonuc := v_bolunen / v_bolen;
+    DBMS_OUTPUT.PUT_LINE('Sonuç: ' || v_sonuc);
+
+EXCEPTION
+    -- Sıfıra bölme hatası yakalanırsa
+    WHEN ZERO_DIVIDE THEN
+        DBMS_OUTPUT.PUT_LINE('Hata: Bir sayı sıfıra bölünemez!');
+
+    -- Beklenmeyen başka bir hata olursa
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Beklenmeyen Hata Kodu: ' || SQLCODE);
+        DBMS_OUTPUT.PUT_LINE('Hata Mesajı: ' || SQLERRM);
+END;
+/
+</code></pre>
+<h3>Örnek 3: Kullanıcı Tanımlı İstisna</h3>
+<p>Bir çalışana negatif prim verilmesini engelleyen özel hata yönetimi.</p>
+<pre><code class="language-plsql">DECLARE
+    v_prim_miktari NUMBER := -500;
+    ex_gecersiz_prim EXCEPTION; -- Kullanıcı tanımlı istisna
+BEGIN
+    IF v_prim_miktari &lt; 0 THEN
+        -- Hata fırlatılır
+        RAISE ex_gecersiz_prim;
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('Prim tanımlandı: ' || v_prim_miktari);
+
+EXCEPTION
+    WHEN ex_gecersiz_prim THEN
+        -- Özel hata mesajı verilir
+        RAISE_APPLICATION_ERROR(-20001, 'Hata: Prim miktarı negatif olamaz!');
+END;
+/
+</code></pre>

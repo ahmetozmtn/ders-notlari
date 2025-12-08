@@ -1,0 +1,1485 @@
+<meta charset='utf-8'>
+<h1>1.Ünite - Web Programlamaya Giriş</h1>
+<hr />
+<h2>1. Giriş</h2>
+<p><strong>PHP</strong>, 1995 yılında <strong>Rasmus Lerdorf</strong> tarafından geliştirilen, <strong>sunucu taraflı (server-side)</strong> çalışan ve <strong>HTML içine gömülebilen betik dili</strong>dir.<br />
+Başlangıçta kişisel web sitesindeki ziyaretçi sayısını tutmak için geliştirilmiştir.<br />
+Bugün, dinamik web sayfaları oluşturmak için en popüler dillerden biridir.</p>
+<ul>
+<li>
+<p>Açık kaynaklı ve ücretsizdir.</p>
+</li>
+<li>
+<p>HTML ile kolayca entegre olur.</p>
+</li>
+<li>
+<p>Sunucu tarafında çalıştığı için kullanıcı kaynak kodda PHP komutlarını göremez.</p>
+</li>
+<li>
+<p>Web sitelerinin yaklaşık %75’i PHP tabanlıdır.</p>
+</li>
+</ul>
+<hr />
+<h2>2. PHP’nin Kısa Tarihçesi</h2>
+<table>
+<thead>
+<tr>
+<th>Yıl</th>
+<th>Olay</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1993</strong></td>
+<td>PHP’nin ilk sürümü (Personal Home Page Tools) oluşturuldu.</td>
+</tr>
+<tr>
+<td><strong>1995</strong></td>
+<td>PHP/FI (Form Interpreter) sürümü yayınlandı.</td>
+</tr>
+<tr>
+<td><strong>1997</strong></td>
+<td>Zeev Suraski &amp; Andi Gutmans katkısıyla PHP 3 hazırlandı, ad “PHP: Hypertext Preprocessor” oldu.</td>
+</tr>
+<tr>
+<td><strong>1999</strong></td>
+<td>Zend Motoru geliştirildi.</td>
+</tr>
+<tr>
+<td><strong>2000</strong></td>
+<td>PHP 4 (Zend Engine 1.0 ile) yayınlandı.</td>
+</tr>
+<tr>
+<td><strong>2004</strong></td>
+<td>PHP 5 – Nesneye yönelik programlama desteği.</td>
+</tr>
+<tr>
+<td><strong>2015</strong></td>
+<td>PHP 7 yayınlandı.</td>
+</tr>
+<tr>
+<td><strong>2020</strong></td>
+<td>PHP 8 sürümü çıktı.</td>
+</tr>
+<tr>
+<td><strong>2023</strong></td>
+<td>En son kararlı sürüm 8.0.9.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>PHP hâlen <strong>PHP Group</strong> tarafından geliştirilmektedir.</p>
+</blockquote>
+<hr />
+<h2>3. Web Sunucusu ve Ortam Kurulumu</h2>
+<p>PHP’nin çalışabilmesi için bilgisayarınızda şu bileşenler bulunmalıdır:</p>
+<table>
+<thead>
+<tr>
+<th>Bileşen</th>
+<th>Görevi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Apache</strong></td>
+<td>Web sunucusu (istekleri karşılar)</td>
+</tr>
+<tr>
+<td><strong>PHP</strong></td>
+<td>Betik dili yorumlayıcısı</td>
+</tr>
+<tr>
+<td><strong>MySQL</strong></td>
+<td>Veritabanı yönetim sistemi</td>
+</tr>
+</tbody>
+</table>
+<p>Bu üçlü genellikle <strong>WAMP</strong>, <strong>XAMPP</strong> veya <strong>EasyPHP</strong> gibi hazır paketlerle birlikte kurulur.</p>
+<h3>EasyPHP Kurulumu</h3>
+<ol>
+<li>
+<p><a href="https://www.easyphp.org/easyphp-devserver.php">easyphp.org</a> adresinden uygun sürüm indirilir.</p>
+</li>
+<li>
+<p>Kurulum dizini seçilir.</p>
+</li>
+<li>
+<p>Kurulum sonrası masaüstünde “DevServer” kısayolu oluşur.</p>
+</li>
+<li>
+<p>Simgeye tıklayıp <strong>HTTP Sunucusunu Başlat</strong> seçeneğiyle sunucu çalıştırılır.</p>
+</li>
+<li>
+<p>Kurulum test etmek için tarayıcıda şu adresler açılır:</p>
+<ul>
+<li>
+<p><code>http://localhost</code></p>
+</li>
+<li>
+<p><code>http://127.0.0.1</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>Not:</strong> PHP dosyaları <code>EasyPHP &gt; www</code> klasöründe tutulmalıdır.</p>
+<hr />
+<h2>4. Kod Editörü Kurulumu</h2>
+<p>Kod yazmak için çeşitli editörler kullanılabilir:</p>
+<ul>
+<li>
+<p><strong>Sublime Text</strong></p>
+</li>
+<li>
+<p><strong>Notepad++</strong></p>
+</li>
+<li>
+<p><strong>PHPDesigner</strong></p>
+</li>
+<li>
+<p><strong>Dreamweaver</strong></p>
+</li>
+<li>
+<p><strong>PHPED</strong></p>
+</li>
+</ul>
+<p>Bu ders kapsamında <strong>Sublime Text 3</strong> önerilir:<br />
+👉 <a href="https://www.sublimetext.com/3">https://www.sublimetext.com/3</a></p>
+<p><strong>PHP dosyaları</strong>, EasyPHP’nin <code>www</code> klasörü altına kaydedilmeli ve <code>.php</code> uzantısı kullanılmalıdır.<br />
+Örnek:</p>
+<pre><code>C:\Program Files\EasyPHP\www\ilk_dosyam.php
+</code></pre>
+<hr />
+<h2>5. PHP’nin Temel Özellikleri</h2>
+<p>PHP iki şekilde kullanılabilir:</p>
+<h3>1. Sunucu Taraflı Kodlama</h3>
+<ul>
+<li>
+<p>Dinamik içerik üretir (örneğin kullanıcı giriş sistemi, formlar, veritabanı işlemleri).</p>
+</li>
+<li>
+<p>HTML, XML, PDF veya grafik çıktıları oluşturabilir.</p>
+</li>
+<li>
+<p>MySQL, Oracle, PostgreSQL, MSSQL gibi birçok veritabanı ile çalışır.</p>
+</li>
+<li>
+<p>Apache, Nginx, IIS gibi web sunucularında çalışır.</p>
+</li>
+<li>
+<p>Windows, Linux, macOS platformlarında desteklenir.</p>
+</li>
+</ul>
+<h3>2. Komut Satırı Uygulamaları</h3>
+<ul>
+<li>
+<p>PHP kodları terminal üzerinden de çalıştırılabilir.</p>
+</li>
+<li>
+<p>Sistem yönetimi, log analizi, otomasyon gibi görevlerde kullanılabilir.</p>
+</li>
+</ul>
+<hr />
+<h2>6. PHP Kodlama Kuralları</h2>
+<h3>Temel Yazım Kuralları</h3>
+<ul>
+<li>
+<p>PHP kodları <code>&lt;?php ... ?&gt;</code> etiketleri arasında yazılır.</p>
+</li>
+<li>
+<p>Her satır <code>;</code> ile biter.</p>
+</li>
+<li>
+<p>Anahtar kelimelerde (ör. <code>echo</code>, <code>while</code>) <strong>büyük/küçük harf duyarlılığı yoktur</strong>.</p>
+</li>
+<li>
+<p>Değişken adlarında <strong>duyarlılık vardır</strong> (<code>$ders</code> ≠ <code>$Ders</code>).</p>
+</li>
+<li>
+<p>Türkçe karakter kullanılacaksa, HTML belgesine <code>&lt;meta charset="UTF-8"&gt;</code> eklenmelidir.</p>
+</li>
+</ul>
+<p><strong>Örnek:</strong></p>
+<pre><code class="language-php">&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;?php
+  echo &quot;Merhaba Dünya!&quot;;
+  echo &quot;İkinci komut satırı.&quot;;
+?&gt;
+</code></pre>
+<hr />
+<h3>Yorum Satırları</h3>
+<p>Yorumlar, kodun açıklama bölümleridir. Tarayıcı tarafından çalıştırılmaz.</p>
+<pre><code class="language-php">// Tek satırlık yorum
+# Alternatif tek satırlık yorum
+/* 
+Çok satırlı 
+yorumlar 
+buraya yazılır 
+*/
+</code></pre>
+<hr />
+<h2>7. PHP – HTML Farkları</h2>
+<table>
+<thead>
+<tr>
+<th>Özellik</th>
+<th>PHP</th>
+<th>HTML</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tür</strong></td>
+<td>Sunucu taraflı programlama dili</td>
+<td>İstemci taraflı işaretleme dili</td>
+</tr>
+<tr>
+<td><strong>Amaç</strong></td>
+<td>Dinamik içerik ve arka yüz işlemleri</td>
+<td>Sayfa yapısı ve içerik oluşturma</td>
+</tr>
+<tr>
+<td><strong>Dosya Uzantısı</strong></td>
+<td><code>.php</code></td>
+<td><code>.html</code></td>
+</tr>
+<tr>
+<td><strong>Çalışma Yeri</strong></td>
+<td>Sunucu</td>
+<td>Tarayıcı</td>
+</tr>
+<tr>
+<td><strong>Veritabanı İşlemleri</strong></td>
+<td>Destekler (MySQL, PostgreSQL vb.)</td>
+<td>Desteklemez</td>
+</tr>
+<tr>
+<td><strong>Karmaşıklık</strong></td>
+<td>Orta – ileri düzey</td>
+<td>Basit ve kolay öğrenilir</td>
+</tr>
+<tr>
+<td><strong>Çıktı</strong></td>
+<td>Dinamik (kullanıcıya göre değişir)</td>
+<td>Statik (herkese aynı görünür)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>8. Ek Bilgiler – isset() ve empty() Farkı</h2>
+<table>
+<thead>
+<tr>
+<th>Fonksiyon</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>isset()</strong></td>
+<td>Değişken tanımlı mı kontrol eder.</td>
+</tr>
+<tr>
+<td><strong>empty()</strong></td>
+<td>Değişken tanımlı <strong>ve</strong> boş mu kontrol eder.</td>
+</tr>
+<tr>
+<td><strong>!isset()</strong> ≠ <strong>empty()</strong></td>
+<td>Birbirinin tersi değildir; farklı durumları test eder.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Formlardan gelen veriler genellikle boş (<code>""</code>) döner, NULL değil.<br />
+Bu nedenle değişkenin <strong>tanımlı olup olmadığını</strong> kontrol etmek için <code>isset()</code> kullanılır.</p>
+</blockquote>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p>PHP, <strong>dinamik web geliştirme</strong> için kullanılan açık kaynaklı bir betik dilidir.</p>
+</li>
+<li>
+<p><strong>Apache + PHP + MySQL</strong> üçlüsü, web geliştirme ortamını oluşturur.</p>
+</li>
+<li>
+<p><strong>EasyPHP</strong> gibi kurulum paketleri, bu bileşenleri kolayca yükler.</p>
+</li>
+<li>
+<p>PHP kodları <code>&lt;?php ... ?&gt;</code> arasında yazılır ve <code>.php</code> uzantısı taşır.</p>
+</li>
+<li>
+<p><strong>Sunucu tarafında</strong> çalışır, kullanıcı kaynak kodda PHP’yi göremez.</p>
+</li>
+<li>
+<p><strong>HTML</strong> statiktir, PHP ise <strong>dinamik</strong> içerik üretir.</p>
+</li>
+</ul>
+<h1>2.Ünite - Değişken Tanımı ve Veri Türleri</h1>
+<hr />
+<h4><strong>PHP’de Değişken Tanımlama</strong></h4>
+<p>PHP’de değişkenler <code>$</code> işaretiyle başlar. Değişkenler herhangi bir türde veri tutabilir; tür belirtmeye gerek yoktur, PHP otomatik olarak atanan değerden türü belirler.</p>
+<pre><code class="language-php">$degisken = 5;
+echo $degisken; // 5
+</code></pre>
+<p><strong>Kurallar:</strong></p>
+<ul>
+<li>
+<p>Değişken isimleri harf veya <code>_</code> ile başlar.</p>
+</li>
+<li>
+<p>Boşluk, özel karakter ve Türkçe harf kullanılmaz.</p>
+</li>
+<li>
+<p>Harf büyüklüğüne duyarlıdır (<code>$ad</code> ≠ <code>$AD</code>).</p>
+</li>
+</ul>
+<hr />
+<h4><strong>PHP Veri Türleri</strong></h4>
+<p>PHP’de temel olarak <strong>altı veri türü</strong> bulunur:</p>
+<ul>
+<li>
+<p><strong>Integer:</strong> Tam sayılar.</p>
+<p><code>php
+$yas = 25;</code></p>
+</li>
+<li>
+<p><strong>Float (Double):</strong> Ondalıklı sayılar.</p>
+<p><code>php
+$oran = 1.25e3;</code></p>
+</li>
+<li>
+<p><strong>String:</strong> Metin ifadeler.</p>
+<p><code>php
+$isim = "Ahmet";</code></p>
+</li>
+<li>
+<p><strong>Boolean:</strong> <code>TRUE</code> veya <code>FALSE</code> değerleri.</p>
+<p><code>php
+$aktif = TRUE;</code></p>
+</li>
+<li>
+<p><strong>Array (Dizi):</strong> Birden fazla değeri tek değişkende tutar.</p>
+<p><code>php
+$dersler = ["PHP", "Java", "SQL"];</code></p>
+</li>
+<li>
+<p><strong>Object (Nesne):</strong> Sınıflardan türetilmiş veri yapıları.</p>
+<p><code>php
+$ogrenci = new Ogrenci();</code></p>
+</li>
+<li>
+<p><strong>NULL:</strong> Tanımlanmamış veya boş değişken.</p>
+<p><code>php
+$veri = null;</code></p>
+</li>
+</ul>
+<hr />
+<h4><strong>Değişken Türünü Öğrenme</strong></h4>
+<ul>
+<li>
+<p><strong><code>gettype()</code></strong> – Değişkenin türünü döndürür.</p>
+<p><code>php
+echo gettype($degisken);</code></p>
+</li>
+<li>
+<p><strong><code>var_dump()</code></strong> – Tür, değer ve uzunluğu detaylı gösterir.</p>
+<p><code>php
+var_dump($dizi);</code></p>
+</li>
+</ul>
+<hr />
+<h4><strong>Değişken Türünü Değiştirme</strong></h4>
+<ul>
+<li>
+<p><strong><code>settype()</code></strong> – Tür dönüşümü yapar.</p>
+<p><code>php
+$a = "25";
+settype($a, "integer"); // Artık tamsayı</code></p>
+</li>
+</ul>
+<hr />
+<h4><strong>Sabitler (Constants)</strong></h4>
+<p>Sabitler <code>$</code> işareti olmadan tanımlanır ve değiştirilemez.</p>
+<pre><code class="language-php">define(&quot;PI&quot;, 3.14159);
+echo PI; // 3.14159
+</code></pre>
+<p><strong>Kurallar:</strong></p>
+<ul>
+<li>
+<p>Harf veya <code>_</code> ile başlar, büyük harfe duyarlıdır.</p>
+</li>
+<li>
+<p>Global kapsamda geçerlidir.</p>
+</li>
+<li>
+<p><code>defined('PI')</code> ile tanımlı olup olmadığı kontrol edilir.</p>
+</li>
+</ul>
+<p><strong>Bazı yerleşik sabitler:</strong><br />
+<code>__FILE__</code>, <code>__LINE__</code>, <code>__DIR__</code>, <code>__FUNCTION__</code>, <code>PHP_VERSION</code>, <code>PHP_OS</code></p>
+<hr />
+<h4><strong>Değişken Kapsamı (Scope)</strong></h4>
+<ol>
+<li>
+<p><strong>Yerel (Local):</strong> Fonksiyon içinde tanımlanır, sadece o fonksiyon içinde geçerlidir.</p>
+<p><code>php
+function test() { $a = 5; }</code></p>
+</li>
+<li>
+<p><strong>Genel (Global):</strong> Fonksiyon dışında tanımlanır.</p>
+<p><code>php
+global $a;</code></p>
+</li>
+<li>
+<p><strong>Statik (Static):</strong> Fonksiyon içinde tanımlanır ve çağrılar arasında değerini korur.</p>
+<p><code>php
+static $sayac = 0;</code></p>
+</li>
+<li>
+<p><strong>Fonksiyon Parametreleri:</strong> Fonksiyona gönderilen değişkenlerdir.</p>
+<p><code>php
+function selam($isim) { echo "Merhaba, $isim"; }</code></p>
+</li>
+</ol>
+<hr />
+<h4><strong>PHP Tarih ve Zaman Fonksiyonları</strong></h4>
+<p><strong><code>getdate()</code></strong> – Tarih ve zaman bilgisini dizi olarak döndürür.</p>
+<pre><code class="language-php">$bugun = getdate();
+echo &quot;$bugun[weekday], $bugun[month] $bugun[mday], $bugun[year]&quot;;
+</code></pre>
+<p>Dizi anahtarları: <code>seconds</code>, <code>minutes</code>, <code>hours</code>, <code>mday</code>, <code>wday</code>, <code>mon</code>, <code>year</code>, <code>weekday</code>, <code>month</code>, <code>yday</code></p>
+<hr />
+<h3>Sonuç</h3>
+<p>PHP’de değişkenlerin tanımı, veri türleri, tür dönüşümü, sabitler, değişken kapsamı ve tarih-zaman fonksiyonları anlatılmıştır.<br />
+PHP’de veri türleri <strong>dinamiktir</strong>, tür kontrolü çalışma zamanında yapılır. Sabitler değiştirilemezken değişkenlerin kapsamı, tanımlandığı yere göre belirlenir.</p>
+<h1>3.Ünite - PHP Operatörler</h1>
+<hr />
+<p>Operatörler, değişkenler ve değerler üzerinde işlem yapmayı sağlayan sembollerdir. PHP’de başlıca altı operatör grubu bulunur:</p>
+<ol>
+<li>
+<p>Birleştirme Operatörleri</p>
+</li>
+<li>
+<p>Aritmetik Operatörler</p>
+</li>
+<li>
+<p>Atama Operatörleri</p>
+</li>
+<li>
+<p>Arttırma ve Eksiltme Operatörleri</p>
+</li>
+<li>
+<p>Karşılaştırma Operatörleri</p>
+</li>
+<li>
+<p>Mantıksal Operatörler</p>
+</li>
+</ol>
+<hr />
+<h4><strong>1. Birleştirme Operatörleri</strong></h4>
+<p>String ifadeleri birleştirmek için <code>"."</code> kullanılır.</p>
+<pre><code class="language-php">$ad = &quot;Ahmet&quot;;
+$soyad = &quot;Özmetin&quot;;
+$adSoyad = $ad . &quot; &quot; . $soyad; // &quot;Ahmet Özmetin&quot;
+</code></pre>
+<p>Mevcut içeriğe ekleme yapmak için <code>.=</code> operatörü kullanılır:</p>
+<pre><code class="language-php">$ad = &quot;Ahmet&quot;;
+$ad .= &quot; Yıldız&quot;; // &quot;Ahmet Özmetin&quot;
+</code></pre>
+<hr />
+<h4><strong>2. Aritmetik Operatörler</strong></h4>
+<p>Matematiksel işlemleri gerçekleştirir:</p>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>İşlem</th>
+<th>Örnek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Toplama</td>
+<td><code>$a + $b</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Çıkarma</td>
+<td><code>$a - $b</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Çarpma</td>
+<td><code>$a * $b</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Bölme</td>
+<td><code>$a / $b</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Mod Alma</td>
+<td><code>$a % $b</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">$a = 10; $b = 3;
+echo $a % $b; // 1
+</code></pre>
+<hr />
+<h4><strong>3. Atama Operatörleri</strong></h4>
+<p>Değişkenlere değer atamak veya mevcut değeri değiştirmek için kullanılır.</p>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>Atama</td>
+<td><code>$a = 5;</code></td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>Toplayarak atama</td>
+<td><code>$a += 10;</code></td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>Çıkartarak atama</td>
+<td><code>$a -= 3;</code></td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>Çarparak atama</td>
+<td><code>$a *= 2;</code></td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>Bölerek atama</td>
+<td><code>$a /= 4;</code></td>
+</tr>
+<tr>
+<td><code>%=</code></td>
+<td>Mod alarak atama</td>
+<td><code>$a %= 2;</code></td>
+</tr>
+<tr>
+<td><code>.=</code></td>
+<td>Birleştirerek atama</td>
+<td><code>$metin .= " eklendi";</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4><strong>4. Arttırma ve Eksiltme Operatörleri</strong></h4>
+<p>Değişkenin değerini 1 artırır veya azaltır.</p>
+<ul>
+<li>
+<p><code>++$x</code>: Önceden arttırma</p>
+</li>
+<li>
+<p><code>$x++</code>: Sonradan arttırma</p>
+</li>
+<li>
+<p><code>--$x</code>: Önceden azaltma</p>
+</li>
+<li>
+<p><code>$x--</code>: Sonradan azaltma</p>
+</li>
+</ul>
+<pre><code class="language-php">$x = 5;
+echo ++$x; // 6
+echo $x--; // 6, ardından 5
+</code></pre>
+<p><strong>Not:</strong> PHP’de karakterler üzerinde de kullanılabilir:</p>
+<pre><code class="language-php">$harf = 'a';
+$harf++; // 'b'
+$harf = 'z';
+$harf++; // 'a'
+</code></pre>
+<hr />
+<h4><strong>5. Karşılaştırma Operatörleri</strong></h4>
+<p>İki değeri karşılaştırır, sonuç <code>TRUE</code> veya <code>FALSE</code> döner.</p>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Anlamı</th>
+<th>Örnek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>Eşittir</td>
+<td><code>$a == $b</code></td>
+</tr>
+<tr>
+<td><code>===</code></td>
+<td>Tür ve değer olarak denktir</td>
+<td><code>$a === $b</code></td>
+</tr>
+<tr>
+<td><code>!=</code> veya <code>&lt;&gt;</code></td>
+<td>Eşit değildir</td>
+<td><code>$a != $b</code></td>
+</tr>
+<tr>
+<td><code>!==</code></td>
+<td>Denk değildir</td>
+<td><code>$a !== $b</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Küçüktür</td>
+<td><code>$a &lt; $b</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Büyüktür</td>
+<td><code>$a &gt; $b</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Küçük eşit</td>
+<td><code>$a &lt;= $b</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Büyük eşit</td>
+<td><code>$a &gt;= $b</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4><strong>6. Mantıksal Operatörler</strong></h4>
+<p>Mantıksal ifadeleri birleştirir.</p>
+<table>
+<thead>
+<tr>
+<th>Operatör</th>
+<th>Anlamı</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>and</code> veya <code>&amp;&amp;</code></td>
+<td>VE</td>
+<td>Her iki ifade doğruysa <code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>or</code> veya <code>\|\|</code></td>
+<td>VEYA</td>
+<td>Sadece biri doğruysa <code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>xor</code></td>
+<td>Ayrıcalıklı VEYA</td>
+<td>Sadece biri doğruysa <code>TRUE</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>DEĞİL</td>
+<td>İfade yanlışsa <code>TRUE</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4><strong>İşlem Önceliği (Operator Precedence)</strong></h4>
+<p>PHP, işlemleri matematiksel öncelik sırasına göre yürütür:</p>
+<ol>
+<li>
+<p><code>()</code> Parantez</p>
+</li>
+<li>
+<p><code>++</code>, <code>--</code></p>
+</li>
+<li>
+<p><code>*</code>, <code>/</code>, <code>%</code></p>
+</li>
+<li>
+<p><code>+</code>, <code>-</code></p>
+</li>
+<li>
+<p><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code></p>
+</li>
+<li>
+<p><code>==</code>, <code>===</code>, <code>!=</code>, <code>!==</code></p>
+</li>
+<li>
+<p><code>&amp;&amp;</code></p>
+</li>
+<li>
+<p><code>||</code></p>
+</li>
+<li>
+<p><code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code></p>
+</li>
+<li>
+<p><code>AND</code></p>
+</li>
+<li>
+<p><code>XOR</code></p>
+</li>
+<li>
+<p><code>OR</code></p>
+</li>
+</ol>
+<hr />
+<h3>Sonuç</h3>
+<p>Bu ünitede PHP’de kullanılan operatörler detaylı olarak incelenmiştir.<br />
+Operatörler; matematiksel, mantıksal, karşılaştırmalı veya birleştirici işlemler yapmayı sağlar.<br />
+İşlem önceliği, parantez → arttırma/azaltma → çarpma/bölme → toplama/çıkarma → karşılaştırma → mantıksal işlemler şeklindedir.<br />
+Operatörlerin doğru kullanımı, PHP’de koşullar ve hesaplamalar için temel öneme sahiptir.</p>
+<h1>4.Ünite - Diziler</h1>
+<hr />
+<p>Diziler, birden fazla veriyi tek bir değişken içinde saklamayı sağlar. Her eleman bir “indis” (index) veya “anahtar” (key) ile tanımlanır. PHP’de dizi oluşturmak için iki sözdizimi vardır:</p>
+<pre><code class="language-php">$dersler = array(&quot;PHP&quot;, &quot;Java&quot;, &quot;SQL&quot;);
+$dersler = [&quot;PHP&quot;, &quot;Java&quot;, &quot;SQL&quot;];
+</code></pre>
+<p>Diziler farklı türdeki verileri (sayı, metin, boolean) aynı anda tutabilir.</p>
+<hr />
+<h4><strong>Dizilerin Görüntülenmesi</strong></h4>
+<p><code>echo</code> yalnızca bir dizi olduğunu belirtir. Dizinin içeriğini görüntülemek için:</p>
+<pre><code class="language-php">print_r($dizi);
+var_dump($dizi);
+</code></pre>
+<p>Bu fonksiyonlar, dizinin elemanlarını indisleriyle birlikte listeler.</p>
+<hr />
+<h4><strong>İndisli (Numaralı) Diziler</strong></h4>
+<p>Sıfırdan başlayan sayısal indekslere sahip dizilerdir.</p>
+<pre><code class="language-php">$isim = array(&quot;Ayşe&quot;, &quot;Ali&quot;, &quot;Ahmet&quot;);
+echo $isim[0]; // Ayşe
+</code></pre>
+<p>Döngüyle tüm elemanlara ulaşmak için:</p>
+<pre><code class="language-php">$dersler = array(&quot;Web&quot;, &quot;Java&quot;, &quot;PHP&quot;);
+for($i = 0; $i &lt; count($dersler); $i++) {
+  echo $dersler[$i];
+}
+</code></pre>
+<hr />
+<h4><strong>İlişkisel Diziler</strong></h4>
+<p>Her elemanın anahtar–değer şeklinde saklandığı dizilerdir. Anahtar string veya sayı olabilir.</p>
+<pre><code class="language-php">$derskredi = array(&quot;WEB&quot; =&gt; 6, &quot;JAVA&quot; =&gt; 4, &quot;PHP&quot; =&gt; 5);
+echo $derskredi[&quot;WEB&quot;]; // 6
+</code></pre>
+<p>Aynı işlem <code>=&gt;</code> operatörüyle manuel olarak da yapılabilir:</p>
+<pre><code class="language-php">$derskredi[&quot;WEB&quot;] = 6;
+</code></pre>
+<p>Tırnaksız anahtar kullanımı uyarıya yol açabilir, bu nedenle anahtarlar tırnak içinde yazılmalıdır.</p>
+<hr />
+<h4><strong>Çok Boyutlu Diziler</strong></h4>
+<p>Bir dizi içinde başka dizilerin bulunduğu yapılardır.</p>
+<pre><code class="language-php">$dersler = [
+  &quot;PHP&quot; =&gt; [&quot;Eğitmen&quot; =&gt; &quot;Ali&quot;, &quot;Hafta&quot; =&gt; &quot;12&quot;, &quot;Kredi&quot; =&gt; 5],
+  &quot;WEB&quot; =&gt; [&quot;Eğitmen&quot; =&gt; &quot;Ahmet&quot;, &quot;Hafta&quot; =&gt; &quot;15&quot;, &quot;Kredi&quot; =&gt; 4]
+];
+echo $dersler[&quot;PHP&quot;][&quot;Eğitmen&quot;]; // Ali
+</code></pre>
+<p>Bu tür diziler karmaşık veri yapılarının düzenli tutulmasını sağlar.</p>
+<hr />
+<h4><strong>Dizi Fonksiyonları</strong></h4>
+<ul>
+<li>
+<p><strong><code>count()</code></strong>: Dizi eleman sayısını döndürür.</p>
+<p><code>php
+echo count($dersler); // 3</code></p>
+</li>
+<li>
+<p><strong><code>is_array()</code></strong>: Değişkenin dizi olup olmadığını kontrol eder.</p>
+<p><code>php
+echo is_array($dersler); // 1 (true)</code></p>
+</li>
+<li>
+<p><strong><code>implode()</code></strong>: Dizi elemanlarını birleştirip string döndürür.</p>
+<p><code>php
+echo implode(',', $dersler); // PHP,Java,SQL</code></p>
+</li>
+<li>
+<p><strong><code>explode()</code></strong>: String ifadeyi ayraçlara göre parçalayarak diziye çevirir.</p>
+<p><code>php
+$dersler = explode(',', "PHP,Java,SQL");</code></p>
+</li>
+</ul>
+<hr />
+<h4><strong>Sıralama Fonksiyonları</strong></h4>
+<table>
+<thead>
+<tr>
+<th>Fonksiyon</th>
+<th>Açıklama</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sort()</code></td>
+<td>Değere göre küçükten büyüğe sıralar, anahtarları bozar.</td>
+</tr>
+<tr>
+<td><code>rsort()</code></td>
+<td>Değere göre büyükten küçüğe sıralar, anahtarları bozar.</td>
+</tr>
+<tr>
+<td><code>asort()</code></td>
+<td>Değere göre küçükten büyüğe sıralar, anahtarları korur.</td>
+</tr>
+<tr>
+<td><code>arsort()</code></td>
+<td>Değere göre büyükten küçüğe sıralar, anahtarları korur.</td>
+</tr>
+<tr>
+<td><code>ksort()</code></td>
+<td>Anahtara göre küçükten büyüğe sıralar.</td>
+</tr>
+<tr>
+<td><code>krsort()</code></td>
+<td>Anahtara göre büyükten küçüğe sıralar.</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">$dersler = array(&quot;PHP&quot;, &quot;WEB&quot;, &quot;JAVA&quot;);
+sort($dersler);
+print_r($dersler); // JAVA, PHP, WEB
+</code></pre>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p>PHP dizileri farklı türde verileri bir arada saklayabilir.</p>
+</li>
+<li>
+<p>Diziler; <strong>indisli</strong>, <strong>ilişkisel</strong> ve <strong>çok boyutlu</strong> olarak üçe ayrılır.</p>
+</li>
+<li>
+<p><code>print_r()</code>, <code>var_dump()</code>, <code>count()</code>, <code>implode()</code>, <code>explode()</code> gibi fonksiyonlar dizilerle çalışmayı kolaylaştırır.</p>
+</li>
+<li>
+<p>Sıralama fonksiyonları ile diziler değer veya anahtara göre düzenlenebilir.</p>
+</li>
+</ul>
+<h1>5.Ünite - Koşul İfadeleri</h1>
+<hr />
+<p>Programlamada <strong>karar verme</strong> işlemleri koşul ifadeleriyle yapılır.<br />
+Koşullar, belirli bir mantıksal ifadeye göre farklı işlemler yürütülmesini sağlar.<br />
+PHP’de koşul ifadeleri genellikle <strong><code>if</code>, <code>else</code>, <code>elseif</code>, <code>switch</code></strong> ve <strong>üçlü (ternary)</strong> yapılarla oluşturulur.</p>
+<hr />
+<h4><strong>1. if Yapısı</strong></h4>
+<p>Bir koşul doğruysa (<code>TRUE</code>) kod bloğu çalışır.</p>
+<pre><code class="language-php">if ($yas &gt;= 18) {
+  echo &quot;Reşitsiniz.&quot;;
+}
+</code></pre>
+<hr />
+<h4><strong>2. if – else Yapısı</strong></h4>
+<p>Koşul sağlanmazsa (<code>FALSE</code>) alternatif kod bloğu yürütülür.</p>
+<pre><code class="language-php">if ($yas &gt;= 18) {
+  echo &quot;Reşitsiniz.&quot;;
+} else {
+  echo &quot;Reşit değilsiniz.&quot;;
+}
+</code></pre>
+<hr />
+<h4><strong>3. if – elseif – else Yapısı</strong></h4>
+<p>Birden fazla koşulun sırayla kontrol edilmesini sağlar.</p>
+<pre><code class="language-php">if ($puan &gt;= 90) {
+  echo &quot;AA&quot;;
+} elseif ($puan &gt;= 80) {
+  echo &quot;BA&quot;;
+} else {
+  echo &quot;Kaldınız&quot;;
+}
+</code></pre>
+<hr />
+<h4><strong>4. İç İçe (Nested) if Yapıları</strong></h4>
+<p>Bir <code>if</code> bloğunun içinde başka bir <code>if</code> yer alabilir.</p>
+<pre><code class="language-php">if ($giris == true) {
+  if ($rol == &quot;admin&quot;) {
+    echo &quot;Yönetici paneline hoş geldiniz.&quot;;
+  }
+}
+</code></pre>
+<hr />
+<h4><strong>5. Ternary (Üçlü) Operatör</strong></h4>
+<p>Kısa if–else yazımıdır:</p>
+<pre><code class="language-php">$sonuc = ($yas &gt;= 18) ? &quot;Reşit&quot; : &quot;Reşit değil&quot;;
+</code></pre>
+<p>Bu yapı, basit koşullarda kodu daha okunabilir hale getirir.</p>
+<hr />
+<h4><strong>6. Switch – Case Yapısı</strong></h4>
+<p>Bir değişkenin alabileceği farklı değerlere göre işlem yapılmasını sağlar.</p>
+<pre><code class="language-php">switch ($gun) {
+  case &quot;Pazartesi&quot;:
+    echo &quot;Hafta başı&quot;;
+    break;
+  case &quot;Cuma&quot;:
+    echo &quot;Hafta sonu yaklaşıyor&quot;;
+    break;
+  default:
+    echo &quot;Hafta içi günlerinden biri&quot;;
+}
+</code></pre>
+<p><strong><code>break</code></strong> komutu kullanılmazsa sonraki durumlar da çalışır (“fall-through” davranışı).</p>
+<hr />
+<h4><strong>7. Match İfadesi (PHP 8+)</strong></h4>
+<p><code>switch</code> yapısına benzer ama <strong>katı karşılaştırma</strong> (<code>===</code>) yapar ve <strong>değer döndürür</strong>.</p>
+<pre><code class="language-php">$sonuc = match($puan) {
+  100 =&gt; &quot;Mükemmel&quot;,
+  90, 80 =&gt; &quot;Başarılı&quot;,
+  default =&gt; &quot;Orta&quot;
+};
+</code></pre>
+<hr />
+<h4><strong>8. Mantıksal Operatörlerle Koşullar</strong></h4>
+<p>Koşullar <code>AND</code>, <code>OR</code>, <code>!</code> operatörleriyle birleştirilebilir.</p>
+<pre><code class="language-php">if ($yas &gt;= 18 &amp;&amp; $uyelik == true) {
+  echo &quot;Giriş başarılı.&quot;;
+}
+</code></pre>
+<hr />
+<h3>Sonuç</h3>
+<p>Bu bölümde PHP’de karar yapıları tanıtılmıştır.</p>
+<ul>
+<li>
+<p><strong><code>if</code></strong> ve <strong><code>else</code></strong> koşul temelli akış sağlar.</p>
+</li>
+<li>
+<p><strong><code>switch</code></strong> çoklu seçeneklerde daha düzenli yapı sunar.</p>
+</li>
+<li>
+<p><strong><code>match</code></strong> ifadesi, modern PHP’de güvenli ve kısa bir alternatiftir.</p>
+</li>
+<li>
+<p>Mantıksal operatörler, birden fazla koşulun birlikte değerlendirilmesini sağlar.</p>
+</li>
+</ul>
+<h1>6.Ünite - Döngüler</h1>
+<hr />
+<p>PHP programlama dilinde belirli kod bloklarının tekrarlanmasını sağlayan <strong>döngü (loop)</strong> yapılarını, söz dizimlerini ve kullanım senaryolarını ele almaktadır.</p>
+<h2>1. PHP'de Kullanılan Temel Döngüler</h2>
+<p>PHP'de dört temel döngü türü bulunmaktadır:</p>
+<ul>
+<li>
+<p><strong>For Döngüsü:</strong> Döngünün kaç kez çalışacağının önceden bilindiği durumlarda kullanılır.</p>
+<ul>
+<li>
+<p>En güçlü döngü türü olarak kabul edilir; başlangıç değeri, koşul ve artış miktarı tek satırda tanımlanır.</p>
+</li>
+<li>
+<p><strong>Yapısı:</strong> <code>for (sayaç; koşul; değişim) { kodlar }</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+// Başlangıç 1, Bitiş 10, Artış +1
+for ($i = 1; $i &lt;= 10; $i++) {
+    echo $i;      // Değeri yazdır
+    echo &quot;&lt;br&gt;&quot;;
+}
+?&gt;
+</code></pre>
+<ul>
+<li>
+<p><strong>While Döngüsü:</strong> Belirtilen koşul sağlandığı (doğru olduğu) sürece çalışmaya devam eder.</p>
+<ul>
+<li>Koşul, döngüye girmeden <strong>önce</strong> kontrol edilir. Eğer koşul baştan sağlanmıyorsa döngü hiç çalışmaz.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+$toplam = 0;
+$sayi = 0;
+while ($sayi &lt; 100) {
+    $toplam += $sayi; // Sayıyı toplama ekle
+    $sayi++;          // Sayıyı 1 artır
+}
+echo &quot;Sayıların Toplamı =&quot; . $toplam;
+?&gt;
+</code></pre>
+<ul>
+<li>
+<p><strong>Do-While Döngüsü:</strong> <code>while</code> döngüsüne benzer ancak koşul kontrolü döngü <strong>sonunda</strong> yapılır.</p>
+<ul>
+<li>Bu yapı sayesinde, koşul sağlanmasa bile döngü içindeki kodlar <strong>en az bir kez</strong> mutlaka çalıştırılır.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+$i = 0;
+do {
+    echo $i;
+} while ($i &gt; 0);
+?&gt;
+</code></pre>
+<ul>
+<li>
+<p><strong>Foreach Döngüsü:</strong> Sadece <strong>diziler (arrays)</strong> ve nesneler üzerinde işlem yapmak için kullanılır.</p>
+<ul>
+<li>
+<p>Dizideki eleman sayısı kadar çalışır.</p>
+</li>
+<li>
+<p>Hem sadece değer (<code>as $deger</code>) hem de anahtar-değer (<code>as $anahtar =&gt; $deger</code>) ikilisiyle kullanılabilir.</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+$dizi = [
+    &quot;1&quot; =&gt; &quot;Javascript&quot;,
+    &quot;2&quot; =&gt; &quot;PHP&quot;,
+    &quot;3&quot; =&gt; &quot;Bootstrap&quot;,
+    &quot;4&quot; =&gt; &quot;JQuery&quot;
+];
+
+foreach ($dizi as $key =&gt; $deger) {
+    echo &quot;Anahtar $key =&gt; Değer $deger&quot; . &quot;&lt;br/&gt;&quot;;
+}
+?&gt;
+</code></pre>
+<h2>2. Döngü Kontrol İfadeleri</h2>
+<p>Döngülerin akışını değiştirmek veya sonlandırmak için özel deyimler kullanılır:</p>
+<ul>
+<li>
+<p><strong>Break Deyimi:</strong> Döngüyü tamamen sonlandırmak için kullanılır.</p>
+<ul>
+<li>İç içe döngülerde, <code>break</code> yanına sayı yazılarak (örn: <code>break 2;</code>) kaç katman dışarı çıkılacağı belirtilebilir.</li>
+</ul>
+</li>
+<li>
+<p><strong>Continue Deyimi:</strong> Döngünün o anki adımını (yinelemesini) atlayıp, kodları çalıştırmadan bir sonraki adıma geçmesini sağlar.</p>
+<ul>
+<li>Hata oluşumunu önlemek veya gereksiz işlem yapmamak için kullanılır (örn: sıfıra bölme hatasını engellemek).</li>
+</ul>
+</li>
+<li>
+<p><strong>Goto Deyimi:</strong> Program akışının kod içinde belirlenen etiketli (label) başka bir noktaya atlamasını sağlar.</p>
+<ul>
+<li>Döngü veya switch yapılarının içine dışarıdan atlanamaz, ancak içinden dışarıya çıkılabilir.</li>
+</ul>
+</li>
+</ul>
+<h2>3. Önemli Karşılaştırmalar ve İpuçları</h2>
+<ul>
+<li>
+<p><strong>While vs Do-While:</strong> <code>while</code> koşulu başta kontrol eder (0 kez çalışabilir), <code>do-while</code> sonda kontrol eder (en az 1 kez çalışır).</p>
+</li>
+<li>
+<p><strong>Sonsuz Döngü:</strong> Döngü koşulu sürekli <code>true</code> dönerse veya sayaç değişkeni değiştirilmezse döngü sonsuza kadar çalışır.</p>
+</li>
+<li>
+<p><strong>İç İçe Döngüler:</strong> Bir döngü bloğu içerisinde başka bir döngü kullanılabilir (örn: çok boyutlu dizileri gezmek için).</p>
+</li>
+</ul>
+<h1>7.Ünite - Fonksiyonlar</h1>
+<hr />
+<p>PHP'de kod tekrarını önlemek, yönetimi kolaylaştırmak ve performansı artırmak için kullanılan <strong>fonksiyon</strong> yapılarını, türlerini ve kullanım şekillerini ele almaktadır.</p>
+<h2>1. Fonksiyonların Temel Yapısı ve Avantajları</h2>
+<p>Fonksiyon, belirli bir görevi yerine getiren ve istendiğinde çağrılabilen kod bloğudur.</p>
+<ul>
+<li>
+<p><strong>Avantajları:</strong> Daha az satır kod, hata oranını düşürme, daha hızlı yükleme ve çalışma süresi sağlar.</p>
+</li>
+<li>
+<p><strong>Söz Dizimi:</strong> <code>function isim(parametreler) { komutlar; return değer; }</code> şeklindedir. İsimler büyük/küçük harfe duyarlı değildir.</p>
+</li>
+</ul>
+<h2>2. Parametreler ve Değer Döndürme</h2>
+<p>Fonksiyonlar dışarıdan veri alabilir ve işledikleri sonucu dışarı aktarabilirler.</p>
+<ul>
+<li>
+<p><strong>Parametreli/Parametresiz:</strong> Fonksiyonlar boş çalışabileceği gibi parantez içine değişkenler (argümanlar) alarak da çalışabilir.</p>
+</li>
+<li>
+<p><strong>Varsayılan Değer:</strong> Parametreye varsayılan bir değer atanabilir (örn: <code>$a=0</code>). Fonksiyon çağrılırken değer girilmezse bu varsayılan değer kullanılır.</p>
+</li>
+<li>
+<p><strong>Return Deyimi:</strong> Fonksiyon içinde üretilen değerin, fonksiyonun çağrıldığı yere geri gönderilmesini sağlar.</p>
+</li>
+</ul>
+<h2>3. Değişken Kapsamı ve Erişim Türleri</h2>
+<p>PHP'de değişkenlerin nerede geçerli olduğu (scope) önemlidir.</p>
+<ul>
+<li>
+<p><strong>Yerel ve Global Değişkenler:</strong> Fonksiyon içinde tanımlanan değişkenler <strong>yereldir</strong> ve dışarıdan erişilemez. Dışarıdaki bir değişkeni fonksiyon içinde kullanmak için <code>global</code> anahtar kelimesi kullanılır.</p>
+</li>
+<li>
+<p><strong>Referans ile Gönderme (<code>&amp;</code>):</strong> Normalde değişkenin kopyası gönderilir. Ancak değişkenin başına <code>&amp;</code> konulursa, fonksiyon içindeki değişiklikler ana değişkeni de etkiler (orijinal veriyi değiştirir).</p>
+</li>
+</ul>
+<h2>4. Özel Fonksiyon Türleri</h2>
+<ul>
+<li>
+<p><strong>İç İçe Fonksiyonlar:</strong> Bir fonksiyonun içinde başka bir fonksiyon tanımlanabilir. İçteki fonksiyon, dıştaki çağrılmadan erişilemez.</p>
+</li>
+<li>
+<p><strong>Recursive (Özyinelemeli) Fonksiyonlar:</strong> Kendi kendini çağıran fonksiyonlardır. Genellikle karmaşık matematiksel hesaplamalar veya döngüsel işlemler için kullanılır.</p>
+</li>
+</ul>
+<h2>5. Hazır (Yerleşik) Fonksiyonlar</h2>
+<p>PHP'de geliştiricinin tanımladıklarının (User Defined) yanı sıra dilin sunduğu hazır fonksiyonlar (Built-in) vardır:</p>
+<ul>
+<li>
+<p><strong>Metinsel:</strong> <code>strlen</code> (uzunluk), <code>trim</code> (boşluk temizleme), <code>strpos</code> (metin içinde arama), <code>ltrim/rtrim</code> (sağ/sol boşluk silme).</p>
+</li>
+<li>
+<p><strong>Matematiksel:</strong> <code>rand</code> (rastgele sayı), <code>sqrt</code> (karekök), <code>max/min</code> (en büyük/küçük), <code>round</code> (yuvarlama).</p>
+</li>
+<li>
+<p><strong>Tarih-Zaman:</strong> <code>date</code> (tarih biçimlendirme), <code>time</code> (Unix zaman damgası).</p>
+</li>
+</ul>
+<hr />
+<h3>Kod Örnekleri</h3>
+<h4>1. Varsayılan Parametreli Fonksiyon</h4>
+<p>Değer gönderilmezse varsayılanı kullanır.</p>
+<pre><code class="language-php">&lt;?php
+function cevreHesapla($kisa, $uzun = 0) {
+    if ($uzun == 0) {
+        return $kisa * 4; // Kare çevresi
+    } else {
+        return 2 * ($kisa + $uzun); // Dikdörtgen çevresi
+    }
+}
+echo cevreHesapla(5); // Çıktı: 20 (Kare)
+echo cevreHesapla(5, 10); // Çıktı: 30 (Dikdörtgen)
+?&gt;
+</code></pre>
+<h4>2. Global Değişken Kullanımı</h4>
+<p>Fonksiyon dışındaki değişkene erişim sağlar.</p>
+<pre><code class="language-php">&lt;?php
+$x = 10;
+function topla($y) {
+    global $x; // Dışarıdaki $x'i içeri al
+    return $x + $y;
+}
+echo topla(5); // Çıktı: 15
+?&gt;
+</code></pre>
+<h4>3. Referans ile Değer Değiştirme</h4>
+<p>Değişkenin orijinal değerini değiştirir.</p>
+<pre><code class="language-php">&lt;?php
+$sayi = 10;
+function arttir(&amp;$deger) { // &amp; işareti referans olduğunu belirtir
+    $deger += 5;
+}
+arttir($sayi);
+echo $sayi; // Çıktı: 15 (Orijinal $sayi değişti)
+?&gt;
+</code></pre>
+<h4>4. Recursive (Kendini Çağıran) Fonksiyon</h4>
+<p>Belli bir şarta kadar kendini tekrar eder.</p>
+<pre><code class="language-php">&lt;?php
+$deneme = 1;
+function tahmin($hedef) {
+    global $deneme;
+    if ($hedef != rand(1, 3)) { // Rastgele sayı tutmazsa
+        $deneme++;
+        tahmin($hedef); // Fonksiyon kendini tekrar çağırır
+    } else {
+        echo &quot;$deneme. denemede bulundu.&quot;;
+    }
+}
+tahmin(2);
+?&gt;
+</code></pre>
+<h1>8.Ünite - PHP Formlar</h1>
+<hr />
+<p>Kullanıcıların web siteleriyle etkileşime girmesini sağlayan HTML formlarının oluşturulmasını, bu formlardan gelen verilerin PHP ile nasıl yakalanacağını (GET ve POST metodları) ve sunucu tarafında nasıl doğrulanacağını ele almaktadır.</p>
+<h2>1. HTML Form Yapısı</h2>
+<p>Web formları, kullanıcıdan veri almak için kullanılır ve <code>&lt;form&gt;</code> etiketleri arasında tanımlanır. Bir formun üç temel özelliği vardır:</p>
+<ul>
+<li>
+<p><strong>Action:</strong> Form verilerinin gönderileceği hedef sayfayı belirtir (örneğin: <code>islem.php</code>).</p>
+</li>
+<li>
+<p><strong>Method:</strong> Verilerin gönderilme şeklini (GET veya POST) belirler.</p>
+</li>
+<li>
+<p><strong>Form Elemanları:</strong> Veri girişi sağlayan araçlardır.</p>
+</li>
+</ul>
+<p><strong>Temel Form Elemanları:</strong></p>
+<ul>
+<li>
+<p><strong>Input:</strong> En çok kullanılan etikettir. <code>type</code> özelliği ile şekillenir (text, password, radio, checkbox, file, submit).</p>
+</li>
+<li>
+<p><strong>Textarea:</strong> Çok satırlı geniş metin girişleri için kullanılır.</p>
+</li>
+<li>
+<p><strong>Select / Option:</strong> Açılır liste menüleri oluşturur.</p>
+</li>
+<li>
+<p><strong>Fieldset / Legend:</strong> Form elemanlarını gruplamak ve başlık eklemek için kullanılır.</p>
+</li>
+</ul>
+<h2>2. Form Gönderme Metotları (GET ve POST)</h2>
+<p>Form verileri sunucuya iki ana yöntemle gönderilir:</p>
+<h3>POST Metodu</h3>
+<ul>
+<li>
+<p>Veriler URL'de <strong>görünmez</strong>, arka planda gönderilir.</p>
+</li>
+<li>
+<p>Güvenlik gerektiren veriler (şifre vb.) için uygundur.</p>
+</li>
+<li>
+<p>Veri boyutunda bir kısıtlama yoktur.</p>
+</li>
+<li>
+<p>PHP'de verilere <code>$_POST['name_degeri']</code> dizisi ile ulaşılır.</p>
+</li>
+</ul>
+<h3>GET Metodu</h3>
+<ul>
+<li>
+<p>Veriler URL adres çubuğunda görünür (örn: <code>index.php?ad=ahmet&amp;yas=30</code>).</p>
+</li>
+<li>
+<p>Güvenli değildir, hassas veriler için kullanılmamalıdır.</p>
+</li>
+<li>
+<p>Veri boyutu sınırlıdır (maksimum 2048 karakter).</p>
+</li>
+<li>
+<p>Sayfalar yer imlerine eklenebilir.</p>
+</li>
+<li>
+<p>PHP'de verilere <code>$_GET['name_degeri']</code> dizisi ile ulaşılır.</p>
+</li>
+</ul>
+<h2>3. Form Doğrulama (Validation)</h2>
+<p>Formdan gelen verilerin işlenmeden önce kontrol edilmesi gerekir. Bunun için iki temel fonksiyon kullanılır:</p>
+<ul>
+<li>
+<p><strong>isset():</strong> Bir değişkenin tanımlı olup olmadığını kontrol eder. Genellikle formun gönderilip gönderilmediğini anlamak için kullanılır (örn: Gönder butonuna basıldı mı?).</p>
+</li>
+<li>
+<p><strong>empty():</strong> Bir değişkenin boş olup olmadığını kontrol eder. <code>0</code>, <code>""</code> (boş string), <code>NULL</code> veya <code>FALSE</code> değerleri boş kabul edilir.</p>
+</li>
+</ul>
+<hr />
+<h3>Kod Örnekleri</h3>
+<h4>1. Basit HTML Form Örneği</h4>
+<p>Kullanıcıdan ad ve şifre alan bir yapı.</p>
+<pre><code class="language-html">&lt;form action=&quot;kontrol.php&quot; method=&quot;post&quot;&gt;
+    Kullanıcı Adı: &lt;input type=&quot;text&quot; name=&quot;kullanici_adi&quot;&gt;&lt;br&gt;
+    Şifre: &lt;input type=&quot;password&quot; name=&quot;sifre&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Giriş Yap&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<h4>2. PHP ile Verileri Yakalama (POST)</h4>
+<p>Formdan gelen verileri <code>$_POST</code> süper global dizisi ile alma.</p>
+<pre><code class="language-php">&lt;?php
+// Form gönderildiğinde verileri ekrana yazar
+echo &quot;Girilen Kullanıcı: &quot; . $_POST[&quot;kullanici_adi&quot;];
+echo &quot;Girilen Şifre: &quot; . $_POST[&quot;sifre&quot;];
+?&gt;
+</code></pre>
+<h4>3. Form Doğrulama (Isset ve Empty)</h4>
+<p>Veri gönderilmiş mi ve içi dolu mu kontrolü.</p>
+<pre><code class="language-php">&lt;?php
+// 1. Kontrol: Form gönderilmiş mi? (Buton tanımlı mı?)
+if (isset($_POST['kullanici_adi']) &amp;&amp; isset($_POST['sifre'])) {
+
+    $kadi = $_POST['kullanici_adi'];
+    $sifre = $_POST['sifre'];
+
+    // 2. Kontrol: Alanlar boş mu?
+    if (empty($kadi) || empty($sifre)) {
+        echo &quot;Lütfen tüm alanları doldurunuz!&quot;;
+    } else {
+        echo &quot;Giriş Başarılı: &quot; . $kadi;
+    }
+
+} else {
+    echo &quot;Lütfen formu kullanarak giriş yapınız.&quot;;
+}
+?&gt;
+</code></pre>
+<h1>9.Ünite - Cookies (Çerezler)</h1>
+<hr />
+<p>Web sitelerinin kullanıcıyı hatırlamasını sağlayan <strong>çerez (cookie)</strong> yapısını, PHP ile çerez oluşturma, okuma ve silme işlemlerini ve bu teknolojinin avantaj/dezavantajlarını ele almaktadır.</p>
+<h2>1. Çerez (Cookie) Nedir?</h2>
+<p>Çerez, bir web sunucusu tarafından tarayıcı (browser) aracılığıyla kullanıcının bilgisayarına kaydedilen küçük veri parçacığıdır.</p>
+<ul>
+<li>
+<p><strong>Amacı:</strong> Kullanıcıyı hatırlamak (beni hatırla), oturum bilgilerini saklamak, alışveriş sepetini korumak ve kişiselleştirilmiş içerik sunmaktır.</p>
+</li>
+<li>
+<p><strong>Erişim Kuralı:</strong> Bir çerez, yalnızca onu oluşturan alan adı (domain) tarafından okunabilir. Başka siteler bu verilere erişemez.</p>
+</li>
+<li>
+<p><strong>Çalışma Mantığı:</strong> HTML kodları gönderilmeden önce, başlık (header) transferi sırasında sunucu ile tarayıcı arasında iletilir. Bu yüzden kod yazarken <strong>HTML çıktısından önce</strong> tanımlanmalıdır.</p>
+</li>
+</ul>
+<h2>2. PHP'de Çerez Yönetimi</h2>
+<p>PHP'de çerez işlemleri <code>setcookie()</code> fonksiyonu ve <code>$_COOKIE</code> süper global dizisi ile yönetilir.</p>
+<h3>Çerez Oluşturma (<code>setcookie</code>)</h3>
+<p>Söz dizimi: <code>setcookie(isim, değer, süre, yol, alan_adı, güvenli, http_only)</code></p>
+<ul>
+<li>
+<p><strong>İsim:</strong> Çerezin çağrılacağı addır (Zorunlu).</p>
+</li>
+<li>
+<p><strong>Değer:</strong> İçerisinde saklanacak veridir.</p>
+</li>
+<li>
+<p><strong>Süre:</strong> Saniye cinsinden geçerlilik süresidir (Unix zaman damgası). Belirtilmezse tarayıcı kapanınca silinir.</p>
+</li>
+<li>
+<p><strong>Yol:</strong> Çerezin sitenin hangi dizinlerinde geçerli olacağını belirtir (Genelde <code>/</code> kullanılarak tüm sitede aktif edilir).</p>
+</li>
+</ul>
+<h3>Çerez Okuma ve Kontrol Etme</h3>
+<ul>
+<li>
+<p>Tarayıcıda kayıtlı çerezlere <code>$_COOKIE['cerez_adi']</code> dizisi ile ulaşılır.</p>
+</li>
+<li>
+<p>Çerezin varlığını kontrol etmek için <code>isset()</code> fonksiyonu kullanılır.</p>
+</li>
+</ul>
+<h3>Çerez Silme ve Değiştirme</h3>
+<ul>
+<li>
+<p><strong>Değiştirme:</strong> Aynı isimle yeni bir <code>setcookie()</code> tanımlaması yapılarak değeri güncellenir.</p>
+</li>
+<li>
+<p><strong>Silme:</strong> Çerezi silmek için <code>setcookie()</code> fonksiyonu, <strong>geçmiş bir zaman dilimi</strong> (örneğin 1 saat öncesi) verilerek tekrar çalıştırılır.</p>
+</li>
+</ul>
+<h2>3. Avantajlar ve Dezavantajlar</h2>
+<ul>
+<li>
+<p><strong>Avantajlar:</strong> Kullanıcı deneyimini kişiselleştirir, oturumların açık kalmasını sağlar, e-ticaret sitelerinde sepet takibi yapar ve site analitiği için veri sağlar.</p>
+</li>
+<li>
+<p><strong>Dezavantajlar:</strong> Gizlilik endişeleri yaratabilir (kullanıcı izleme), güvenlik riskleri oluşturabilir (hassas veriler saklanmamalıdır) ve kullanıcılar tarayıcı ayarlarından çerezleri engelleyebilir.</p>
+</li>
+</ul>
+<hr />
+<h3>Kod Örnekleri</h3>
+<p>Konuyu pekiştirmek için ders notlarından türetilmiş temel örnekler:</p>
+<h4>1. Çerez Oluşturma (Süreli)</h4>
+<p>Bir kullanıcı adını 1 saatliğine (3600 saniye) kaydetme.</p>
+<pre><code class="language-php">&lt;?php
+// Şimdiki zaman + 3600 saniye
+setcookie(&quot;kullanici_adi&quot;, &quot;Istanbul Universitesi&quot;, time() + 3600);
+?&gt;
+</code></pre>
+<h4>2. Çerez Okuma ve Kontrol Etme</h4>
+<p>Çerez varsa ekrana yazdıran, yoksa uyarı veren yapı.</p>
+<pre><code class="language-php">&lt;?php
+if (isset($_COOKIE[&quot;kullanici_adi&quot;])) {
+    echo &quot;Hoşgeldin: &quot; . $_COOKIE[&quot;kullanici_adi&quot;];
+} else {
+    echo &quot;Çerez bulunamadı veya süresi doldu.&quot;;
+}
+?&gt;
+</code></pre>
+<h4>3. Çerez Silme</h4>
+<p>Çerezin süresini geçmişe ayarlayarak tarayıcıdan silinmesini sağlama.</p>
+<pre><code class="language-php">&lt;?php
+// Zamanı geçmişe (örneğin 1 saat geriye) alarak silme işlemi
+setcookie(&quot;kullanici_adi&quot;, &quot;&quot;, time() - 3600);
+?&gt;
+</code></pre>
+<h1>10.Ünite - Session (Oturum Yönetimi)</h1>
+<hr />
+<p>Web uygulamalarında kullanıcı verilerini sunucu tarafında geçici olarak saklamayı sağlayan <strong>Session (Oturum)</strong> yapısını, çerezlerden farkını ve temel kullanım komutlarını ele almaktadır.</p>
+<h2>1. Session (Oturum) Nedir?</h2>
+<p>Session, kullanıcıların web sitesindeki etkinlikleri süresince verilerin <strong>sunucu tarafında</strong> (server-side) saklanmasını sağlayan bir mekanizmadır.</p>
+<ul>
+<li>
+<p><strong>Kullanım Alanları:</strong> Kullanıcı girişi (login), alışveriş sepeti yönetimi ve sayfa geçişlerinde veri taşıma.</p>
+</li>
+<li>
+<p><strong>Çalışma Mantığı:</strong> Kullanıcı siteye girdiğinde sunucu ona benzersiz bir kimlik (<strong>PHPSESSID</strong>) verir. Bu kimlik genellikle kullanıcının tarayıcısında bir çerez olarak tutulur, ancak asıl veriler sunucuda saklanır.</p>
+</li>
+<li>
+<p><strong>Analoji:</strong> Session mantığı kredi kartına benzer. Kart (Session ID) sizdedir, ancak para ve hesap bilgileri (Veri) bankada (Sunucuda) durur.</p>
+</li>
+</ul>
+<h2>2. Session Yönetimi ve Komutlar</h2>
+<p>PHP'de oturumlar <code>$_SESSION</code> süper global dizisi ile yönetilir.</p>
+<ul>
+<li>
+<p><strong>Başlatma (<code>session_start()</code>):</strong> Session kullanımı yapılacak her sayfanın <strong>en başında</strong> mutlaka çağrılmalıdır. Aksi takdirde oturum verilerine erişilemez.</p>
+</li>
+<li>
+<p><strong>Veri Atama:</strong> <code>$_SESSION</code> dizisine anahtar-değer ilişkisi ile veri eklenir. Dizi (array) türünde veriler de saklanabilir.</p>
+</li>
+<li>
+<p><strong>Veri Silme (<code>unset()</code>):</strong> Sadece belirli bir oturum değişkenini silmek için kullanılır (Örn: Sadece sepeti boşaltmak).</p>
+</li>
+<li>
+<p><strong>Oturumu Yok Etme (<code>session_destroy()</code>):</strong> Mevcut oturumu tamamen kapatır ve tüm verileri siler (Örn: Güvenli çıkış yapma).</p>
+</li>
+</ul>
+<h2>3. Session ve Cookie Arasındaki Farklar</h2>
+<p>Session ve Cookie, veri saklama yöntemleri olsa da temel farkları şunlardır:</p>
+<ul>
+<li>
+<p><strong>Depolama Yeri:</strong> Session verileri <strong>sunucuda</strong>, Cookieler <strong>kullanıcı bilgisayarında</strong> (tarayıcıda) saklanır.</p>
+</li>
+<li>
+<p><strong>Güvenlik:</strong> Session, veriler sunucuda kaldığı için Cookielere göre daha güvenlidir.</p>
+</li>
+<li>
+<p><strong>Süre:</strong> Session genellikle tarayıcı kapatıldığında silinir. Cookieler ise belirlenen son kullanma tarihine kadar saklanabilir.</p>
+</li>
+<li>
+<p><strong>Kapasite:</strong> Session depolama alanı sunucu kapasitesiyle sınırlıdır (teorik olarak sınırsız), Cookieler ise 4KB ile sınırlıdır.</p>
+</li>
+</ul>
+<hr />
+<h3>Kod Örnekleri</h3>
+<h4>1. Session Başlatma ve Veri Oluşturma</h4>
+<p>Oturumu başlatıp kullanıcı adını kaydetme.</p>
+<pre><code class="language-php">&lt;?php
+session_start(); // Session kullanımı için zorunludur
+
+// 'mesaj' adında bir session oluşturup değer atama
+$_SESSION['mesaj'] = &quot;Merhaba Dünya&quot;;
+
+// Dizi (Array) olarak veri saklama
+$_SESSION['uyeler'] = array(&quot;Ahmet&quot;, &quot;Mehmet&quot;, &quot;Ayşe&quot;);
+?&gt;
+</code></pre>
+<h4>2. Başka Bir Sayfada Veriye Erişme</h4>
+<p>Farklı bir sayfada, önceden oluşturulmuş veriyi okuma.</p>
+<pre><code class="language-php">&lt;?php
+session_start(); // Bu sayfada da başlatılmalı
+
+if (isset($_SESSION['mesaj'])) {
+    echo &quot;Kaydedilen Mesaj: &quot; . $_SESSION['mesaj'];
+} else {
+    echo &quot;Oturum verisi bulunamadı.&quot;;
+}
+?&gt;
+</code></pre>
+<h4>3. Oturumu Sonlandırma (Çıkış İşlemi)</h4>
+<p>Tüm oturum verilerini temizleyip oturumu kapatma.</p>
+<pre><code class="language-php">&lt;?php
+session_start();
+
+// 1. Tüm değişkenleri temizle
+session_unset();
+
+// 2. Oturumu tamamen yok et
+session_destroy();
+
+echo &quot;Başarıyla çıkış yapıldı.&quot;;
+?&gt;
+</code></pre>

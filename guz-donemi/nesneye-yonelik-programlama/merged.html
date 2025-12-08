@@ -1,0 +1,1823 @@
+<meta charset='utf-8'>
+<h1>1.Ünite - Nesneye Yönelik Düşünme</h1>
+<hr />
+<p><strong>Nesneye Yönelik Düşünme (NYD)</strong>, yazılım sistemlerini tıpkı gerçek dünyadaki gibi <strong>nesneler</strong> (özellikleri ve davranışları olan varlıklar) üzerinden modelleme yaklaşımıdır. Bu yöntem, karmaşık sistemleri anlamayı, tasarlamayı ve sürdürmeyi kolaylaştırır.</p>
+<hr />
+<h3>Nesneye Yönelik Düşünme Yaklaşımı</h3>
+<ul>
+<li>
+<p>Her bir <strong>bileşen</strong> nesne olarak ele alınır.</p>
+</li>
+<li>
+<p>Gerçek dünyadaki nesneler (insan, masa, bilgisayar vb.) gibi yazılım nesneleri de <strong>özelliklere (nitelikler)</strong> ve <strong>davranışlara (metotlar)</strong> sahiptir.</p>
+</li>
+<li>
+<p>Nesneler arasındaki <strong>ilişkiler ve etkileşimler</strong>, sistemin bütününü oluşturur.</p>
+</li>
+<li>
+<p>Bu yaklaşım, yazılımların daha <strong>modüler, esnek ve yeniden kullanılabilir</strong> olmasını sağlar.</p>
+</li>
+</ul>
+<hr />
+<h3>Problem Çözme Adımları</h3>
+<ol>
+<li>
+<p><strong>Problemin tanımlanması:</strong> Sorunun açık biçimde ifade edilmesi.</p>
+</li>
+<li>
+<p><strong>Soyutlama:</strong> Gereksiz detayları ayırarak sadece önemli kısımlara odaklanmak.</p>
+</li>
+<li>
+<p><strong>Model oluşturma:</strong> Problemi temsil eden kavramsal bir yapı kurmak.</p>
+</li>
+<li>
+<p><strong>Çözüm geliştirme:</strong> Model üzerinden çözüm üretilmesi.</p>
+</li>
+<li>
+<p><strong>Doğrulama ve geçerleme:</strong></p>
+<ul>
+<li>
+<p><strong>Doğrulama (Verification):</strong> Modelin doğru uygulanıp uygulanmadığının kontrolü.</p>
+</li>
+<li>
+<p><strong>Geçerleme (Validation):</strong> Modelin gerçek sistemi doğru temsil edip etmediğinin sınanması.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3>Programlama Paradigmaları</h3>
+<p>Programlama dilleri, <strong>problemi çözme biçimine göre</strong> farklı paradigmalara ayrılır:</p>
+<ul>
+<li>
+<p><strong>Emirli (Imperative):</strong> Ne yapılacağını değil, <em>nasıl yapılacağını</em> adım adım belirtir.<br />
+    Örnek: C, C++, Java</p>
+</li>
+<li>
+<p><strong>Bildirimli (Declarative):</strong> <em>Ne yapılacağını</em> söyler, <em>nasıl yapılacağı</em> arka planda gerçekleşir.<br />
+    Örnek: SQL, HTML, Regex</p>
+</li>
+<li>
+<p><strong>Hibrit (Hybrid):</strong> Her iki yaklaşımı da destekler.<br />
+    Örnek: Python, C#, JavaScript</p>
+</li>
+<li>
+<p>Emirli paradigmalar kendi içinde:</p>
+<ul>
+<li>
+<p><strong>Yordamsal (Procedural):</strong> Adım adım işleyen yapı (C, Pascal).</p>
+</li>
+<li>
+<p><strong>Nesneye Yönelik (OOP):</strong> Nesneler üzerinden modelleme (C++, Java, C#).</p>
+</li>
+<li>
+<p><strong>Paralel Programlama:</strong> Birden fazla işlemi eşzamanlı yürütür.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3>Yazılım ve Kalite Kriterleri</h3>
+<p>Yazılım; bilgisayarlara ne yapacağını söyleyen komut dizileridir.<br />
+Kaliteli yazılım hem kullanıcı hem geliştirici açısından belirli özellikleri taşımalıdır.</p>
+<p><strong>Kullanıcı açısından:</strong></p>
+<ul>
+<li>
+<p>Doğru sonuç verir.</p>
+</li>
+<li>
+<p>Kolay öğrenilir ve kullanılır.</p>
+</li>
+<li>
+<p>Hızlı ve hatasız çalışır.</p>
+</li>
+<li>
+<p>Kaynakları verimli kullanır.</p>
+</li>
+<li>
+<p>Verileri güvende tutar.</p>
+</li>
+<li>
+<p>Güncellenebilir ve belgelenmiştir.</p>
+</li>
+</ul>
+<p><strong>Geliştirici açısından:</strong></p>
+<ul>
+<li>
+<p>Kod okunabilir ve düzenlidir.</p>
+</li>
+<li>
+<p>Modüler yapıdadır, bakımı kolaydır.</p>
+</li>
+<li>
+<p>Yeniden kullanılabilir modüller içerir.</p>
+</li>
+<li>
+<p>Maliyet ve zaman açısından verimlidir.</p>
+</li>
+<li>
+<p>Belgelerle desteklenmiştir.</p>
+</li>
+</ul>
+<hr />
+<h3>Yazılım Geliştirme Süreci</h3>
+<ol>
+<li>
+<p><strong>Analiz:</strong> Gereksinimlerin belirlenmesi.</p>
+</li>
+<li>
+<p><strong>Tasarım:</strong> Modelin ve mimarinin oluşturulması.</p>
+</li>
+<li>
+<p><strong>Kodlama:</strong> Tasarımın programlama diliyle hayata geçirilmesi.</p>
+</li>
+<li>
+<p><strong>Dokümantasyon:</strong> Sürecin kayıt altına alınması.</p>
+</li>
+<li>
+<p><strong>Test:</strong> Hataların tespiti ve düzeltilmesi.</p>
+</li>
+<li>
+<p><strong>Dağıtım/Bakım:</strong> Yazılımın kullanıma sunulması ve geliştirilmesi.</p>
+</li>
+</ol>
+<hr />
+<h3>Sonuç</h3>
+<p>Nesneye yönelik düşünme, gerçek dünyayı yazılıma taşımanın en doğal yoludur.<br />
+Bu yaklaşım:</p>
+<ul>
+<li>
+<p>Yazılımları <strong>modüler</strong>, <strong>anlaşılır</strong> ve <strong>sürdürülebilir</strong> hale getirir.</p>
+</li>
+<li>
+<p><strong>Kod tekrarını azaltır</strong>, <strong>yeniden kullanılabilirliği artırır.</strong></p>
+</li>
+<li>
+<p>Yazılım kalitesini yükseltir ve geliştirme sürecini hızlandırır.</p>
+</li>
+</ul>
+<h1>2.Ünite - Nesneye Yönelik Programlama</h1>
+<hr />
+<p>Nesneye yönelik programlama (OOP), yazılımları gerçek dünyadaki nesnelere benzer yapılarla modellemeyi hedefler. Bu yaklaşım, yazılımların daha modüler, esnek ve sürdürülebilir olmasını sağlar. Temel yapı taşları:</p>
+<ul>
+<li>
+<p><strong>Sınıf (Class)</strong></p>
+</li>
+<li>
+<p><strong>Nesne (Object)</strong></p>
+</li>
+<li>
+<p><strong>Soyutlama (Abstraction)</strong></p>
+</li>
+<li>
+<p><strong>Kapsülleme (Encapsulation)</strong></p>
+</li>
+<li>
+<p><strong>Kalıtım (Inheritance)</strong></p>
+</li>
+<li>
+<p><strong>Çok biçimlilik (Polymorphism)</strong></p>
+</li>
+</ul>
+<h4>OOP’nin Avantajları</h4>
+<ul>
+<li>
+<p><strong>Modülerlik:</strong> Kod parçalarının bağımsız geliştirilebilmesi</p>
+</li>
+<li>
+<p><strong>Sürdürülebilirlik:</strong> Uzun vadeli projelerde kolay bakım</p>
+</li>
+<li>
+<p><strong>Verimlilik:</strong> Kod tekrarının azalması, yeniden kullanım</p>
+</li>
+<li>
+<p><strong>Güvenlik:</strong> Kapsülleme sayesinde veri gizliliği</p>
+</li>
+<li>
+<p><strong>Ekip Çalışması:</strong> Farklı geliştiriciler bağımsız modüllerde çalışabilir</p>
+</li>
+<li>
+<p><strong>Anlaşılabilirlik:</strong> Gerçek dünya nesneleriyle benzerlik</p>
+</li>
+</ul>
+<h4>Sınıf ve Nesne</h4>
+<ul>
+<li>
+<p><strong>Sınıf:</strong> Nesnelerin özelliklerini ve davranışlarını tanımlayan şablondur.<br />
+    Örnek: <code>Araba</code> sınıfı → marka, model, renk özellikleri + sür, fren yap davranışları</p>
+</li>
+<li>
+<p><strong>Nesne:</strong> Sınıfın bir örneğidir (instance). Sınıfta tanımlı özellik ve davranışlara sahiptir.</p>
+</li>
+</ul>
+<h4>Soyutlama (Abstraction)</h4>
+<p>Bir nesnenin yalnızca gerekli özellik ve davranışlarının gösterilmesi, gereksiz ayrıntıların gizlenmesidir.<br />
+Örnek: <strong>ATM cihazı</strong> – kullanıcı yalnızca para çekme veya yatırma işlemini görür, arka plandaki karmaşık süreç gizlenir.</p>
+<h4>Kapsülleme (Encapsulation)</h4>
+<p>Veri ve bu veriye erişimi yöneten metotların tek bir yapı içinde toplanmasıdır.<br />
+Amaç:</p>
+<ul>
+<li>
+<p>Veri gizliliği ve bütünlüğü sağlamak</p>
+</li>
+<li>
+<p>Dışarıdan doğrudan erişimi engellemek</p>
+</li>
+<li>
+<p>Kodun bakımını kolaylaştırmak</p>
+</li>
+</ul>
+<p><strong>Farkı:</strong></p>
+<ul>
+<li>
+<p><em>Soyutlama</em> karmaşıklığı gizler.</p>
+</li>
+<li>
+<p><em>Kapsülleme</em> verilere erişimi sınırlar.</p>
+</li>
+</ul>
+<h4>Kalıtım (Inheritance)</h4>
+<p>Bir sınıfın, başka bir sınıftan özellik ve davranışları miras almasıdır.</p>
+<ul>
+<li>
+<p><strong>Üst sınıf (base class):</strong> Ortak özellik ve davranışları tanımlar.</p>
+</li>
+<li>
+<p><strong>Alt sınıf (derived class):</strong> Üst sınıfı genişletir, kendi özelliklerini ekleyebilir.<br />
+    Örnek: <code>Baba</code> sınıfı → <code>Oğul</code> sınıfı üst sınıftan miras alır.<br />
+<strong>Çoklu Kalıtım:</strong> Bir sınıf birden fazla üst sınıftan miras alabilir.</p>
+</li>
+</ul>
+<h4>Çok Biçimlilik (Polymorphism)</h4>
+<p>Aynı metodun farklı nesnelerde farklı biçimlerde davranabilmesidir.<br />
+Örnek: “Görev yap” metodu;</p>
+<ul>
+<li>
+<p><code>Aşçı</code> için yemek pişirir</p>
+</li>
+<li>
+<p><code>Temizlikçi</code> için temizlik yapar</p>
+</li>
+<li>
+<p><code>Bebek Bakıcısı</code> için çocuk bakar</p>
+</li>
+</ul>
+<p><strong>Türleri:</strong></p>
+<ul>
+<li>
+<p><strong>Statik Polimorfizm:</strong> Derleme zamanında (metot/operatör aşırı yükleme)</p>
+</li>
+<li>
+<p><strong>Dinamik Polimorfizm:</strong> Çalışma zamanında (metot geçersiz kılma – override)</p>
+</li>
+</ul>
+<h4>Mesaj Geçişi (Message Passing)</h4>
+<p>Nesneler arasındaki iletişimi sağlar.<br />
+Bir nesne diğerine mesaj gönderir, hedef nesne mesajı alır ve uygun metodu çalıştırır.<br />
+Bu mekanizma nesnelerin bağımsızlığını artırır ve sistemin esnekliğini sağlar.</p>
+<h3>Sonuç</h3>
+<p>Nesneye yönelik programlama, karmaşık yazılımları daha kolay yönetilebilir hale getirir.<br />
+Kodun yeniden kullanılabilirliği, güvenliği ve sürdürülebilirliği artar.<br />
+Modern dillerin çoğu (C++, Java, C#, Python) bu yaklaşımı temel alır.</p>
+<h1>3.Ünite - Tümleşik Modelleme Dili (UML)</h1>
+<hr />
+<p><strong>UML (Unified Modeling Language)</strong>, yazılım sistemlerinin analiz, tasarım ve dokümantasyon süreçlerinde kullanılan <strong>görsel bir modelleme dili</strong>dir. Karmaşık sistemleri anlaşılır hale getirir ve yazılım geliştirme sürecinde iletişimi kolaylaştırır.</p>
+<hr />
+<h3>UML’in Amacı</h3>
+<ul>
+<li>
+<p>Yazılım bileşenlerini ve ilişkilerini <strong>görsel olarak ifade etmek</strong></p>
+</li>
+<li>
+<p>Karmaşık sistemleri <strong>basitleştirmek ve analiz etmek</strong></p>
+</li>
+<li>
+<p>Geliştiriciler arasında <strong>ortak bir dil</strong> oluşturmak</p>
+</li>
+<li>
+<p>Kod yazmadan önce <strong>tasarımı planlamak</strong></p>
+</li>
+</ul>
+<hr />
+<h3>UML Diyagram Türleri</h3>
+<h4>1. <strong>Yapısal Diyagramlar (Structural Diagrams)</strong></h4>
+<p>Sistemin <strong>statik yapısını</strong> gösterir, sınıflar ve ilişkileri tanımlar.</p>
+<ul>
+<li>
+<p><strong>Sınıf Diyagramı (Class Diagram):</strong> Sınıflar, özellikler, metotlar ve ilişkiler.</p>
+</li>
+<li>
+<p><strong>Nesne Diyagramı (Object Diagram):</strong> Çalışma anındaki nesne örnekleri.</p>
+</li>
+<li>
+<p><strong>Bileşen Diyagramı (Component Diagram):</strong> Modüller arası bağlantılar.</p>
+</li>
+<li>
+<p><strong>Dağıtım Diyagramı (Deployment Diagram):</strong> Donanım ve yazılım bileşenlerinin dağılımı.</p>
+</li>
+</ul>
+<h4>2. <strong>Davranış Diyagramları (Behavioral Diagrams)</strong></h4>
+<p>Sistemin <strong>dinamik yapısını</strong>, olaylar ve süreçleri gösterir.</p>
+<ul>
+<li>
+<p><strong>Kullanım Senaryosu Diyagramı (Use Case):</strong> Kullanıcı ile sistem etkileşimi.</p>
+</li>
+<li>
+<p><strong>Etkinlik Diyagramı (Activity):</strong> İş akışını veya süreci adım adım gösterir.</p>
+</li>
+<li>
+<p><strong>Durum Diyagramı (State Machine):</strong> Nesnelerin olaylara göre durum değişimleri.</p>
+</li>
+<li>
+<p><strong>Dizi Diyagramı (Sequence):</strong> Nesneler arası mesaj akışı.</p>
+</li>
+</ul>
+<hr />
+<h3>Sınıf Diyagramı (Class Diagram)</h3>
+<p>OOP’nin temel yapısını UML üzerinde temsil eder:</p>
+<ul>
+<li>
+<p><strong>Sınıf (Class)</strong> → Özellikler (attributes) + Davranışlar (operations)</p>
+</li>
+<li>
+<p><strong>İlişkiler:</strong></p>
+<ul>
+<li>
+<p><strong>Bağımlılık (Dependency)</strong></p>
+</li>
+<li>
+<p><strong>Birliktelik (Association)</strong></p>
+</li>
+<li>
+<p><strong>Kapsama (Aggregation)</strong></p>
+</li>
+<li>
+<p><strong>Bütünleme (Composition)</strong></p>
+</li>
+<li>
+<p><strong>Genelleme (Inheritance)</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Örnek:</strong></p>
+<pre><code>+ Araba
+  - marka: string
+  - hız: int
+  + hizlan(): void
+  + dur(): void
+</code></pre>
+<hr />
+<h3>Kullanım Senaryosu Diyagramı (Use Case)</h3>
+<ul>
+<li>
+<p>Sistemi kullanıcı gözünden gösterir.</p>
+</li>
+<li>
+<p><strong>Aktör (Actor):</strong> Sistemi kullanan kişi ya da sistem.</p>
+</li>
+<li>
+<p><strong>Use Case:</strong> Kullanıcının gerçekleştirdiği işlev.</p>
+</li>
+<li>
+<p><strong>İlişkiler:</strong></p>
+<ul>
+<li>
+<p><strong>Include:</strong> Zorunlu alt senaryo</p>
+</li>
+<li>
+<p><strong>Extend:</strong> Opsiyonel alt senaryo</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Örnek:</strong></p>
+<pre><code>Kullanıcı → (Giriş Yap)
+           → (Ürün Ara)
+           → (Sepete Ekle)
+</code></pre>
+<hr />
+<h3>Etkinlik Diyagramı (Activity Diagram)</h3>
+<ul>
+<li>
+<p>İş süreçlerini, karar noktalarını ve akış yönünü gösterir.</p>
+</li>
+<li>
+<p><strong>Başlangıç ve bitiş düğümleri</strong>, <strong>karar</strong>, <strong>birleşim</strong> ve <strong>faaliyet akışları</strong> yer alır.</p>
+</li>
+</ul>
+<hr />
+<h3>Durum Diyagramı (State Diagram)</h3>
+<p>Bir nesnenin yaşam döngüsünü ve <strong>durum değişimlerini</strong> anlatır.<br />
+Örnek: Sipariş → "Alındı" → "Hazırlanıyor" → "Kargoda" → "Teslim Edildi"</p>
+<hr />
+<h3>Dizi Diyagramı (Sequence Diagram)</h3>
+<ul>
+<li>
+<p>Nesneler arası <strong>zaman sıralı etkileşimi</strong> gösterir.</p>
+</li>
+<li>
+<p>Mesajların hangi sırayla gönderilip alındığı belirtilir.</p>
+</li>
+</ul>
+<hr />
+<h3>Sonuç</h3>
+<p>UML, yazılım geliştirmede soyut fikirleri görsel biçime dönüştüren <strong>ortak bir modelleme dilidir.</strong><br />
+Sınıf, kullanım senaryosu, etkinlik ve dizi diyagramları, yazılım tasarımının en sık kullanılan araçlarıdır. UML sayesinde yazılım ekipleri sistemleri daha net anlayabilir, iletişim kurabilir ve hataları erken tespit edebilir.</p>
+<h1>4.Ünite - .NET Framework ve C</h1>
+<hr />
+<h2>1. Giriş</h2>
+<p>C#, Microsoft tarafından geliştirilen, <strong>nesne yönelimli, modern ve genel amaçlı</strong> bir programlama dilidir.<br />
+2000 yılında Anders Hejlsberg liderliğinde oluşturulmuştur ve .NET Framework üzerinde çalışır.<br />
+Java’ya benzer sözdizimine sahiptir; masaüstü, web, mobil, oyun ve veritabanı uygulamaları geliştirmek için kullanılır.</p>
+<p><strong>Temel özellikleri:</strong></p>
+<ul>
+<li>
+<p>Güçlü tip güvenliği ve hata ayıklama yeteneği</p>
+</li>
+<li>
+<p>Zengin standart kütüphane (FCL)</p>
+</li>
+<li>
+<p>Geniş topluluk ve IDE desteği (özellikle Visual Studio)</p>
+</li>
+<li>
+<p>Kolay öğrenilebilir yapı</p>
+</li>
+</ul>
+<hr />
+<h2>2. .NET Framework</h2>
+<p>Microsoft tarafından geliştirilen, Windows üzerinde çalışan bir <strong>yazılım platformudur</strong>.<br />
+Farklı dillerle uygulama geliştirme, çalıştırma ve dağıtımı destekler.</p>
+<h3>2.1. Temel Bileşenler</h3>
+<h4><strong>Common Language Runtime (CLR)</strong></h4>
+<ul>
+<li>
+<p>.NET programlarını çalıştıran sanal makinedir.</p>
+</li>
+<li>
+<p>Bellek yönetimi, güvenlik, hata ayıklama gibi görevleri üstlenir.</p>
+</li>
+<li>
+<p>Farklı .NET dillerinde yazılmış kodların birlikte çalışmasını sağlar.</p>
+</li>
+</ul>
+<h4><strong>Framework Class Library (FCL)</strong></h4>
+<ul>
+<li>
+<p>Yeniden kullanılabilir sınıf ve bileşenlerin koleksiyonudur.</p>
+</li>
+<li>
+<p>Veri tabanı, ağ, dosya, güvenlik, grafik işlemleri gibi alanlarda hazır sınıflar sunar.</p>
+</li>
+</ul>
+<h4><strong>Dil Entegrasyonu</strong></h4>
+<ul>
+<li>
+<p>C#, VB.NET, F#, C++/CLI gibi birçok dil desteklenir.</p>
+</li>
+<li>
+<p>Derleme sonucu tüm diller <strong>Common Intermediate Language (CIL)</strong> koduna dönüştürülür.</p>
+</li>
+</ul>
+<h4><strong>Common Language Specification (CLS)</strong></h4>
+<ul>
+<li>
+<p>Farklı dillerin uyum içinde çalışmasını sağlayan kurallar kümesidir.</p>
+</li>
+<li>
+<p>Veri türleri, erişim düzeyleri, isimlendirme ve istisna yönetimi gibi konularda standartlar belirler.</p>
+</li>
+</ul>
+<h4><strong>Common Type System (CTS)</strong></h4>
+<ul>
+<li>
+<p>.NET dillerinde tür uyumluluğu sağlar.</p>
+</li>
+<li>
+<p>Farklı dillerde oluşturulan sınıflar birbiriyle etkileşebilir.</p>
+</li>
+<li>
+<p>Türlerin bellekte temsilini ve davranışını tanımlar.</p>
+</li>
+</ul>
+<h4><strong>Assembly</strong></h4>
+<ul>
+<li>
+<p>Derlenmiş .exe veya .dll dosyalarıdır.</p>
+</li>
+<li>
+<p>Kod, türler ve metadata içerir.</p>
+</li>
+<li>
+<p>Türleri: Compile-Time, Runtime, Shared Assembly.</p>
+</li>
+</ul>
+<h4><strong>Application Domain</strong></h4>
+<ul>
+<li>
+<p>Uygulamaların izole biçimde çalıştığı alanlardır.</p>
+</li>
+<li>
+<p>Bellek yönetimi, güvenlik ve hata izolasyonu sağlar.</p>
+</li>
+</ul>
+<h4><strong>Namespace (İsim Alanı)</strong></h4>
+<ul>
+<li>
+<p>Kodun düzenlenmesini ve isim çakışmalarını önler.</p>
+</li>
+<li>
+<p>Örn: <code>System</code>, <code>System.IO</code>.</p>
+</li>
+<li>
+<p>Geliştiriciler özel namespace oluşturabilir.</p>
+</li>
+</ul>
+<hr />
+<h3>2.2. .NET Framework Özellikleri</h3>
+<ul>
+<li>
+<p><strong>IDE Desteği:</strong> Visual Studio en yaygın geliştirme ortamıdır.</p>
+</li>
+<li>
+<p><strong>Çoklu Platform:</strong> .NET Core ile Windows, macOS, Linux desteği.</p>
+</li>
+<li>
+<p><strong>Güvenlik:</strong> Kod imzalama, yetkilendirme, izin kontrolleri.</p>
+</li>
+<li>
+<p><strong>Veritabanı Entegrasyonu:</strong> ADO.NET ve LINQ desteği.</p>
+</li>
+<li>
+<p><strong>Kullanım Alanları:</strong> Masaüstü, web, mobil, oyun, sunucu ve yapay zekâ uygulamaları.</p>
+</li>
+</ul>
+<hr />
+<h2>3. C#’a Giriş</h2>
+<ul>
+<li>
+<p>Microsoft tarafından .NET platformu için geliştirilmiştir.</p>
+</li>
+<li>
+<p>C++ ve Java’dan etkilenmiştir.</p>
+</li>
+<li>
+<p>Basit, okunabilir, sürdürülebilir bir dil yapısına sahiptir.</p>
+</li>
+<li>
+<p>Mono ve .NET Core sayesinde Windows dışı sistemlerde de kullanılabilir.</p>
+</li>
+<li>
+<p>Nesneye Yönelik Programlama (OOP) prensiplerine dayanır:</p>
+<ul>
+<li>Sınıflar, nesneler, kalıtım, çok biçimlilik, soyutlama, kapsülleme.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>4. C# Dilinin Temel Özellikleri</h2>
+<ul>
+<li>
+<p><strong>Geniş Kütüphane:</strong> Framework Class Library kullanımı.</p>
+</li>
+<li>
+<p><strong>Tip Güvenliği:</strong> Statik tip kontrolü ile hataları önler.</p>
+</li>
+<li>
+<p><strong>Platform Bağımsızlık:</strong> .NET Core sayesinde çoklu sistem desteği.</p>
+</li>
+<li>
+<p><strong>Hata Ayıklama:</strong> Visual Studio ile güçlü debugging araçları.</p>
+</li>
+<li>
+<p><strong>Topluluk Desteği:</strong> Geniş kaynak ve forum ekosistemi.</p>
+</li>
+</ul>
+<hr />
+<h2>5. C#’ta Program Yazma Aşamaları</h2>
+<ol>
+<li>
+<p><strong>Kaynak Kodun Oluşturulması</strong></p>
+<ul>
+<li><code>.cs</code> uzantılı dosyalar IDE veya metin editörü ile yazılır.</li>
+</ul>
+</li>
+<li>
+<p><strong>Derleme</strong></p>
+<ul>
+<li>C# derleyicisi hataları kontrol eder ve kodu derler.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ara Dile (CIL) Dönüştürme</strong></p>
+<ul>
+<li>Kaynak kod, platformdan bağımsız <strong>Common Intermediate Language</strong>’e çevrilir.</li>
+</ul>
+</li>
+<li>
+<p><strong>JIT (Just-In-Time) Derleme</strong></p>
+<ul>
+<li>
+<p>CIL kodu çalışma zamanında makine diline çevrilir.</p>
+</li>
+<li>
+<p><strong>JIT türleri:</strong></p>
+<ul>
+<li>
+<p><em>Normal JIT:</em> Gerektiğinde derler.</p>
+</li>
+<li>
+<p><em>Pre-JIT:</em> Tüm kodu baştan derler.</p>
+</li>
+<li>
+<p><em>Eco JIT:</em> Bellek sınırlı sistemler için optimize.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tiered Compilation (.NET Core):</strong></p>
+<ul>
+<li>
+<p><em>Lower Tier:</em> Hızlı ama az optimize.</p>
+</li>
+<li>
+<p><em>Upper Tier:</em> Daha optimize, yüksek performanslı.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Yürütme</strong></p>
+<ul>
+<li>
+<p>CLR, bellek yönetimi, güvenlik ve hata ayıklama işlemlerini gerçekleştirir.</p>
+</li>
+<li>
+<p>Makine kodu işletim sistemi üzerinde çalıştırılır.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2>6. Visual Studio ile İlk C# Örneği</h2>
+<pre><code class="language-csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine(&quot;Merhaba Dünya!&quot;);
+    }
+}
+</code></pre>
+<p><strong>Önemli noktalar:</strong></p>
+<ul>
+<li>
+<p>Her C# programı en az bir sınıf içerir.</p>
+</li>
+<li>
+<p><code>Main()</code> metodu giriş noktasıdır.</p>
+</li>
+<li>
+<p>Kod satırları <code>;</code> ile biter.</p>
+</li>
+<li>
+<p><code>using</code> ifadesi namespace eklemek için kullanılır.</p>
+</li>
+</ul>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p><strong>.NET Framework</strong>, çok dilli destek, güvenlik, taşınabilirlik ve geniş kütüphaneler sunan bir platformdur.</p>
+</li>
+<li>
+<p><strong>C#</strong>, bu platform üzerinde çalışan modern, güvenli ve nesne yönelimli bir dildir.</p>
+</li>
+<li>
+<p>Derleme süreci, kaynak koddan CIL’e ve JIT aracılığıyla makine koduna dönüşüm içerir.</p>
+</li>
+<li>
+<p>Visual Studio, C# geliştirme sürecini kolaylaştıran güçlü bir IDE’dir.</p>
+</li>
+</ul>
+<h1>5.Ünite - C# Veri Türleri ve Değişkenler</h1>
+<hr />
+<h2>1. Giriş</h2>
+<p>C#, verileri <strong>saklamak ve işlemek</strong> için farklı türlerde veri yapıları sunar.<br />
+Veri türleri iki ana grupta incelenir:</p>
+<ul>
+<li>
+<p><strong>Önceden tanımlanmış türler</strong></p>
+<ul>
+<li>
+<p><em>Değer tipleri (Value Types)</em></p>
+</li>
+<li>
+<p><em>Referans tipleri (Reference Types)</em></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Kullanıcı tanımlı türler</strong><br />
+    (örneğin <code>class</code>, <code>struct</code>, <code>enum</code>, <code>interface</code>)</p>
+</li>
+</ul>
+<p><strong>Değer tipleri</strong> doğrudan <em>stack</em> bellekte saklanır.<br />
+<strong>Referans tipleri</strong> ise <em>heap</em> bellekte tutulur ve stack sadece onların adresini taşır.</p>
+<blockquote>
+<p>Değer tipini <code>object</code> türüne dönüştürme işlemine <strong>boxing</strong>,<br />
+tekrar orijinal haline çevirme işlemine <strong>unboxing</strong> denir.</p>
+</blockquote>
+<p>Bir değişkenin erişim alanı <strong>scope (kapsam)</strong> olarak adlandırılır.<br />
+Değişmemesi gereken değerler <code>const</code> anahtar kelimesiyle <strong>sabit (constant)</strong> yapılır.</p>
+<hr />
+<h2>2. Temel Veri Türleri</h2>
+<h3><strong>Değer Tipleri (Value Types)</strong></h3>
+<p>Bellekte kendi değerini tutar (stack’te).<br />
+Örnekler:</p>
+<ul>
+<li>
+<p>Tam sayılar → <code>int</code>, <code>long</code>, <code>short</code>, <code>byte</code></p>
+</li>
+<li>
+<p>Ondalıklı sayılar → <code>float</code>, <code>double</code>, <code>decimal</code></p>
+</li>
+<li>
+<p>Karakter → <code>char</code></p>
+</li>
+<li>
+<p>Mantıksal → <code>bool</code></p>
+</li>
+<li>
+<p>Tarih → <code>DateTime</code></p>
+</li>
+</ul>
+<p>Her değer tipi, birbirinden bağımsız şekilde kopyalanabilir.</p>
+<h3><strong>Referans Tipleri (Reference Types)</strong></h3>
+<p>Bellekteki adresi tutar (heap’te).<br />
+Örnekler:</p>
+<ul>
+<li><code>string</code>, <code>object</code>, <code>class</code>, <code>array</code>, <code>interface</code>, <code>delegate</code></li>
+</ul>
+<p>Bir referans tipi başka bir değişkene atanırsa, <strong>aynı nesneyi</strong> işaret eder.</p>
+<hr />
+<h2>3. Bellek Bölgeleri</h2>
+<h3><strong>Stack</strong></h3>
+<ul>
+<li>
+<p>Yerel değişkenler ve metod parametreleri burada tutulur.</p>
+</li>
+<li>
+<p>LIFO (Last In, First Out) mantığıyla çalışır.</p>
+</li>
+<li>
+<p>Hızlıdır ve boyutu sınırlıdır.</p>
+</li>
+<li>
+<p>Değişkenin kapsamı bittiğinde bellek otomatik olarak temizlenir.</p>
+</li>
+</ul>
+<h3><strong>Heap</strong></h3>
+<ul>
+<li>
+<p><code>new</code> anahtar sözcüğüyle oluşturulan nesneler burada saklanır.</p>
+</li>
+<li>
+<p>Dinamik bellek yönetimi sağlar.</p>
+</li>
+<li>
+<p>Garbage Collector tarafından temizlenir.</p>
+</li>
+<li>
+<p>Referans tipleri burada yaşar.</p>
+</li>
+</ul>
+<h3><strong>Diğer Bellek Bölgeleri</strong></h3>
+<ul>
+<li>
+<p><strong>Register:</strong> CPU üzerindeki en hızlı geçici alan.</p>
+</li>
+<li>
+<p><strong>Static Bölge:</strong> Program süresince var olan veriler.</p>
+</li>
+<li>
+<p><strong>Sabit Bölge:</strong> Değişmeyen değerler.</p>
+</li>
+<li>
+<p><strong>RAM Dışı Bölge:</strong> Disk veya harici depolama alanları.</p>
+</li>
+</ul>
+<hr />
+<h2>4. Değişkenler (Variables)</h2>
+<p>Bir değişken, bellekte veri saklayan isimlendirilmiş alandır.</p>
+<h3><strong>1. Tanımlama</strong></h3>
+<pre><code class="language-csharp">int number;
+</code></pre>
+<h3><strong>2. Değer Atama</strong></h3>
+<pre><code class="language-csharp">number = 10;
+</code></pre>
+<p>Değişken kullanılmadan önce mutlaka değer atanmalıdır.</p>
+<h3><strong>3. Kullanım</strong></h3>
+<pre><code class="language-csharp">Console.WriteLine(number); // 10
+</code></pre>
+<h3><strong>İsimlendirme Kuralları</strong></h3>
+<ul>
+<li>
+<p>Harf veya <code>_</code> ile başlamalı, sayı ile başlayamaz.</p>
+</li>
+<li>
+<p>Boşluk ve özel karakter içeremez.</p>
+</li>
+<li>
+<p>Büyük/küçük harf duyarlıdır.</p>
+</li>
+<li>
+<p>Anlamlı isimler kullanılmalıdır.</p>
+</li>
+<li>
+<p>C# anahtar kelimeleri (<code>int</code>, <code>class</code>, <code>if</code> vb.) değişken adı olamaz.</p>
+</li>
+<li>
+<p>İsimlendirme stilleri:</p>
+<ul>
+<li>
+<p><code>camelCase</code> → <code>firstName</code></p>
+</li>
+<li>
+<p><code>PascalCase</code> → <code>FirstName</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2>5. Tür Dönüşümleri (Type Conversions)</h2>
+<p>Bir veri türünü başka bir türe çevirmeye <strong>type conversion</strong> denir.</p>
+<h3><strong>1. Implicit (Kapalı / Otomatik)</strong></h3>
+<ul>
+<li>
+<p>Veri kaybı riski yoksa C# otomatik dönüşüm yapar.</p>
+</li>
+<li>
+<p>Küçük tür → büyük türe</p>
+<p><code>csharp
+int i = 10;
+double d = i; // otomatik dönüşüm</code></p>
+</li>
+</ul>
+<h3><strong>2. Explicit (Açık / Manuel)</strong></h3>
+<ul>
+<li>
+<p>Veri kaybı olasılığı varsa dönüşüm açıkça belirtilmelidir.</p>
+<p><code>csharp
+double d = 3.75;
+int i = (int)d; // cast</code></p>
+</li>
+</ul>
+<h4><strong>Convert Sınıfı</strong></h4>
+<p>Dönüştürme işlemleri için yardımcı sınıftır:</p>
+<pre><code class="language-csharp">int x = Convert.ToInt32(&quot;42&quot;);
+string s = Convert.ToString(123);
+</code></pre>
+<h4><strong>Parse() Metodu</strong></h4>
+<p>Metin verilerini sayısal değerlere dönüştürür:</p>
+<pre><code class="language-csharp">int n = int.Parse(&quot;123&quot;);
+</code></pre>
+<h4><strong>TryParse() (Güvenli Alternatif)</strong></h4>
+<p>Hatalı girişi yakalar:</p>
+<pre><code class="language-csharp">int.TryParse(&quot;abc&quot;, out int result); // false döner
+</code></pre>
+<hr />
+<h2>6. Boxing ve Unboxing</h2>
+<h3><strong>Boxing (Kutulama)</strong></h3>
+<p>Değer tipinin <code>object</code> türüne dönüştürülmesidir.</p>
+<pre><code class="language-csharp">int value = 42;
+object boxed = value;
+</code></pre>
+<h3><strong>Unboxing (Kutudan Çıkarma)</strong></h3>
+<p><code>object</code> türündeki veriyi tekrar orijinal türe dönüştürür.</p>
+<pre><code class="language-csharp">int number = (int)boxed;
+</code></pre>
+<p><strong>Not:</strong> Bu işlemler performans maliyetlidir,<br />
+bu yüzden <strong>generics (<code>List&lt;T&gt;</code>, <code>Dictionary&lt;TKey, TValue&gt;</code>)</strong> kullanmak önerilir.</p>
+<hr />
+<h2>7. Değişkenlerin Faaliyet Alanı (Scope)</h2>
+<p>Bir değişkenin erişilebildiği kod bloğudur.</p>
+<h3>Türleri:</h3>
+<ul>
+<li>
+<p><strong>Metot Scope:</strong> Değişken sadece o metodun içinde geçerlidir.</p>
+</li>
+<li>
+<p><strong>Blok Scope:</strong> <code>{}</code> ile çevrili yapılar (if, for, while vb.).</p>
+</li>
+<li>
+<p><strong>Sınıf Scope:</strong> Tüm sınıf içinde erişilebilir.</p>
+</li>
+</ul>
+<p>Kapsam bittiğinde değişken bellekten silinir.</p>
+<hr />
+<h2>8. Sabitler (Constants)</h2>
+<p>Değeri değişmeyen, derleme zamanında belirlenen değişkenlerdir.<br />
+<code>const</code> anahtar kelimesiyle tanımlanır.</p>
+<pre><code class="language-csharp">const double PI = 3.14;
+const string APP_NAME = &quot;MyApp&quot;;
+</code></pre>
+<ul>
+<li>
+<p>Program süresince değiştirilemez.</p>
+</li>
+<li>
+<p>Türleri: <code>int</code>, <code>double</code>, <code>char</code>, <code>string</code>, <code>bool</code> vb.</p>
+</li>
+<li>
+<p>Tanımlandığı kapsam içinde geçerlidir.</p>
+</li>
+</ul>
+<hr />
+<h3>Sonuç</h3>
+<ul>
+<li>
+<p>C#’ta veri türleri <strong>değer</strong> ve <strong>referans</strong> tiplerine ayrılır.</p>
+</li>
+<li>
+<p>Bellek yönetimi <code>stack</code> ve <code>heap</code> üzerinden yapılır.</p>
+</li>
+<li>
+<p>Tür dönüşümleri <strong>implicit</strong> ve <strong>explicit</strong> olarak gerçekleşir.</p>
+</li>
+<li>
+<p><strong>Boxing</strong> ve <strong>unboxing</strong>, değer → referans ve tersine dönüşümleri tanımlar.</p>
+</li>
+<li>
+<p><strong>Scope</strong>, değişkenin ömrünü ve erişim alanını belirler.</p>
+</li>
+<li>
+<p><strong>Const</strong> değişkenler sabit değerleri temsil eder.</p>
+</li>
+</ul>
+<h2>C# Değişken Özeti Tablosu</h2>
+<table>
+<thead>
+<tr>
+<th>Kategori</th>
+<th>Açıklama</th>
+<th>Örnek Veri Tipleri</th>
+<th>Saklandığı Bellek</th>
+<th>Örnek Tanım</th>
+<th>Özellikler</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Değer Tipleri (Value Types)</strong></td>
+<td>Verinin kendisini tutar, doğrudan bellekte saklanır.</td>
+<td><code>int</code>, <code>float</code>, <code>double</code>, <code>bool</code>, <code>char</code>, <code>decimal</code>, <code>DateTime</code></td>
+<td><strong>Stack</strong></td>
+<td><code>int age = 25;</code></td>
+<td>Hızlı erişim sağlar, her kopya bağımsızdır.</td>
+</tr>
+<tr>
+<td><strong>Referans Tipleri (Reference Types)</strong></td>
+<td>Verinin adresini (referansını) tutar.</td>
+<td><code>string</code>, <code>object</code>, <code>class</code>, <code>array</code>, <code>interface</code></td>
+<td><strong>Heap (veri)</strong>, <strong>Stack (referans)</strong></td>
+<td><code>string name = "Ahmet";</code></td>
+<td>Birden fazla değişken aynı nesneyi gösterebilir.</td>
+</tr>
+<tr>
+<td><strong>Kullanıcı Tanımlı Tipler</strong></td>
+<td>Geliştirici tarafından oluşturulan özel türler.</td>
+<td><code>struct</code>, <code>enum</code>, <code>class</code>, <code>interface</code></td>
+<td>Türüne göre (struct → Stack, class → Heap)</td>
+<td><code>class Student { }</code></td>
+<td>Modüler, yeniden kullanılabilir kod sağlar.</td>
+</tr>
+<tr>
+<td><strong>Sabitler (Constants)</strong></td>
+<td>Değeri derleme zamanında belirlenir ve değiştirilemez.</td>
+<td>Tüm temel tipler (<code>int</code>, <code>double</code>, <code>string</code>, vb.)</td>
+<td><strong>Static alan</strong></td>
+<td><code>const double PI = 3.14;</code></td>
+<td>Program süresince sabit kalır.</td>
+</tr>
+<tr>
+<td><strong>Statik Değişkenler</strong></td>
+<td>Tüm sınıf örnekleri arasında ortak değişkenlerdir.</td>
+<td>Tüm tiplerde olabilir</td>
+<td><strong>Static alan (RAM)</strong></td>
+<td><code>static int counter = 0;</code></td>
+<td>Sınıf yüklenirken bir kez oluşturulur.</td>
+</tr>
+<tr>
+<td><strong>Yerel Değişkenler (Local)</strong></td>
+<td>Sadece tanımlandığı blokta erişilebilir.</td>
+<td>Herhangi bir tip</td>
+<td><strong>Stack</strong></td>
+<td><code>{ int a = 10; }</code></td>
+<td>Blok bitince bellekten silinir.</td>
+</tr>
+<tr>
+<td><strong>Global / Alan Değişkenleri (Field)</strong></td>
+<td>Sınıf seviyesinde tanımlanır.</td>
+<td>Herhangi bir tip</td>
+<td>Stack (değer) / Heap (referans)</td>
+<td><code>private string name;</code></td>
+<td>Tüm sınıf içinde erişilebilir.</td>
+</tr>
+<tr>
+<td><strong>Readonly Değişkenler</strong></td>
+<td>Sadece ilk atamada veya yapıcıda değiştirilebilir.</td>
+<td>Tüm tipler</td>
+<td>Stack / Heap</td>
+<td><code>readonly int id = 5;</code></td>
+<td><code>const</code> gibi ama runtime’da atanabilir.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Ek Bilgiler</h2>
+<table>
+<thead>
+<tr>
+<th>Kavram</th>
+<th>Açıklama</th>
+<th>Örnek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Boxing</strong></td>
+<td>Değer tipinin <code>object</code>’e dönüştürülmesi</td>
+<td><code>object obj = 42;</code></td>
+</tr>
+<tr>
+<td><strong>Unboxing</strong></td>
+<td><code>object</code> tipinden orijinal değere dönüş</td>
+<td><code>int x = (int)obj;</code></td>
+</tr>
+<tr>
+<td><strong>Scope (Kapsam)</strong></td>
+<td>Değişkenin erişim alanı</td>
+<td>Metot, blok veya sınıf</td>
+</tr>
+<tr>
+<td><strong>Type Conversion</strong></td>
+<td>Tür dönüşümü (implicit / explicit)</td>
+<td><code>double d = i;</code> veya <code>int i = (int)d;</code></td>
+</tr>
+</tbody>
+</table>
+<h1>6.Ünite - Sınıflar ve Nesneler</h1>
+<hr />
+<p>Nesneye Yönelik Programlamanın (NYP) temeli olan sınıf/nesne yapısını, yaşam döngülerini (yapıcı/yıkıcı metotlar) ve veri güvenliği yöntemlerini (kapsülleme) pratik örneklerle açıklamaktadır.</p>
+<h2>1. Temel Kavramlar: Sınıf ve Nesne</h2>
+<p>Nesneye yönelik programlama, problemleri parçalara ayırıp her parçayı bir nesne olarak modelleme tekniğidir .</p>
+<ul>
+<li>
+<p><strong>Sınıf (Class):</strong> Bir nesnenin şablonudur. Nesnenin sahip olacağı özellikleri (alanlar) ve davranışları (metotlar) tanımlar . Soyut bir kavramdır.</p>
+</li>
+<li>
+<p><strong>Nesne (Instance):</strong> Sınıftan türetilen somut örnektir. Bellekte yer kaplar ve gerçek dünya nesnelerini temsil eder .</p>
+</li>
+</ul>
+<h3>Uygulama Örneği: Araba Sınıfı</h3>
+<p>Bir sınıftan nesne türetmek için <code>new</code> anahtar sözcüğü kullanılır .</p>
+<pre><code class="language-csharp">using System;
+
+// Sınıf Tanımı (Şablon)
+public class Araba
+{
+    // Alanlar (Özellikler) 
+    public string Marka;
+    public string Model;
+    public int Yil;
+    public string Renk;
+
+    // Metotlar (Davranışlar) 
+    public void Calistir()
+    {
+        Console.WriteLine(&quot;Araba çalışıyor...&quot;);
+    }
+}
+
+// Kullanım (Main Metodu)
+class Program
+{
+    static void Main()
+    {
+        // Nesne Türetme (Instance Oluşturma) 
+        Araba Araba1 = new Araba(); 
+
+        // Özelliklere Değer Atama 
+        // (Not: Orijinal belgedeki yazım hataları düzeltilmiştir)
+        Araba1.Marka = &quot;BMW&quot;;
+        Araba1.Model = &quot;5 Serisi&quot;;
+        Araba1.Yil = 2018;
+
+        // Metodu Çağırma 
+        Araba1.Calistir(); 
+    }
+}
+</code></pre>
+<hr />
+<h2>2. Nesne Yaşam Döngüsü: Yapıcı ve Yıkıcı Metotlar</h2>
+<p>Nesneler oluşturulurken ve yok edilirken otomatik çalışan özel metotlar vardır.</p>
+<h3>A. Yapıcı Metotlar (Constructors)</h3>
+<ul>
+<li>
+<p>Nesne <code>new</code> ile oluşturulduğunda <strong>otomatik</strong> çalışır .</p>
+</li>
+<li>
+<p>Sınıfın başlangıç durumunu (ilk değerlerini) ayarlamak için kullanılır .</p>
+</li>
+<li>
+<p>Sınıf ismiyle aynı isme sahiptir ve geriye değer döndürmez .</p>
+</li>
+<li>
+<p><strong>Aşırı Yükleme (Overloading):</strong> Farklı parametreler alarak birden fazla yapıcı metot tanımlanabilir .</p>
+</li>
+</ul>
+<h3>B. Yıkıcı Metotlar (Destructors)</h3>
+<ul>
+<li>
+<p>Nesne artık kullanılmayacağı zaman (bellekten atılmadan hemen önce) otomatik çalışır .</p>
+</li>
+<li>
+<p>Sınıf isminin başına <code>~</code> (tilde) işareti konularak tanımlanır .</p>
+</li>
+<li>
+<p>Parametre almazlar ve sadece bir tane olabilirler .</p>
+</li>
+</ul>
+<h3>Uygulama Örneği: Kedi Sınıfı</h3>
+<pre><code class="language-csharp">public class Kedi
+{
+    public string Isim;
+
+    // Yapıcı Metot: Nesne oluştuğunda çalışır 
+    public Kedi(string isim) 
+    {
+        this.Isim = isim; 
+        Console.WriteLine(isim + &quot; adlı kedi oluşturuldu.&quot;);
+    }
+
+    // Yıkıcı Metot: Nesne silinirken çalışır 
+    ~Kedi()
+    {
+        Console.WriteLine(&quot;Kedi bellekten atıldı.&quot;);
+    }
+}
+</code></pre>
+<hr />
+<h2>3. Erişim Belirteçleri (Access Modifiers)</h2>
+<p>Kodun güvenliği ve düzeni için sınıf üyelerine erişimi kısıtlayabilir veya açabiliriz. 5 temel belirteç vardır :</p>
+<ol>
+<li>
+<p><strong>public:</strong> Her yerden erişilebilir (Halka açık) .</p>
+</li>
+<li>
+<p><strong>private:</strong> Sadece tanımlandığı sınıf içinden erişilebilir (Gizli). Varsayılan değerdir .</p>
+</li>
+<li>
+<p><strong>protected:</strong> Kendi sınıfı ve miras alan alt sınıflardan erişilebilir .</p>
+</li>
+<li>
+<p><strong>internal:</strong> Sadece aynı proje (derleme) içinden erişilebilir .</p>
+</li>
+<li>
+<p><strong>protected internal:</strong> Aynı proje veya farklı projedeki alt sınıflardan erişilebilir .</p>
+</li>
+</ol>
+<hr />
+<h2>4. <code>this</code> Anahtar Sözcüğü</h2>
+<p>Sınıfın o anki örneğini (kendisini) temsil eder . En yaygın kullanım amacı, metot parametresi ile sınıf alanının ismi aynı olduğunda karışıklığı önlemektir .</p>
+<p><strong>Örnek:</strong></p>
+<pre><code class="language-csharp">public class Ornek
+{
+    string ad;
+    public void AdAta(string ad)
+    {
+        this.ad = ad; // 'this.ad' sınıfın alanıdır, 'ad' parametredir. 
+    }
+}
+</code></pre>
+<hr />
+<h2>5. Kapsülleme: Get ve Set (Properties)</h2>
+<p>Sınıf alanlarını (fields) doğrudan dışarı açmak yerine, <code>get</code> ve <code>set</code> blokları üzerinden kontrollü erişim sağlamak için kullanılır .</p>
+<ul>
+<li>
+<p><strong>get:</strong> Özelliğin değerini okumak için kullanılır .</p>
+</li>
+<li>
+<p><strong>set:</strong> Özelliğe değer atamak için kullanılır. <code>value</code> anahtar kelimesi ile gelen değeri tutar .</p>
+</li>
+</ul>
+<h3>Uygulama Örneği: Toplama İşlemi</h3>
+<pre><code class="language-csharp">class Topla
+{
+    private int tpl; // Dışarıya kapalı alan 
+
+    public int ToplamaSonucu
+    {
+        get { return tpl; }      // Değeri okur 
+        set { tpl = tpl + value; } // Mevcut toplama yeni değeri ekler 
+    }
+}
+
+// Kullanım
+// Topla t = new Topla();
+// t.ToplamaSonucu = 5; (Set çalışır, toplama 5 ekler)
+// Console.WriteLine(t.ToplamaSonucu); (Get çalışır)
+</code></pre>
+<h1>7.Ünite - Sınıf Yapısına İlişkin Kavramlar</h1>
+<hr />
+<p>Nesneye Yönelik Programlamanın (NYP) karmaşıklığı yönetmek ve kodu güvenli hale getirmek için kullandığı iki temel yapı taşına odaklanır: <strong>Soyutlama (Abstraction)</strong> ve <strong>Kapsülleme (Encapsulation)</strong>.</p>
+<h2>1. Soyutlama (Abstraction)</h2>
+<p>Soyutlama, karmaşık bir sistemi basit ve anlaşılır bir şekilde modellemek için kullanılır1. Bir nesnenin "nasıl" çalıştığından ziyade "ne" yaptığına odaklanır; gereksiz ayrıntıları gizler ve sadece temel özellikleri vurgular.</p>
+<p>C#'ta soyutlama iki ana yapı ile sağlanır:</p>
+<h3>A. Soyut Sınıflar (Abstract Classes)</h3>
+<ul>
+<li>
+<p><strong>Tanım:</strong> Diğer sınıflar için temel oluşturan (ata sınıf), doğrudan nesne üretilemeyen (<code>new</code> yapılamayan) sınıflardır.</p>
+</li>
+<li>
+<p><strong>İçerik:</strong> Hem gövdesiz (soyut) metotlar hem de normal (gövdeli) metotlar barındırabilir.</p>
+</li>
+<li>
+<p><strong>Kural:</strong> Soyut metotların sadece imzası yazılır (<code>abstract</code> anahtar kelimesi ile) ve alt sınıflar bu metotları <code>override</code> ederek (ezerek) doldurmak zorundadır.</p>
+</li>
+</ul>
+<h4>Uygulama Örneği: Araç Sınıfı</h4>
+<pre><code class="language-csharp">using System;
+
+// Soyut Sınıf
+abstract class Arac
+{
+    [cite_start]// Soyut Metot: Gövdesi yok, alt sınıf doldurmak zorunda [cite: 118]
+    public abstract double YakitGetir();
+
+    [cite_start]// Normal Metot: Gövdesi var, miras alanlar aynen kullanabilir [cite: 119]
+    public void Durdur()
+    {
+        Console.WriteLine(&quot;Araç durduruldu...&quot;);
+    }
+}
+
+// Alt Sınıf
+class Otobus : Arac
+{
+    [cite_start]// Soyut metodu ezerek (override) gövdesini yazıyoruz [cite: 132]
+    public override double YakitGetir()
+    {
+        return 300; 
+    }
+}
+</code></pre>
+<h3>B. Arayüzler (Interfaces)</h3>
+<ul>
+<li>
+<p><strong>Tanım:</strong> Sadece metot ve özellik imzalarını içeren, tamamen soyut bir yapıdır. İçerisinde kod gövdesi bulunmaz.</p>
+</li>
+<li>
+<p><strong>Amaç:</strong> Farklı sınıfların ortak davranışları paylaşmasını sağlar ve C#'taki çoklu kalıtım eksikliğini giderir (Bir sınıf birden fazla arayüzü uygulayabilir).</p>
+</li>
+<li>
+<p><strong>İsimlendirme:</strong> Genellikle isimlerinin başına "I" harfi getirilir (Örn: <code>IKayit</code>).</p>
+</li>
+</ul>
+<h4>Uygulama Örneği: Dosya İşlemleri</h4>
+<pre><code class="language-csharp">// Interface Tanımı
+interface IDosyaIslemleri
+{
+    [cite_start]// Sadece imza var, erişim belirteci (public vs) yazılmaz [cite: 172]
+    void DosyaAc(string dosyaAdi);
+    void DosyaKaydet();
+}
+
+// Interface Uygulayan Sınıf
+class MetinEditoru : IDosyaIslemleri
+{
+    // Interface metotlarını public olarak gerçekleştirmek zorundadır
+    public void DosyaAc(string dosyaAdi)
+    {
+        Console.WriteLine(dosyaAdi + &quot; dosyası açıldı.&quot;);
+    }
+
+    public void DosyaKaydet()
+    {
+        Console.WriteLine(&quot;Dosya kaydedildi.&quot;);
+    }
+}
+</code></pre>
+<hr />
+<h2>2. Kapsülleme (Encapsulation)</h2>
+<p>Kapsülleme, bir nesnenin iç yapısını (verilerini) dış dünyadan gizleyerek, sadece izin verilen yollarla erişim sağlanmasıdır. Bir kapsül gibi veriyi korur.</p>
+<ul>
+<li>
+<p><strong>Neden Kullanılır?</strong> Veri güvenliğini sağlamak ve hatalı veri girişini engellemek için.</p>
+</li>
+<li>
+<p><strong>Nasıl Yapılır?</strong></p>
+<ol>
+<li>
+<p>Alanlar (fields) <code>private</code> yapılarak gizlenir.</p>
+</li>
+<li>
+<p>Bu alanlara erişim <code>public</code> özellikler (Properties - Get/Set) üzerinden kontrollü sağlanır.</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4>Uygulama Örneği: Öğrenci Kaydı</h4>
+<pre><code class="language-csharp">class Ogrenci
+{
+    [cite_start]// 1. Alanları gizle (Private) [cite: 237]
+    private string isim;
+    private int yas;
+
+    // Yapıcı Metot (Constructor)
+    public Ogrenci(string isim, int yas)
+    {
+        [cite_start]// &quot;this&quot; kullanımıyla karışıklığı önle [cite: 242]
+        this.isim = isim;
+        this.yas = yas;
+    }
+
+    // 2. Kontrollü Erişim (Property)
+    public string Isim
+    {
+        get { return isim; }
+        // Set bloğunda istersek veri kontrolü yapabiliriz
+        set { isim = value; } 
+    }
+
+    public void BilgiGoster()
+    {
+        // String interpolation kullanımı düzeltildi
+        Console.WriteLine($&quot;İsim: {isim}, Yaş: {yas}&quot;); 
+    }
+}
+</code></pre>
+<h1>8.Ünite - Sınıf Hiyerarşisi</h1>
+<hr />
+<p>Sınıflar arasındaki ilişkileri düzenleyen, kod tekrarını önleyen ve yazılımın esnekliğini artıran temel hiyerarşik yapıları ele almaktadır.</p>
+<h2>1. Kalıtım (Inheritance)</h2>
+<p>Kalıtım, bir sınıfın (türetilmiş sınıf/alt sınıf) başka bir sınıfın (temel sınıf/üst sınıf) özelliklerini ve davranışlarını miras almasıdır.</p>
+<ul>
+<li>
+<p><strong>Amaç:</strong> Kod tekrarını önlemek, bakımı kolaylaştırmak ve sınıflar arasında hiyerarşik bir düzen kurmaktır.</p>
+</li>
+<li>
+<p><strong>İlişki:</strong> "is-a" (bir ...) ilişkisidir. (Örn: SporAraba <em>bir</em> Arabadır).</p>
+</li>
+<li>
+<p><strong>Kural:</strong> C# dilinde bir sınıf sadece <strong>tek bir</strong> sınıftan miras alabilir (Single Inheritance).</p>
+</li>
+<li>
+<p><strong>Sözdizimi:</strong> <code>class AltSinif : UstSinif</code> şeklinde tanımlanır.</p>
+</li>
+</ul>
+<h2>2. Çoklu Kalıtım ve Arayüzler</h2>
+<p>C# doğrudan çoklu kalıtımı (bir sınıfın birden fazla sınıftan miras almasını) desteklemez. Bunun yerine <strong>Arayüzler (Interfaces)</strong> kullanılır.</p>
+<ul>
+<li>
+<p>Bir sınıf birden fazla arayüzü (<code>interface</code>) uygulayabilir (implement edebilir).</p>
+</li>
+<li>
+<p>Bu sayede farklı yetenekler tek bir sınıfta toplanabilir.</p>
+</li>
+</ul>
+<h2>3. Mühürlü Sınıflar (Sealed Classes)</h2>
+<p>Kalıtımın engellenmesi gereken durumlar için kullanılır.</p>
+<ul>
+<li>
+<p><strong><code>sealed</code></strong> anahtar kelimesi ile tanımlanır.</p>
+</li>
+<li>
+<p>Bu sınıflardan başka bir sınıf türetilemez. Genellikle güvenlik veya sınıf bütünlüğünü korumak için tercih edilir.</p>
+</li>
+</ul>
+<h2>4. Bileşim (Composition)</h2>
+<p>Kalıtıma güçlü bir alternatiftir. Bir sınıfın, başka bir sınıfın nesnesini kendi içinde barındırmasıdır.</p>
+<ul>
+<li>
+<p><strong>İlişki:</strong> "has-a" (sahiptir) ilişkisidir. (Örn: Bilgisayar işlemciye <em>sahiptir</em>).</p>
+</li>
+<li>
+<p><strong>Avantajı:</strong> Sınıflar arasındaki bağımlılığı azaltır (loose coupling) ve esnekliği artırır.</p>
+</li>
+</ul>
+<h2>5. Çok Biçimlilik (Polymorphism)</h2>
+<p>Nesnelerin farklı formlarda davranabilme yeteneğidir. 4 temel türü vardır:</p>
+<ol>
+<li>
+<p><strong>Alt Tür (Runtime):</strong> <code>virtual</code> ve <code>override</code> kullanılarak, alt sınıfların ana sınıfın metodunu kendine göre değiştirmesidir.</p>
+</li>
+<li>
+<p><strong>Parametrik (Overloading):</strong> <code>GenericList&lt;T&gt;</code> gibi yapılarla, kodun farklı veri tipleriyle çalışabilmesidir.</p>
+</li>
+<li>
+<p><strong>Geçici (Ad Hoc / Compile-time):</strong> Metot aşırı yüklemesidir (Method Overloading). Aynı isimli metodun farklı parametrelerle yazılmasıdır.</p>
+</li>
+<li>
+<p><strong>Tür Dönüşümü (Coercion):</strong> Bir veri tipinin diğerine dönüştürülmesidir (Örn: <code>(int)3.14</code>).</p>
+</li>
+</ol>
+<hr />
+<h3>Kod Örnekleri</h3>
+<h4>Örnek 1: Kalıtım ve Mühürlü Sınıf</h4>
+<pre><code class="language-csharp">// Temel Sınıf
+class Araba
+{
+    public string Marka { get; set; }
+    public void Calistir()
+    {
+        Console.WriteLine(&quot;Araba çalışıyor...&quot;);
+    }
+}
+
+// Türetilmiş Sınıf (Miras Alan)
+// 'sealed' olduğu için bu sınıftan başka sınıf türetilemez.
+sealed class SporAraba : Araba
+{
+    public void TurboAc()
+    {
+        Console.WriteLine($&quot;{Marka} turbo moduna geçti!&quot;);
+    }
+}
+
+// KULLANIM
+// SporAraba s = new SporAraba();
+// s.Marka = &quot;Ferrari&quot;;
+// s.Calistir(); // Miras aldığı metot
+// s.TurboAc();  // Kendi metodu
+</code></pre>
+<h4>Örnek 2: Bileşim (Composition)</h4>
+<pre><code class="language-csharp">class Islemci
+{
+    public string Model { get; set; }
+    public void IslemYap()
+    {
+        Console.WriteLine($&quot;{Model} işlem yapıyor.&quot;);
+    }
+}
+
+class Bilgisayar
+{
+    // Bileşim: Bilgisayar bir işlemciye &quot;sahiptir&quot; (Has-a)
+    private Islemci _cpu;
+
+    public Bilgisayar()
+    {
+        _cpu = new Islemci(); // Nesne içinde nesne oluşturma
+        _cpu.Model = &quot;Intel i7&quot;;
+    }
+
+    public void BilgisayariAc()
+    {
+        Console.WriteLine(&quot;Bilgisayar açılıyor...&quot;);
+        _cpu.IslemYap(); // İçindeki nesnenin metodunu kullanıyor
+    }
+}
+</code></pre>
+<h4>Örnek 3: Çok Biçimlilik (Polymorphism)</h4>
+<pre><code class="language-csharp">// 1. Geçici Çok Biçimlilik (Method Overloading)
+class Hesapla
+{
+    // Aynı metot ismi, farklı parametreler
+    public int Topla(int a, int b) { return a + b; }
+    public double Topla(double a, double b) { return a + b; }
+}
+
+// 2. Alt Tür Çok Biçimliliği (Override)
+class Hayvan
+{
+    public virtual void SesCikar() // 'virtual' ezilebilir demek
+    {
+        Console.WriteLine(&quot;Hayvan ses çıkarıyor.&quot;);
+    }
+}
+
+class Kedi : Hayvan
+{
+    public override void SesCikar() // 'override' ile eziyoruz
+    {
+        Console.WriteLine(&quot;Miyav!&quot;);
+    }
+}
+</code></pre>
+<h1>9.Ünite - Operatör Aşırı Yükleme</h1>
+<hr />
+<p>C# programlama dilinde operatörlerin (matematiksel, mantıksal, karşılaştırma vb.) kullanımını ve kullanıcı tanımlı sınıflar (class) için bu operatörlerin nasıl özelleştirileceğini (aşırı yükleme/overloading) ele almaktadır.</p>
+<h2>1. Operatörler ve Temel Kavramlar</h2>
+<p>Operatörler, değişkenler ve değerler üzerinde işlem yapmamızı sağlayan özel sembollerdir.</p>
+<ul>
+<li>
+<p><strong>Aritmetik Operatörler:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code> (mod), <code>++</code> (arttırma), <code>--</code> (azaltma).</p>
+</li>
+<li>
+<p><strong>Karşılaştırma Operatörleri:</strong> <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. Sonuç her zaman <code>true</code> veya <code>false</code> döner.</p>
+</li>
+<li>
+<p><strong>Mantıksal Operatörler:</strong> <code>&amp;&amp;</code> (VE), <code>||</code> (VEYA), <code>!</code> (DEĞİL)</p>
+</li>
+<li>
+<p><strong>Bit Tabanlı Operatörler:</strong> Bit seviyesinde işlem yapar. <code>&amp;</code> (VE), <code>|</code> (VEYA), <code>^</code> (XOR), <code>~</code> (Tersleme), <code>&lt;&lt;</code> (Sola kaydırma), <code>&gt;&gt;</code> (Sağa kaydırma)</p>
+</li>
+<li>
+<p><strong>Özel Amaçlı Operatörler:</strong></p>
+<ul>
+<li>
+<p><code>?:</code> (Ternary): Kısa if-else yapısıdır (<code>koşul ? doğruysa : yanlışsa</code>)5.</p>
+</li>
+<li>
+<p><code>checked</code> / <code>unchecked</code>: Tamsayı işlemlerinde taşma (overflow) kontrolü yapar.</p>
+</li>
+<li>
+<p><code>typeof</code>: Bir nesnenin tür bilgisini (<code>System.Type</code>) verir.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Tip Kontrolü ve Dönüşümü</h3>
+<p>C#'ta tip güvenliği için iki önemli operatör vardır:</p>
+<ol>
+<li>
+<p><strong><code>is</code> Operatörü:</strong> Nesnenin belirtilen tiple uyumlu olup olmadığını kontrol eder. <code>true</code> / <code>false</code> döner.</p>
+</li>
+<li>
+<p><strong><code>as</code> Operatörü:</strong> Güvenli dönüşüm yapar. Dönüşüm başarısız olursa hata fırlatmaz, <code>null</code> değeri döndürür.</p>
+</li>
+</ol>
+<h2>2. Operatör Aşırı Yükleme (Operator Overloading)</h2>
+<p>Kendi tanımladığımız sınıfların (örneğin <code>KarmasikSayi</code> veya <code>Vektor</code>), standart operatörlerle (<code>+</code>, <code>-</code>, <code>==</code> vb.) işlem yapabilmesini sağlamak için kullanılır.</p>
+<ul>
+<li>
+<p><strong>Kural:</strong> Operatör metotları mutlaka <code>public</code> ve <code>static</code> olmalıdır.</p>
+</li>
+<li>
+<p><strong>Syntax:</strong> <code>public static DönüşTipi operator OperatörSembolü (Parametreler)</code></p>
+</li>
+</ul>
+<h3>A. Aritmetik Operatörlerin Aşırı Yüklenmesi</h3>
+<p>İki nesneyi toplamak veya çıkarmak için kullanılır.</p>
+<h4>Uygulama Örneği: Nokta (Point) Toplama</h4>
+<pre><code class="language-csharp">public class Nokta
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+
+    public Nokta(int x, int y)
+    {
+        X = x;
+        Y = y;
+    }
+
+    // '+' operatörünü aşırı yükleme
+    public static Nokta operator +(Nokta nokta1, Nokta nokta2)
+    {
+        // İki noktanın X ve Y değerlerini toplayıp yeni bir Nokta döner
+        return new Nokta(nokta1.X + nokta2.X, nokta1.Y + nokta2.Y);
+    }
+}
+
+// Kullanım:
+// Nokta n1 = new Nokta(3, 5);
+// Nokta n2 = new Nokta(2, 4);
+// Nokta toplam = n1 + n2; // (5, 9) olur
+</code></pre>
+<h3>B. İlişkisel (Karşılaştırma) Operatörlerin Aşırı Yüklenmesi</h3>
+<p>Nesnelerin eşitliğini veya büyüklüğünü karşılaştırmak için kullanılır.</p>
+<ul>
+<li><strong>Önemli Kural:</strong> İlişkisel operatörler çiftler halinde yüklenmelidir. Eğer <code>==</code> yüklenirse, <code>!=</code> de yüklenmelidir. Aynı şekilde <code>&lt;</code> yüklenirse <code>&gt;</code> de yüklenmelidir.</li>
+</ul>
+<h4>Uygulama Örneği: Öğrenci Karşılaştırma</h4>
+<pre><code class="language-csharp">public class Ogrenci
+{
+    public string Ad { get; set; }
+    public int Yas { get; set; }
+
+    // '==' operatörü
+    public static bool operator ==(Ogrenci o1, Ogrenci o2)
+    {
+        // Null kontrolü önemlidir
+        if (ReferenceEquals(o1, null) || ReferenceEquals(o2, null))
+            return ReferenceEquals(o1, o2);
+
+        return (o1.Ad == o2.Ad &amp;&amp; o1.Yas == o2.Yas);
+    }
+
+    // '!=' operatörü (Çift olma zorunluluğu)
+    public static bool operator !=(Ogrenci o1, Ogrenci o2)
+    {
+        return !(o1 == o2);
+    }
+
+    // Not: == operatörü ezildiğinde Equals() ve GetHashCode() metotlarının da 
+    // ezilmesi (override) önerilir, ancak basitlik adına burada gösterilmemiştir.
+}
+</code></pre>
+<h3>C. Dönüşüm Operatörleri (Implicit / Explicit)</h3>
+<p>Bir sınıfın başka bir tipe nasıl dönüştürüleceğini belirler.</p>
+<ul>
+<li>
+<p><strong><code>implicit</code> (Kapalı/Otomatik):</strong> Veri kaybı riski olmayan, güvenli dönüşümler için kullanılır. Derleyici otomatik yapar.</p>
+</li>
+<li>
+<p><strong><code>explicit</code> (Açık/Zorunlu):</strong> Veri kaybı olabilecek durumlarda kullanılır. Parantez içinde tür belirtmek <code>(int)nesne</code> gerekir.</p>
+</li>
+</ul>
+<h4>Uygulama Örneği: Mesafe Dönüşümü (Metre &lt;-&gt; Santimetre)</h4>
+<pre><code class="language-csharp">public class Mesafe
+{
+    public double Metre { get; set; }
+
+    public Mesafe(double metre)
+    {
+        this.Metre = metre;
+    }
+
+    // Implicit: Mesafe -&gt; double (Otomatik dönüşüm)
+    // Metreyi santimetreye çevirip double döner
+    public static implicit operator double(Mesafe m)
+    {
+        return m.Metre * 100;
+    }
+
+    // Explicit: double -&gt; Mesafe (Zorunlu dönüşüm)
+    // Santimetreyi metreye çevirip Mesafe nesnesi döner
+    public static explicit operator Mesafe(double santimetre)
+    {
+        return new Mesafe(santimetre / 100);
+    }
+}
+
+// Kullanım:
+// Mesafe m = new Mesafe(5);
+// double cm = m; // Implicit (500 olur)
+// Mesafe m2 = (Mesafe)450.0; // Explicit (4.5 metre olur)
+</code></pre>
+<h1>10.Ünite - Metotlar ve Aşırı Yükleme</h1>
+<hr />
+<p>C# programlamanın temel yapı taşlarından olan metotları, parametre yönetimini ve Nesneye Yönelik Programlamanın (NYP) önemli kavramlarından olan Metot Aşırı Yükleme (Overloading) ve Geçersiz Kılma (Overriding) konularını ele almaktadır.</p>
+<h2>1. Metotların Temel Yapısı</h2>
+<p>Metotlar, belirli bir işlemi gerçekleştiren ve tekrar tekrar kullanılabilen kod bloklarıdır. Kodun modüler olmasını ve tekrarın önlenmesini sağlarlar.</p>
+<ul>
+<li>
+<p><strong>Tanımlama:</strong> <code>[Erişim Belirteci] [Dönüş Tipi] [Metot Adı] (Parametreler)</code></p>
+</li>
+<li>
+<p><strong>Void Metotlar:</strong> Geriye bir değer döndürmeyen metotlardır. <code>return</code> ifadesi değer almadan kullanılabilir veya hiç kullanılmaz.</p>
+</li>
+<li>
+<p><strong>Static Metotlar:</strong> Sınıftan nesne türetilmesine gerek kalmadan, sınıf ismiyle doğrudan çağrılabilen metotlardır.</p>
+</li>
+</ul>
+<h2>2. Parametre Aktarım Yöntemleri</h2>
+<p>C#'ta metotlara veri gönderirken değişkenin türüne ve kullanılan anahtar kelimeye göre bellek yönetimi değişir.</p>
+<h3>A. Değer ve Referans Türleri</h3>
+<ul>
+<li>
+<p><strong>Değer Türü (Value Type):</strong> <code>int</code>, <code>double</code>, <code>bool</code> gibi türlerdir. Metoda gönderildiğinde <strong>kopyası</strong> oluşturulur. Metot içindeki değişiklik ana değişkeni etkilemez.</p>
+</li>
+<li>
+<p><strong>Referans Türü (Reference Type):</strong> Sınıflar (<code>class</code>), diziler ve string gibi türlerdir. Metoda <strong>bellek adresi</strong> gönderilir. Metot içindeki değişiklik ana nesneyi değiştirir.</p>
+</li>
+</ul>
+<h3>B. <code>ref</code> ve <code>out</code> Anahtar Kelimeleri</h3>
+<p>Değer türlerinin de referans gibi davranmasını (orijinal verinin değişmesini) sağlamak için kullanılırlar.</p>
+<ul>
+<li>
+<p><strong><code>ref</code>:</strong> Değişkenin metoda gönderilmeden önce <strong>mutlaka ilk değerinin atanmış olması</strong> gerekir.</p>
+</li>
+<li>
+<p><strong><code>out</code>:</strong> Değişkenin ilk değerinin olmasına gerek yoktur, ancak metodun içerisinde <strong>mutlaka bir değer ataması yapılmalıdır</strong>.</p>
+</li>
+</ul>
+<h2>3. Metot Aşırı Yükleme (Method Overloading)</h2>
+<p>Aynı isme sahip fakat parametre yapısı (sayısı veya türü) farklı olan birden fazla metodun tanımlanmasıdır.</p>
+<ul>
+<li>
+<p><strong>Amaç:</strong> Kod okunabilirliğini ve esnekliği artırmaktır.</p>
+</li>
+<li>
+<p><strong>Kural:</strong> Parametre imzası farklı olmalıdır. Sadece geri dönüş tipinin farklı olması aşırı yükleme sayılmaz ve hata verir.</p>
+</li>
+</ul>
+<h2>4. Metot Geçersiz Kılma (Method Overriding)</h2>
+<p>Kalıtım alınan bir sınıftaki metodun, alt sınıfta (türetilen sınıf) yeniden yazılarak davranışının değiştirilmesidir.</p>
+<ul>
+<li>
+<p><strong>Base Class (Temel Sınıf):</strong> Metot <code>virtual</code> olarak işaretlenmelidir.</p>
+</li>
+<li>
+<p><strong>Derived Class (Alt Sınıf):</strong> Metot <code>override</code> olarak işaretlenmelidir.</p>
+</li>
+</ul>
+<h2>5. Değişken Sayıda Parametre (<code>params</code>)</h2>
+<p>Bir metoda kaç adet parametre gönderileceğinin bilinmediği durumlarda kullanılır.</p>
+<ul>
+<li>
+<p><strong>Kural:</strong> <code>params</code> anahtar kelimesi ile tanımlanır ve bir dizi (<code>array</code>) tipinde olmalıdır.</p>
+</li>
+<li>
+<p><strong>Kısıt:</strong> Metodun parametre listesinde en sonda yer almalıdır ve sadece bir tane <code>params</code> kullanılabilir.</p>
+</li>
+</ul>
+<h2>6. Özyinelemeli (Recursive) Metotlar</h2>
+<p>Bir metodun, belirli bir şart sağlanana kadar kendi kendisini çağırmasıdır. Genellikle matematiksel hesaplamalarda (Faktöriyel, Fibonacci vb.) kullanılır. Sonsuz döngüye girmemesi için mutlaka bir "durdurma koşulu" (base case) olmalıdır.</p>
+<hr />
+<h3>Kod Örnekleri</h3>
+<h4>Örnek 1: <code>ref</code> ve <code>out</code> Kullanımı</h4>
+<pre><code class="language-csharp">class ParametreOrnekleri
+{
+    // ref: Değişkenin değeri metoda girmeden atanmış olmalı
+    public static void SayiyiDegistir(ref int sayi)
+    {
+        sayi = 100; // Orijinal değişkeni değiştirir
+    }
+
+    // out: Değer metot içinde atanmak zorundadır
+    public static void KisiOlustur(out string ad)
+    {
+        ad = &quot;Ahmet&quot;; // Dışarıya bu değeri fırlatır
+    }
+}
+
+// Kullanım:
+// int a = 5;
+// ParametreOrnekleri.SayiyiDegistir(ref a); // a artık 100 olur.
+// string isim;
+// ParametreOrnekleri.KisiOlustur(out isim); // isim &quot;Ahmet&quot; olur.
+</code></pre>
+<h4>Örnek 2: Aşırı Yükleme (Overloading)</h4>
+<pre><code class="language-csharp">class Hesapla
+{
+    // İki tamsayıyı toplar
+    public int Topla(int s1, int s2)
+    {
+        return s1 + s2;
+    }
+
+    // Üç tamsayıyı toplar (Aşırı yükleme)
+    public int Topla(int s1, int s2, int s3)
+    {
+        return s1 + s2 + s3;
+    }
+
+    // İki ondalıklı sayıyı toplar (Aşırı yükleme)
+    public double Topla(double s1, double s2)
+    {
+        return s1 + s2;
+    }
+}
+</code></pre>
+<h4>Örnek 3: Geçersiz Kılma (Overriding)</h4>
+<pre><code class="language-csharp">class Sekil
+{
+    // Alt sınıflar bu metodu ezebilir (virtual)
+    public virtual void Ciz()
+    {
+        Console.WriteLine(&quot;Bir şekil çizildi.&quot;);
+    }
+}
+
+class Daire : Sekil
+{
+    // Temel sınıftaki metodu geçersiz kılıyoruz (override)
+    public override void Ciz()
+    {
+        Console.WriteLine(&quot;Daire çizildi.&quot;);
+    }
+}
+</code></pre>
+<h4>Örnek 4: <code>params</code> ve Recursive (Faktöriyel)</h4>
+<pre><code class="language-csharp">class OzelIslemler
+{
+    // Değişken sayıda parametre toplama
+    public int CokluTopla(params int[] sayilar)
+    {
+        int toplam = 0;
+        foreach (int sayi in sayilar)
+        {
+            toplam += sayi;
+        }
+        return toplam;
+    }
+
+    // Recursive Faktöriyel
+    public int Faktoriyel(int n)
+    {
+        if (n &lt;= 1) return 1; // Durdurma koşulu (Base case)
+        return n * Faktoriyel(n - 1); // Kendini çağırma
+    }
+}
+
+// Kullanım:
+// OzelIslemler islem = new OzelIslemler();
+// int sonuc = islem.CokluTopla(10, 20, 30, 40); // İstediğimiz kadar sayı gönderebiliriz.
+// int fakt = islem.Faktoriyel(5); // 120
+</code></pre>
