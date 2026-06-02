@@ -1,9 +1,9 @@
 import os
 import re
-import subprocess
 import markdown
+from weasyprint import HTML
 
-BASE = "guz-donemi"
+BASE = "bahar-donemi"
 
 
 def extract_number(filename):
@@ -32,6 +32,6 @@ for course in os.listdir(BASE):
         f.write("<meta charset='utf-8'>\n" + html)
 
     pdf_name = f"{course}.pdf"
-    subprocess.run(["wkhtmltopdf", html_path, pdf_name])
+    HTML(filename=html_path).write_pdf(pdf_name)
 
     print(f"{course} → {pdf_name}")
